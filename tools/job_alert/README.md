@@ -58,6 +58,32 @@ Configure these repository Actions secrets:
 The sender uses STARTTLS. For Gmail and other providers that require it, use an
 app password rather than the normal account password.
 
+For Gmail, use:
+
+```text
+SMTP_HOST=smtp.gmail.com
+SMTP_PORT=587
+SMTP_USERNAME=<Gmail address>
+SMTP_PASSWORD=<Google App Password>
+SMTP_FROM=<Gmail address>
+MONITOR_EMAIL_TO=<recipient email>
+```
+
+A normal Gmail account password does not work for this SMTP setup. Enable
+two-step verification for the sending Google account and create a Google App
+Password. Store that App Password only as the `SMTP_PASSWORD` repository
+secret.
+
+From PowerShell, run the secure interactive setup helper:
+
+```powershell
+.\scripts\set_smtp_secrets.ps1
+```
+
+The helper hides password input, passes values directly to `gh secret set`,
+and prints only the configured secret names. It does not write credentials to
+disk.
+
 If required secrets are absent, the workflow still completes collection but
 prints every missing secret name and an explicit `email not sent` status in
 both the log and job summary. Secret values are never printed.
