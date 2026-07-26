@@ -4,10 +4,10 @@ import html
 from dataclasses import dataclass
 from typing import Final
 
-from .models import JobPosting, RunMetrics
+from .models import JobPosting, PriorityLevel, RunMetrics
+from .relevance import recommended_profile_emphasis
 
 URGENT_DAYS: Final = 7
-HIGH_FIT_SCORE: Final = 80
 
 
 @dataclass(frozen=True, slots=True)
@@ -20,7 +20,11 @@ class EmailContent:
 def _format_posting(index: int, posting: JobPosting) -> str:
     deadline = posting.deadline.isoformat() if posting.deadline else "원문 확인"
     fields = ", ".join(posting.research_fields)
-    reasons = ", ".join(posting.fit_reasons) or "직급 및 연구직 키워드"
+    reasons = "\n".join(f"  - {reason}" for reason in posting.fit_reasons)
+    emphases = recommended_profile_emphasis(posting.research_fields)
+    emphasis_lines = "\n".join(
+        f"  {item}. {emphasis}" for item, emphasis in enumerate(emphases, start=1)
+    )
     change = f"\n- 변경사항: {posting.change_note}" if posting.change_note else ""
     return (
         f"### {index}. {posting.institution} · {posting.position} · {posting.title}\n"
@@ -34,7 +38,10 @@ def _format_posting(index: int, posting: JobPosting) -> str:
         f"- 최초 발견일: {posting.first_seen}\n"
         f"- 이전 알림 여부: {'예' if posting.previously_notified else '아니오'}\n"
         f"- 적합도: {posting.fit_score}/100\n"
-        f"- 적합도 근거: {reasons}\n"
+        f"- Priority: {posting.priority.value}\n"
+        f"- Fit analysis:\n{reasons or '  - Researcher-level role'}\n"
+        f"- Recommended profile emphasis:\n"
+        f"{emphasis_lines or '  1. Relevant research experience'}\n"
         f"- 원문 URL: {posting.url}{change}"
     )
 
@@ -57,7 +64,9 @@ def build_email(
         and 0 <= (posting.deadline - today).days <= URGENT_DAYS
     )
     high_fit = tuple(
-        posting for posting in postings if posting.fit_score >= HIGH_FIT_SCORE
+        posting
+        for posting in postings
+        if posting.priority is PriorityLevel.APPLY_SERIOUSLY
     )
     all_items = "\n\n".join(
         _format_posting(index, posting)

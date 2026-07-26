@@ -37,3 +37,6 @@ def test_test_email_contains_required_sections_and_marker() -> None:
     assert "전체 신규 공고 목록" in email.text_body
     assert "중복 제외: 3건" in email.text_body
     assert "ETRI: 접근 실패" in email.text_body
+    assert "Priority: Apply seriously" in email.text_body
+    assert "Fit analysis:" in email.text_body
+    assert "Recommended profile emphasis:" in email.text_body

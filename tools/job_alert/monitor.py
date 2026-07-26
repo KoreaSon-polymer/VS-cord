@@ -15,6 +15,7 @@ from .deduplication import classify_postings
 from .filtering import evaluate_posting
 from .mailer import MissingSmtpConfiguration, SmtpConfig, load_smtp_config, send_email
 from .models import JobPosting, RunMetrics
+from .relevance import rank_postings
 from .reporting import build_email
 from .scraper import collect_sources
 from .sources import SOURCES
@@ -72,7 +73,7 @@ async def run(environment: Mapping[str, str]) -> int:
         )
         accepted = tuple(posting for posting in evaluated if posting is not None)
         deduplicated = classify_postings(accepted, load_state())
-        candidates = deduplicated.new_postings
+        candidates = rank_postings(deduplicated.new_postings)
         collected_count = len(raw_postings)
         deduplicated_count = deduplicated.deduplicated_count
         excluded_count = len(raw_postings) - len(accepted)

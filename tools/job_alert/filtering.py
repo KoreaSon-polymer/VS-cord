@@ -4,44 +4,11 @@ import re
 from datetime import date
 from typing import Final
 
-from .models import JobPosting, RawPosting
+from .models import JobPosting, PriorityLevel, RawPosting
+from .relevance import assess_relevance
+from .taxonomy import POSITION_KEYWORDS as _POSITION_KEYWORDS
 
-POSITION_KEYWORDS: Final = (
-    "박사후연구원",
-    "박사후 연구원",
-    "postdoctoral researcher",
-    "post-doc",
-    "postdoc",
-    "연구교수",
-    "research professor",
-    "책임연구원",
-    "principal researcher",
-    "선임연구원",
-    "senior researcher",
-    "전임연구원",
-    "정규직 연구",
-    "연구직",
-    "위촉연구원",
-    "석사후연구원",
-)
-INTEREST_KEYWORDS: Final = (
-    "유기반도체",
-    "고분자 반도체",
-    "광촉매",
-    "수소 생산",
-    "수소생산",
-    "수소 센서",
-    "전기화학",
-    "유기전자",
-    "omiec",
-    "oect",
-    "n-type sam",
-    "계면 전하이동",
-    "계면 전하 이동",
-    "광전소자",
-    "소자물리",
-    "재료화학",
-)
+POSITION_KEYWORDS: Final = _POSITION_KEYWORDS
 EXCLUDED_KEYWORDS: Final = (
     "합격자 발표",
     "합격자발표",
@@ -145,12 +112,15 @@ def evaluate_posting(raw: RawPosting, today: date) -> JobPosting | None:
     combined = f"{raw.title} {raw.text}"
     folded = combined.casefold()
     title_folded = raw.title.casefold()
-    if any(keyword.casefold() in title_folded for keyword in EXCLUDED_KEYWORDS):
-        return None
-    if any(title_folded == title.casefold() for title in GENERIC_PAGE_TITLES):
+    excluded = any(keyword.casefold() in title_folded for keyword in EXCLUDED_KEYWORDS)
+    generic = any(title_folded == title.casefold() for title in GENERIC_PAGE_TITLES)
+    if excluded or generic:
         return None
     position = _first_match(raw.title, POSITION_KEYWORDS, "")
     if not position:
+        return None
+    assessment = assess_relevance(combined, researcher_level=True)
+    if assessment.priority is PriorityLevel.IGNORE:
         return None
     parsed_dates = _dates(raw.title) or _application_dates(combined)
     if not parsed_dates and "채용시까지" not in folded:
@@ -161,11 +131,6 @@ def evaluate_posting(raw: RawPosting, today: date) -> JobPosting | None:
     deadline = min(future_dates) if future_dates else None
     if parsed_dates and deadline is None:
         return None
-    fields = tuple(
-        keyword for keyword in INTEREST_KEYWORDS if keyword.casefold() in folded
-    )
-    reasons = fields + ((position,) if position else ())
-    score = min(100, 35 + (15 * len(fields)) + (15 if "박사" in folded else 0))
     employment_type = _first_match(
         combined,
         ("정규직", "무기계약직", "계약직", "비정규직", "연수직"),
@@ -183,7 +148,7 @@ def evaluate_posting(raw: RawPosting, today: date) -> JobPosting | None:
         title=raw.title.strip(),
         position=position,
         employment_type=employment_type,
-        research_fields=fields or ("세부 연구 분야 원문 확인",),
+        research_fields=assessment.research_fields,
         qualifications=qualifications,
         location=location,
         start_date=start_date,
@@ -191,7 +156,7 @@ def evaluate_posting(raw: RawPosting, today: date) -> JobPosting | None:
         url=raw.url,
         first_seen=today,
         previously_notified=False,
-        fit_score=score,
-        fit_reasons=reasons,
+        fit_score=assessment.score,
+        fit_reasons=assessment.reasons,
         change_note=None,
     )
