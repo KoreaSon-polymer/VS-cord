@@ -1,0 +1,63 @@
+name: Daily Korean Research Job Alert
+
+on:
+  schedule:
+    # 00:30 UTC is 09:30 Korea Standard Time.
+    - cron: "30 0 * * *"
+  workflow_dispatch:
+    inputs:
+      force_test_email:
+        description: "Send a synthetic test posting without updating deduplication state"
+        required: false
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: daily-korean-research-job-alert
+  cancel-in-progress: false
+
+jobs:
+  monitor:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Set up uv
+        uses: astral-sh/setup-uv@v6
+
+      - name: Install dependencies
+        run: uv pip install --system -r tools/job_alert/requirements.txt
+
+      - name: Run Daily Korean Research Job Alert
+        env:
+          FORCE_TEST_EMAIL: ${{ inputs.force_test_email || 'false' }}
+          MONITOR_EMAIL_TO: ${{ secrets.MONITOR_EMAIL_TO }}
+          SMTP_HOST: ${{ secrets.SMTP_HOST }}
+          SMTP_PORT: ${{ secrets.SMTP_PORT }}
+          SMTP_USERNAME: ${{ secrets.SMTP_USERNAME }}
+          SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
+          SMTP_FROM: ${{ secrets.SMTP_FROM }}
+        run: python -m tools.job_alert.monitor
+
+      - name: Persist successful delivery state
+        if: ${{ !inputs.force_test_email }}
+        run: |
+          if git diff --quiet -- tools/job_alert/notified_state.json; then
+            echo "No delivered-posting state change to persist."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add tools/job_alert/notified_state.json
+          git commit -m "Update Korean research job alert state"
+          git push
