@@ -1,44 +1,13 @@
 from __future__ import annotations
 
-from dataclasses import dataclass
 from typing import Final
 
+from . import general_category, position_keywords
+from .taxonomy_models import KeywordCategory
 
-@dataclass(frozen=True, slots=True)
-class KeywordCategory:
-    name: str
-    keywords: tuple[str, ...]
-    explanation: str
-    profile_emphasis: tuple[str, ...]
+POSITION_KEYWORDS: Final = position_keywords.POSITION_KEYWORDS
+GENERAL_CHEMISTRY_MATERIALS: Final = general_category.GENERAL_CHEMISTRY_MATERIALS
 
-
-POSITION_KEYWORDS: Final = (
-    "박사후연구원",
-    "박사후 연구원",
-    "postdoctoral researcher",
-    "post-doctoral researcher",
-    "post-doc",
-    "postdoc",
-    "연구교수",
-    "research professor",
-    "연구과제전담교수",
-    "프로젝트교수",
-    "project professor",
-    "faculty track",
-    "책임연구원",
-    "principal researcher",
-    "선임연구원",
-    "senior researcher",
-    "전임연구원",
-    "정규직 연구",
-    "연구직",
-    "위촉연구원",
-    "석사후연구원",
-    "research scientist",
-    "scientist",
-    "researcher",
-    "연구원",
-)
 
 ORGANIC_ELECTRONICS: Final = KeywordCategory(
     name="Organic semiconductor and organic electronics",
@@ -78,6 +47,7 @@ ORGANIC_ELECTRONICS: Final = KeywordCategory(
         "Conjugated polymer design",
         "Organic optoelectronic materials",
     ),
+    tier=1,
 )
 
 POLYMER_AND_ORGANIC_SYNTHESIS: Final = KeywordCategory(
@@ -120,6 +90,7 @@ POLYMER_AND_ORGANIC_SYNTHESIS: Final = KeywordCategory(
         "Organic synthesis",
         "Molecular and monomer design",
     ),
+    tier=2,
 )
 
 ADVANCED_MATERIALS: Final = KeywordCategory(
@@ -155,6 +126,7 @@ ADVANCED_MATERIALS: Final = KeywordCategory(
         "Materials characterization",
         "Surface and interface characterization",
     ),
+    tier=3,
 )
 
 ENERGY_AND_ELECTROCHEMISTRY: Final = KeywordCategory(
@@ -200,6 +172,7 @@ ENERGY_AND_ELECTROCHEMISTRY: Final = KeywordCategory(
         "Photoelectrochemistry",
         "Electrochemical device experience",
     ),
+    tier=4,
 )
 
 SEMICONDUCTOR_DEVICE_INTERFACE: Final = KeywordCategory(
@@ -250,45 +223,7 @@ SEMICONDUCTOR_DEVICE_INTERFACE: Final = KeywordCategory(
         "Device physics",
         "Interface engineering and charge transport",
     ),
-)
-
-GENERAL_CHEMISTRY_MATERIALS: Final = KeywordCategory(
-    name="General chemistry and materials",
-    keywords=(
-        "chemistry",
-        "material",
-        "materials",
-        "nanomaterial",
-        "molecule",
-        "catalyst",
-        "catalysis",
-        "synthesis",
-        "analysis",
-        "thin film",
-        "surface",
-        "interface",
-        "화학",
-        "재료",
-        "소재",
-        "신소재",
-        "나노",
-        "분자",
-        "촉매",
-        "합성",
-        "분석",
-        "박막",
-        "표면",
-        "계면",
-    ),
-    explanation=(
-        "General chemistry and materials skills provide a transferable "
-        "foundation for the advertised research"
-    ),
-    profile_emphasis=(
-        "Materials chemistry",
-        "Chemical synthesis",
-        "Materials characterization",
-    ),
+    tier=5,
 )
 
 CATEGORY_RULES: Final = (

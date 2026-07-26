@@ -76,7 +76,7 @@ def test_administrative_researcher_support_fails() -> None:
     assert posting is None
 
 
-def test_battery_materials_scientist_is_worth_checking() -> None:
+def test_battery_materials_scientist_is_monitor_priority() -> None:
     # Given
     title = "Battery materials scientist"
 
@@ -85,11 +85,11 @@ def test_battery_materials_scientist_is_worth_checking() -> None:
 
     # Then
     assert posting is not None
-    assert posting.priority == "Worth checking"
-    assert 45 <= posting.fit_score <= 69
+    assert posting.priority == "★★★ Monitor"
+    assert 50 <= posting.final_recommendation_score <= 69
 
 
-def test_polymer_semiconductor_researcher_is_apply_seriously() -> None:
+def test_polymer_semiconductor_researcher_is_strongly_considered() -> None:
     # Given
     title = "Polymer semiconductor researcher"
 
@@ -98,11 +98,14 @@ def test_polymer_semiconductor_researcher_is_apply_seriously() -> None:
 
     # Then
     assert posting is not None
-    assert posting.priority == "Apply seriously"
-    assert posting.fit_score >= 70
+    assert posting.priority in (
+        "★★★★★ Apply seriously",
+        "★★★★ Strongly consider",
+    )
+    assert posting.final_recommendation_score >= 70
 
 
-def test_ranking_places_apply_seriously_before_worth_checking() -> None:
+def test_ranking_places_stronger_final_score_first() -> None:
     # Given
     baseline = JobPosting.test_payload(TODAY)
     worth_checking = replace(

@@ -20,18 +20,35 @@ The monitor attempts the official recruitment or announcement pages for:
 - KRICT, KIST, KIMS, KIER, KIMM, ETRI, KRISS, KBSI, KISTI
 - KITECH, KERI, KICT, KAERI, and IBS
 - DGIST, GIST, UNIST, and KAIST
+- Hibrain and the recruitment pages for POSTECH, SNU, Korea University,
+  Yonsei University, Sungkyunkwan University, and Hanyang University
+- Samsung, LG, SK materials, OCI, Hanwha, Kolon, and Lotte career portals
 
 Each source is isolated. A blocked or changed site is reported in the Actions
 log and job summary without preventing other sources from being processed.
+Sources are typed as aggregator, government institute, university, or company.
+Some corporate portals render job listings with JavaScript, so they may report
+zero discoverable links until a static listing is available.
 
 ## Filtering
 
-The allowlist favors postdoctoral researchers, research professors, regular
-research staff, senior/principal researchers, and other doctoral research
-positions. Relevance scoring covers organic and polymer semiconductors,
-photocatalysis, hydrogen production and sensing, electrochemistry, organic
-electronics, OMIEC/OECT, n-type SAMs, interfacial charge transfer,
-optoelectronic devices, device physics, and materials chemistry.
+The allowlist covers faculty, research professor, project professor, research
+scientist, senior/principal researcher, and postdoctoral positions. Research
+domains are organized into six tiers from direct organic-electronics matches
+through transferable chemistry and materials foundations.
+
+Each posting receives two independent 0–100 scores:
+
+- Research Fit Score: weighted domain overlap and exclusion penalties
+- Career Advancement Score: position level, independence, institution quality,
+  and applicant compatibility
+
+The final recommendation is `Research Fit × 0.6 + Career Advancement × 0.4`.
+Priorities are `★★★★★ Apply seriously` (85+), `★★★★ Strongly consider`
+(70–84), `★★★ Monitor` (50–69), and `Ignore` (below 50 or disqualified).
+Domestic postdoctoral roles receive only five raw career-level points, while
+faculty, permanent/senior research, and independent leadership roles receive
+higher career value.
 
 The denylist rejects expired postings, successful-candidate announcements,
 selection results, bids, funding programs, research grants, and project calls.

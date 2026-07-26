@@ -51,7 +51,10 @@ def test_accepts_relevant_open_postdoctoral_job() -> None:
     assert posting.deadline == date(2026, 8, 10)
     assert posting.location == "대전"
     assert posting.fit_score >= 80
-    assert posting.priority is PriorityLevel.APPLY_SERIOUSLY
+    assert posting.priority in (
+        PriorityLevel.APPLY_SERIOUSLY,
+        PriorityLevel.STRONGLY_CONSIDER,
+    )
     assert any(
         "organic semiconductor" in reason.casefold() for reason in posting.fit_reasons
     )

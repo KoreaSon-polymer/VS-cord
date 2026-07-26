@@ -8,8 +8,9 @@ from enum import StrEnum
 from typing import Final
 
 _SPACE_RE: Final = re.compile(r"\s+")
-APPLY_SERIOUSLY_SCORE: Final = 70
-WORTH_CHECKING_SCORE: Final = 45
+APPLY_SERIOUSLY_SCORE: Final = 85
+STRONGLY_CONSIDER_SCORE: Final = 70
+MONITOR_SCORE: Final = 50
 
 
 def normalized(value: str) -> str:
@@ -17,8 +18,9 @@ def normalized(value: str) -> str:
 
 
 class PriorityLevel(StrEnum):
-    APPLY_SERIOUSLY = "Apply seriously"
-    WORTH_CHECKING = "Worth checking"
+    APPLY_SERIOUSLY = "★★★★★ Apply seriously"
+    STRONGLY_CONSIDER = "★★★★ Strongly consider"
+    MONITOR = "★★★ Monitor"
     IGNORE = "Ignore"
 
 
@@ -47,6 +49,13 @@ class JobPosting:
     fit_score: int
     fit_reasons: tuple[str, ...]
     change_note: str | None
+    department: str = "원문 확인"
+    research_fit_score: int = 0
+    career_advancement_score: int = 0
+    application_compatibility_score: int = 0
+    institution_score: int = 0
+    career_reasons: tuple[str, ...] = ()
+    career_value: tuple[str, ...] = ()
 
     @property
     def url_key(self) -> str:
@@ -79,9 +88,15 @@ class JobPosting:
     def priority(self) -> PriorityLevel:
         if self.fit_score >= APPLY_SERIOUSLY_SCORE:
             return PriorityLevel.APPLY_SERIOUSLY
-        if self.fit_score >= WORTH_CHECKING_SCORE:
-            return PriorityLevel.WORTH_CHECKING
+        if self.fit_score >= STRONGLY_CONSIDER_SCORE:
+            return PriorityLevel.STRONGLY_CONSIDER
+        if self.fit_score >= MONITOR_SCORE:
+            return PriorityLevel.MONITOR
         return PriorityLevel.IGNORE
+
+    @property
+    def final_recommendation_score(self) -> int:
+        return self.fit_score
 
     def as_changed(self, note: str) -> JobPosting:
         return replace(self, previously_notified=True, change_note=note)
@@ -105,13 +120,27 @@ class JobPosting:
             url="https://example.invalid/korean-research-job-alert-test",
             first_seen=today,
             previously_notified=False,
-            fit_score=100,
+            fit_score=94,
             fit_reasons=(
                 "Researcher-level role aligns with the target career stage",
                 "Strong overlap with organic semiconductor and polymer synthesis",
                 "Electrochemical-device experience can be emphasized",
             ),
             change_note=None,
+            department="Advanced Materials Division",
+            research_fit_score=100,
+            career_advancement_score=86,
+            application_compatibility_score=15,
+            institution_score=15,
+            career_reasons=(
+                "Position level: Postdoctoral researcher (+5)",
+                "Top research institution",
+                "High compatibility: PhD requirement and research match",
+            ),
+            career_value=(
+                "Publication potential follows the matched research domain",
+                "Long-term value reflects position level and institution quality",
+            ),
         )
 
 

@@ -119,7 +119,11 @@ def evaluate_posting(raw: RawPosting, today: date) -> JobPosting | None:
     position = _first_match(raw.title, POSITION_KEYWORDS, "")
     if not position:
         return None
-    assessment = assess_relevance(combined, researcher_level=True)
+    assessment = assess_relevance(
+        combined,
+        institution=raw.institution,
+        researcher_level=True,
+    )
     if assessment.priority is PriorityLevel.IGNORE:
         return None
     parsed_dates = _dates(raw.title) or _application_dates(combined)
@@ -143,6 +147,11 @@ def evaluate_posting(raw: RawPosting, today: date) -> JobPosting | None:
     qualifications = (
         qualification_match.group(1).strip() if qualification_match else "원문 확인"
     )
+    department_match = re.search(
+        r"((?:department of|학과|연구센터|연구단|연구실)\s*[\w가-힣 &/-]{2,80})",
+        combined,
+        re.IGNORECASE,
+    )
     return JobPosting(
         institution=raw.institution,
         title=raw.title.strip(),
@@ -156,7 +165,16 @@ def evaluate_posting(raw: RawPosting, today: date) -> JobPosting | None:
         url=raw.url,
         first_seen=today,
         previously_notified=False,
-        fit_score=assessment.score,
-        fit_reasons=assessment.reasons,
+        fit_score=assessment.final_score,
+        fit_reasons=assessment.fit_reasons,
         change_note=None,
+        department=(
+            department_match.group(1).strip() if department_match else "원문 확인"
+        ),
+        research_fit_score=assessment.research_fit_score,
+        career_advancement_score=assessment.career_advancement_score,
+        application_compatibility_score=assessment.application_compatibility_score,
+        institution_score=assessment.institution_score,
+        career_reasons=assessment.career_reasons,
+        career_value=assessment.career_value,
     )
