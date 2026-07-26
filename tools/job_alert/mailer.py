@@ -60,6 +60,7 @@ def send_email(config: SmtpConfig, content: EmailContent) -> None:
         _ = smtp.starttls(context=context)
         _ = smtp.ehlo()
         _ = smtp.login(config.username, config.password)
+        print("SMTP connection successful")
         refused = smtp.send_message(message)
     if refused:
         raise smtplib.SMTPRecipientsRefused(refused)
