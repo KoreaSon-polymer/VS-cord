@@ -1,3 +1,28 @@
 {
-  "records": []
+  "records": [
+    {
+      "url_key": "https://www.gist.ac.kr/kr/html/sub06/060103.html?mode=v&no=222408&gotopage=1",
+      "auxiliary_key": "60561f1e22ec5ad1da83",
+      "content_hash": "98daf862448af046e2f07ecef655c700d612c7beb93e24741120631dcf11ee29",
+      "deadline": "2026-08-07"
+    },
+    {
+      "url_key": "https://www.kims.re.kr/v17/bbx/board.php?bx_table=03_05&wr_id=652&page=1",
+      "auxiliary_key": "7d335f62486c98cd92e7",
+      "content_hash": "bedbaf0b38164fa701691fed54d590462bcf168b3bfe133a58c5eda76f1f7771",
+      "deadline": "2026-07-27"
+    },
+    {
+      "url_key": "https://www.kims.re.kr/v17/bbx/board.php?bx_table=03_05&wr_id=651&page=1",
+      "auxiliary_key": "6593c2a6ed7d650b5bc3",
+      "content_hash": "20ad2baa4fc708d723164e0c92af0a89c1d701dc607baf7287cb4e9a619dcef7",
+      "deadline": "2026-07-27"
+    },
+    {
+      "url_key": "https://www.kist.re.kr/ko/notice/employment-announcement.do?mode=view&articleno=17991&article.offset=0&articlelimit=10",
+      "auxiliary_key": "90fa6c056e54c180e5ca",
+      "content_hash": "1134c47edb3038a827cb68525324f56d3a3eaa7da9ece018c0db135b3142c0e8",
+      "deadline": "2026-07-30"
+    }
+  ]
 }
