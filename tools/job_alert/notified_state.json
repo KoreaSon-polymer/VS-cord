@@ -19,16 +19,28 @@
       "deadline": "2026-07-27"
     },
     {
-      "url_key": "https://www.kist.re.kr/ko/notice/employment-announcement.do?mode=view&articleno=17991&article.offset=0&articlelimit=10",
-      "auxiliary_key": "90fa6c056e54c180e5ca",
-      "content_hash": "1134c47edb3038a827cb68525324f56d3a3eaa7da9ece018c0db135b3142c0e8",
-      "deadline": "2026-07-30"
-    },
-    {
       "url_key": "https://www.gist.ac.kr/kr/html/sub06/060103.html?mode=v&no=222474&gotopage=1",
       "auxiliary_key": "cbed4b91a48ef4ac485e",
       "content_hash": "d1fd3ae48a3da02d5243c10ee2a195d2f30f7e62a5cdfe1fd8d9b48d9a03f8ec",
       "deadline": "2026-07-29"
+    },
+    {
+      "url_key": "https://www.gist.ac.kr/kr/html/sub06/060103.html?mode=v&no=222493&gotopage=1",
+      "auxiliary_key": "844dcb85a86f4c659f92",
+      "content_hash": "93002d02d876a8a24dc04071ad32567265cda1df265ca0d29dda77208b87eb4e",
+      "deadline": "2026-07-30"
+    },
+    {
+      "url_key": "https://job.alio.go.kr/mobile2021/recruit/recruitview.do?idx=303149",
+      "auxiliary_key": "30c9bb7d9162cac5ccbc",
+      "content_hash": "f18b2c43f9f2ce6ac3a01cd9cde40ab4372c8adcc530065639ebdffda0fd5bf7",
+      "deadline": "2026-07-30"
+    },
+    {
+      "url_key": "https://www.kist.re.kr/ko/notice/employment-announcement.do?mode=view&articleno=17991&article.offset=0&articlelimit=10",
+      "auxiliary_key": "e81aab4a402dfabf7628",
+      "content_hash": "55a5d6b7352ba445b4dab6009ba78bc5f6c25445fa54bb56b6fe7da45477cd96",
+      "deadline": "2026-07-30"
     }
   ]
 }
