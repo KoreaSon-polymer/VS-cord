@@ -53,6 +53,24 @@
       "auxiliary_key": "e1db2c92f81dfe70c230",
       "content_hash": "2d271c2c04a613fc51e7f08bc79f6998c86396860fdcdd49f05670b4b7075bc5",
       "deadline": "2026-08-18"
+    },
+    {
+      "url_key": "https://www.gist.ac.kr/kr/html/sub06/060103.html?mode=v&no=222544&gotopage=1",
+      "auxiliary_key": "2de8cdd704485fb4955b",
+      "content_hash": "991c7f4af09f05bba8c119d87e75a4ea1fb2d83d2058d2f9a9fe896f3b422567",
+      "deadline": "2026-08-03"
+    },
+    {
+      "url_key": "https://www.gist.ac.kr/kr/html/sub06/060103.html?mode=v&no=222543&gotopage=1",
+      "auxiliary_key": "d0c41eded60ebbcbe5ee",
+      "content_hash": "9eab92dd66f73d4917ec0df1c243d1b50f5be542a8adb497fd91e5feeef0e0c9",
+      "deadline": "2026-08-03"
+    },
+    {
+      "url_key": "https://www.gist.ac.kr/kr/html/sub06/060103.html?mode=v&no=222541&gotopage=1",
+      "auxiliary_key": "c82ae037f7a770b726cf",
+      "content_hash": "4c08f3aa6d45e071d918b10e66ea306dde001be10f80d983e835bab2d6f9f550",
+      "deadline": "2026-08-03"
     }
   ]
 }
