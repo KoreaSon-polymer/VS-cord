@@ -77,6 +77,12 @@
       "auxiliary_key": "606b0d356b955a9e9f6c",
       "content_hash": "482c152136dea9496c35e3ae3b2a048cd7598c9a2ddb40bfb0d146e222f56979",
       "deadline": "2026-08-04"
+    },
+    {
+      "url_key": "https://www.gist.ac.kr/kr/html/sub06/060103.html?mode=v&no=222584&gotopage=1",
+      "auxiliary_key": "e76d4c5b62529a1a63e8",
+      "content_hash": "478783d8c7c898dfef062a2e9c3c6fd98d580dc95f5b08310a88366f52e51dbe",
+      "deadline": "2026-08-05"
     }
   ]
 }
