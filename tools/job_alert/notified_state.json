@@ -97,18 +97,6 @@
       "deadline": "2026-08-06"
     },
     {
-      "url_key": "https://www.gist.ac.kr/kr/html/sub06/060103.html?mode=v&no=222631&gotopage=1",
-      "auxiliary_key": "4ab8e320c4b6542aed1f",
-      "content_hash": "646ee55fcb6aa10a0df77b7c217c9554eaea2db89b1c9bc10255b44cf9f0076a",
-      "deadline": "2026-08-07"
-    },
-    {
-      "url_key": "https://www.gist.ac.kr/kr/html/sub06/060103.html?mode=v&no=222630&gotopage=1",
-      "auxiliary_key": "8ba2472b9263e0bf2262",
-      "content_hash": "9e21fb14d9834788f00e14c30b4f4fb34f9ae9485f57537b549d59866670e489",
-      "deadline": "2026-08-07"
-    },
-    {
       "url_key": "https://www.gist.ac.kr/kr/html/sub06/060103.html?mode=v&no=222610&gotopage=1",
       "auxiliary_key": "e81ba3b1831866eb64d5",
       "content_hash": "c642bfcbb597efbacde5ad9cf8c7387716eac033b0fa3731bb9760b5d33c4b95",
@@ -119,6 +107,18 @@
       "auxiliary_key": "cac0c713c0bba26efdea",
       "content_hash": "07ed2209881b094149f51651ea45ddd05fc81fb29baa8907a80182e02b53b7a4",
       "deadline": "2026-08-21"
+    },
+    {
+      "url_key": "https://www.gist.ac.kr/kr/html/sub06/060103.html?mode=v&no=222631&gotopage=1",
+      "auxiliary_key": "7ab0f52c1eb86f33db60",
+      "content_hash": "baa5e3b8100e6010ce374c9559a4fb31b17ee40663d8b08d7290a16d6af9d4bf",
+      "deadline": "2026-08-24"
+    },
+    {
+      "url_key": "https://www.gist.ac.kr/kr/html/sub06/060103.html?mode=v&no=222630&gotopage=1",
+      "auxiliary_key": "98477f7ac165a002aeff",
+      "content_hash": "86c5c00e0b3bd3df39a4b90c6f67a06c16856243c577567055d0ca6212d6627a",
+      "deadline": "2026-08-18"
     }
   ]
 }
