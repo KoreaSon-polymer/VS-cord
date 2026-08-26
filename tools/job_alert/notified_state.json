@@ -143,6 +143,12 @@
       "auxiliary_key": "cb70a394966c08bb8833",
       "content_hash": "4cf180e2f03e72b0ff1217e3f2e4739ada408837d7ae328d0b19c09d4a1dd140",
       "deadline": "2026-08-24"
+    },
+    {
+      "url_key": "https://job.alio.go.kr/mobile2021/recruit/recruitview.do?idx=304238",
+      "auxiliary_key": "456e0e9dee011866218f",
+      "content_hash": "5edb70f294fd97f96022660f9127faf69ef5ae44014b2a2c1a02a03a81bd772f",
+      "deadline": "2026-08-26"
     }
   ]
 }
