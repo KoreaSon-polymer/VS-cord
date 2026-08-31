@@ -155,6 +155,30 @@
       "auxiliary_key": "a07f10e491f602b789aa",
       "content_hash": "08ba3f47063fbf2a0a3a22fcf20850e889cd248e71d666949208948a33cd7223",
       "deadline": "2026-09-07"
+    },
+    {
+      "url_key": "https://www.gist.ac.kr/kr/html/sub06/060103.html?mode=v&no=223056&gotopage=1",
+      "auxiliary_key": "c283b6aa0da545d4a478",
+      "content_hash": "61ec6735cb86772958f0fd236a7fe00e9dfda87f6d7db530cd0ad35f71548b91",
+      "deadline": "2026-08-31"
+    },
+    {
+      "url_key": "https://www.gist.ac.kr/kr/html/sub06/060103.html?mode=v&no=223053&gotopage=1",
+      "auxiliary_key": "3841c36a1eb1d1e3b7ba",
+      "content_hash": "b48e4f1658c686a22450cdaeb023dbaf1d0589027a93e5d5facb97c79706645e",
+      "deadline": "2026-08-31"
+    },
+    {
+      "url_key": "https://job.alio.go.kr/mobile2021/recruit/recruitview.do?idx=304356",
+      "auxiliary_key": "42414aa1710f5c9d0ee5",
+      "content_hash": "46ccac787ff586c4f1f312ca2099a17211404a18ec2fe27e90da2bb4d3e0c331",
+      "deadline": "2026-08-31"
+    },
+    {
+      "url_key": "https://job.alio.go.kr/mobile2021/recruit/recruitview.do?idx=304355",
+      "auxiliary_key": "79aa719d8c1bee468f9d",
+      "content_hash": "6197805da479e133fb1b1d0fd8c9738540a4f510e4c3862bf190f3d2aefe4b37",
+      "deadline": "2026-08-31"
     }
   ]
 }
