@@ -175,16 +175,16 @@
       "deadline": "2026-08-31"
     },
     {
-      "url_key": "https://www.gist.ac.kr/kr/html/sub06/060103.html?mode=v&no=223082&gotopage=1",
-      "auxiliary_key": "a682981d474c3ab14bf6",
-      "content_hash": "3600623dc9cf72449769e334fa4aeecd501892dea2788cab2e84f067176162c5",
-      "deadline": "2026-09-01"
-    },
-    {
       "url_key": "https://www.gist.ac.kr/kr/html/sub06/060103.html?mode=v&no=223056&gotopage=1",
       "auxiliary_key": "170a810fe53948a55518",
       "content_hash": "eeb92158c7955c2eb562695e7c40173e10d012795fc8936602595e8c3e2e82cb",
       "deadline": "2026-09-15"
+    },
+    {
+      "url_key": "https://www.gist.ac.kr/kr/html/sub06/060103.html?mode=v&no=223082&gotopage=1",
+      "auxiliary_key": "0640c994822ad2735802",
+      "content_hash": "f864b44663d4e9e122f69205132f1db713c25365132e67f1eeaa4ad02e6fa997",
+      "deadline": "2026-09-16"
     }
   ]
 }
