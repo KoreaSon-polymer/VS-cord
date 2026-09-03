@@ -1,7 +1,7 @@
 from datetime import date
 
 from tools.job_alert.filtering import evaluate_posting
-from tools.job_alert.models import RawPosting
+from tools.job_alert.models import PriorityLevel, RawPosting
 
 
 def test_rejects_non_job_result_and_funding_notices() -> None:
@@ -51,7 +51,13 @@ def test_accepts_relevant_open_postdoctoral_job() -> None:
     assert posting.deadline == date(2026, 8, 10)
     assert posting.location == "대전"
     assert posting.fit_score >= 80
-    assert "유기반도체" in posting.fit_reasons
+    assert posting.priority in (
+        PriorityLevel.APPLY_SERIOUSLY,
+        PriorityLevel.STRONGLY_CONSIDER,
+    )
+    assert any(
+        "organic semiconductor" in reason.casefold() for reason in posting.fit_reasons
+    )
 
 
 def test_ignores_navigation_funding_terms_for_a_real_job_title() -> None:

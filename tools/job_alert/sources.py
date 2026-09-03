@@ -1,7 +1,15 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
+from enum import StrEnum
 from typing import Final
+
+
+class SourceKind(StrEnum):
+    GOVERNMENT = "government"
+    UNIVERSITY = "university"
+    COMPANY = "company"
+    AGGREGATOR = "aggregator"
 
 
 @dataclass(frozen=True, slots=True)
@@ -9,13 +17,17 @@ class Source:
     name: str
     institution: str
     url: str
+    kind: SourceKind = SourceKind.GOVERNMENT
 
 
 SOURCES: Final = (
     Source(
-        "JOB-ALIO", "JOB-ALIO", "https://job.alio.go.kr/mobile2021/recruit/recruit.do"
+        "JOB-ALIO",
+        "JOB-ALIO",
+        "https://job.alio.go.kr/mobile2021/recruit/recruit.do",
+        SourceKind.AGGREGATOR,
     ),
-    Source("ALIO", "ALIO", "https://www.alio.go.kr"),
+    Source("ALIO", "ALIO", "https://www.alio.go.kr", SourceKind.AGGREGATOR),
     Source(
         "KRICT",
         "한국화학연구원 (KRICT)",
@@ -82,20 +94,108 @@ SOURCES: Final = (
         "DGIST",
         "대구경북과학기술원 (DGIST)",
         "https://www.dgist.ac.kr/kr/html/sub05/050106.html",
+        SourceKind.UNIVERSITY,
     ),
     Source(
         "GIST",
         "광주과학기술원 (GIST)",
         "https://www.gist.ac.kr/kr/html/sub06/060103.html",
+        SourceKind.UNIVERSITY,
     ),
     Source(
         "UNIST",
         "울산과학기술원 (UNIST)",
         "https://admu-intl.unist.ac.kr/unist/etc/notification/employment.do?mode=list",
+        SourceKind.UNIVERSITY,
     ),
     Source(
         "KAIST",
         "한국과학기술원 (KAIST)",
         "https://www.kaist.ac.kr/kr/html/footer/0814.html",
+        SourceKind.UNIVERSITY,
+    ),
+    Source(
+        "Hibrain",
+        "Hibrain academic recruitment",
+        "https://www.hibrain.net/recruitment/recruits",
+        SourceKind.AGGREGATOR,
+    ),
+    Source(
+        "POSTECH",
+        "포항공과대학교 (POSTECH)",
+        "https://chem.postech.ac.kr/",
+        SourceKind.UNIVERSITY,
+    ),
+    Source(
+        "SNU",
+        "서울대학교 (Seoul National University)",
+        "https://www.snu.ac.kr/",
+        SourceKind.UNIVERSITY,
+    ),
+    Source(
+        "Korea University",
+        "고려대학교 (Korea University)",
+        "https://www.korea.ac.kr/bbs/ko/55/artclList.do",
+        SourceKind.UNIVERSITY,
+    ),
+    Source(
+        "Yonsei University",
+        "연세대학교 (Yonsei University)",
+        "https://graduate.yonsei.ac.kr/research/index.do",
+        SourceKind.UNIVERSITY,
+    ),
+    Source(
+        "Sungkyunkwan University",
+        "성균관대학교 (Sungkyunkwan University)",
+        "https://www.skku.edu/",
+        SourceKind.UNIVERSITY,
+    ),
+    Source(
+        "Hanyang University",
+        "한양대학교 (Hanyang University)",
+        "https://site.hanyang.ac.kr/web/faculty",
+        SourceKind.UNIVERSITY,
+    ),
+    Source(
+        "Samsung Careers",
+        "Samsung Electronics / SAIT / Samsung SDI",
+        "https://www.samsungcareers.com/",
+        SourceKind.COMPANY,
+    ),
+    Source(
+        "LG Careers",
+        "LG Chem / LG Energy Solution",
+        "https://careers.lg.com/",
+        SourceKind.COMPANY,
+    ),
+    Source(
+        "SK Materials Careers",
+        "SK materials",
+        "https://careers.sk-materials.com/",
+        SourceKind.COMPANY,
+    ),
+    Source(
+        "OCI Careers",
+        "OCI",
+        "https://www.oci.co.kr/",
+        SourceKind.COMPANY,
+    ),
+    Source(
+        "Hanwha Careers",
+        "Hanwha Solutions",
+        "https://www.hanwhain.com/web/index.do",
+        SourceKind.COMPANY,
+    ),
+    Source(
+        "Kolon Careers",
+        "Kolon",
+        "https://dream.kolon.com/",
+        SourceKind.COMPANY,
+    ),
+    Source(
+        "Lotte Careers",
+        "Lotte Chemical",
+        "https://recruit.lotte.co.kr/",
+        SourceKind.COMPANY,
     ),
 )

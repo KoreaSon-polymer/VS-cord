@@ -4,10 +4,10 @@ import html
 from dataclasses import dataclass
 from typing import Final
 
-from .models import JobPosting, RunMetrics
+from .models import JobPosting, PriorityLevel, RunMetrics
+from .relevance import recommended_profile_emphasis
 
 URGENT_DAYS: Final = 7
-HIGH_FIT_SCORE: Final = 80
 
 
 @dataclass(frozen=True, slots=True)
@@ -20,11 +20,19 @@ class EmailContent:
 def _format_posting(index: int, posting: JobPosting) -> str:
     deadline = posting.deadline.isoformat() if posting.deadline else "원문 확인"
     fields = ", ".join(posting.research_fields)
-    reasons = ", ".join(posting.fit_reasons) or "직급 및 연구직 키워드"
+    reasons = "\n".join(f"  - {reason}" for reason in posting.fit_reasons)
+    career_reasons = "\n".join(f"  - {reason}" for reason in posting.career_reasons)
+    career_value = "\n".join(f"  - {value}" for value in posting.career_value)
+    emphases = recommended_profile_emphasis(posting.research_fields)
+    emphasis_lines = "\n".join(
+        f"  {item}. {emphasis}" for item, emphasis in enumerate(emphases, start=1)
+    )
     change = f"\n- 변경사항: {posting.change_note}" if posting.change_note else ""
     return (
         f"### {index}. {posting.institution} · {posting.position} · {posting.title}\n"
         f"- 채용 제목: {posting.title}\n"
+        f"- Department: {posting.department}\n"
+        f"- Position type: {posting.position}\n"
         f"- 고용 형태: {posting.employment_type}\n"
         f"- 연구 분야: {fields}\n"
         f"- 지원 자격: {posting.qualifications}\n"
@@ -33,8 +41,21 @@ def _format_posting(index: int, posting: JobPosting) -> str:
         f"- 접수 마감일: {deadline}\n"
         f"- 최초 발견일: {posting.first_seen}\n"
         f"- 이전 알림 여부: {'예' if posting.previously_notified else '아니오'}\n"
-        f"- 적합도: {posting.fit_score}/100\n"
-        f"- 적합도 근거: {reasons}\n"
+        f"- Research Fit Score: {posting.research_fit_score}/100\n"
+        f"- Career Advancement Score: {posting.career_advancement_score}/100\n"
+        f"- Final Recommendation Score: "
+        f"{posting.final_recommendation_score}/100\n"
+        f"- Applicant Compatibility: "
+        f"{posting.application_compatibility_score}/15\n"
+        f"- Institution Quality: {posting.institution_score}/15\n"
+        f"- Priority: {posting.priority.value}\n"
+        f"- Why this fits:\n{reasons or '  - Research-domain match'}\n"
+        f"- Career advancement analysis:\n"
+        f"{career_reasons or '  - Career value requires manual review'}\n"
+        f"- Recommended application strategy:\n"
+        f"{emphasis_lines or '  1. Relevant research experience'}\n"
+        f"- Career value:\n"
+        f"{career_value or '  - Long-term value requires manual review'}\n"
         f"- 원문 URL: {posting.url}{change}"
     )
 
@@ -57,7 +78,10 @@ def build_email(
         and 0 <= (posting.deadline - today).days <= URGENT_DAYS
     )
     high_fit = tuple(
-        posting for posting in postings if posting.fit_score >= HIGH_FIT_SCORE
+        posting
+        for posting in postings
+        if posting.priority
+        in (PriorityLevel.APPLY_SERIOUSLY, PriorityLevel.STRONGLY_CONSIDER)
     )
     all_items = "\n\n".join(
         _format_posting(index, posting)
@@ -66,7 +90,10 @@ def build_email(
     errors = "\n".join(f"- {item}" for item in metrics.source_errors) or "- 없음"
     urgent_lines = "\n".join(f"- {item.title}" for item in urgent) or "- 없음"
     high_fit_lines = (
-        "\n".join(f"- {item.title} ({item.fit_score}/100)" for item in high_fit)
+        "\n".join(
+            f"- {item.title} ({item.final_recommendation_score}/100)"
+            for item in high_fit
+        )
         or "- 없음"
     )
     text = "\n".join(
