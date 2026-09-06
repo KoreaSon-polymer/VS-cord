@@ -6,6 +6,8 @@ from dataclasses import dataclass, replace
 from datetime import date, datetime
 from typing import Final
 
+from tools.notice_utils import canonical_url
+
 _SPACE_RE: Final = re.compile(r"\s+")
 
 
@@ -41,7 +43,7 @@ class JobPosting:
 
     @property
     def url_key(self) -> str:
-        return normalized(self.url).rstrip("/")
+        return canonical_url(self.url).rstrip("/")
 
     @property
     def auxiliary_key(self) -> str:
@@ -73,9 +75,9 @@ class JobPosting:
     def test_payload(cls, today: date) -> JobPosting:
         return cls(
             institution="한국화학연구원 (KRICT)",
-            title="[테스트] 유기반도체 박사후연구원 채용",
-            position="박사후연구원",
-            employment_type="계약직",
+            title="[테스트] 유기반도체 정규 연구직 채용",
+            position="정규 연구직",
+            employment_type="정규직",
             research_fields=("유기반도체", "고분자 반도체", "전기화학"),
             qualifications="관련 분야 박사학위 소지자",
             location="대전",

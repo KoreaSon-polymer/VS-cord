@@ -1,3 +1,7 @@
+# Superseded by the unified permanent-career monitor
+
+See [RESEARCH_MONITOR.md](../RESEARCH_MONITOR.md) for current filters, source coverage, scheduling and delivery. The historical instructions below describe v1 and must not be used to re-enable its schedules.
+
 # Korean research funding monitor
 
 This GitHub Actions workflow checks official Korean R&D funding announcement sources once per day and creates a GitHub Issue only when it finds a practically useful opportunity for the configured research profile.

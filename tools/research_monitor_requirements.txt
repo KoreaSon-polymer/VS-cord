@@ -1,0 +1,3 @@
+-r job_alert/requirements.txt
+requests==2.34.2
+pdfminer.six==20260107

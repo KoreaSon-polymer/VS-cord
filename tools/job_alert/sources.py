@@ -15,7 +15,7 @@ SOURCES: Final = (
     Source(
         "JOB-ALIO", "JOB-ALIO", "https://job.alio.go.kr/mobile2021/recruit/recruit.do"
     ),
-    Source("ALIO", "ALIO", "https://www.alio.go.kr"),
+    Source("ALIO", "ALIO", "https://www.alio.go.kr/information/informationRecruit.do"),
     Source(
         "KRICT",
         "한국화학연구원 (KRICT)",
@@ -36,7 +36,7 @@ SOURCES: Final = (
         "한국에너지기술연구원 (KIER)",
         "https://www.kier.re.kr/board?menuId=MENU00459&pageNum=1&rowCnt=20",
     ),
-    Source("KIMM", "한국기계연구원 (KIMM)", "https://www.kimm.re.kr"),
+    Source("KIMM", "한국기계연구원 (KIMM)", "https://www.kimm.re.kr/sub0502"),
     Source("ETRI", "한국전자통신연구원 (ETRI)", "https://etri.fairy.im"),
     Source(
         "KRISS",
@@ -98,4 +98,20 @@ SOURCES: Final = (
         "한국과학기술원 (KAIST)",
         "https://www.kaist.ac.kr/kr/html/footer/0814.html",
     ),
+)
+
+# University boards and national university notices complement institute boards.
+# Each page has its own health result; configured does not imply successful coverage.
+SOURCES += (
+    Source("SNU", "서울대학교", "https://www.snu.ac.kr/snunow/notice/job-openings"),
+    Source("POSTECH", "포항공과대학교", "https://facultyapplication.postech.ac.kr/"),
+    Source("KOREA", "고려대학교", "https://invite.korea.ac.kr/recruit/community/notice.do"),
+    Source("YONSEI", "연세대학교", "https://www.yonsei.ac.kr/sc/212/subview.do"),
+    Source("YONSEI-faculty", "연세대학교", "https://faculty.yonsei.ac.kr/recruit/index.php?lang=ko"),
+    Source("SKKU", "성균관대학교", "https://faculty.skku.edu/faculty/invite_prof/board.do"),
+    Source("HANYANG", "한양대학교", "https://site.hanyang.ac.kr/web/faculty/home"),
+    Source("PUSAN", "부산대학교", "https://www.pusan.ac.kr/kor/CMS/Board/Board.do?mCode=MN103"),
+    Source("PKNU", "국립부경대학교", "https://www.pknu.ac.kr/main/163"),
+    Source("KNU", "경북대학교", "https://prad.knu.ac.kr/"),
+    *(Source(f"KCUE-{page}", "대교협 전국 대학", f"https://www.kcue.or.kr/notice/sub04.php?pagenumber={page}") for page in range(1, 7)),
 )

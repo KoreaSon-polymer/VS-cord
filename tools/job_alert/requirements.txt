@@ -1,4 +1,4 @@
 anyio==4.11.0
 beautifulsoup4==4.14.2
-httpx2[brotli,http2,zstd]==2.9.1
+httpx2[brotli,http2,zstd,socks]==2.9.1
 pydantic==2.12.5
