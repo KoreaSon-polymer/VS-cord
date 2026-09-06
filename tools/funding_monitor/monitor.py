@@ -1,124 +1,165 @@
-#!/usr/bin/env python3
-import base64, gzip
-DATA = """
-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
-"""
-exec(compile(gzip.decompress(base64.b64decode(DATA)).decode("utf-8"), "<korean_funding_monitor>", "exec"))
+"""Official funding notices with explicit program and eligibility evidence."""
+from __future__ import annotations
+
+from concurrent.futures import ThreadPoolExecutor
+from datetime import date, datetime, timedelta, timezone
+import hashlib
+import re
+from urllib.parse import urljoin, urlencode
+
+import requests
+from bs4 import BeautifulSoup
+from tools.notice_utils import application_period, article_text, canonical_url, dates, matches, research_matches
+from tools.notice_documents import attachment_links, document_text, MAX_BYTES
+
+KST = timezone(timedelta(hours=9))
+SOURCES = [
+    ('NRF', '신규사업공모', 'https://www.nrf.re.kr/page/362?menuNo=362&bizNotGubn=guide'),
+    ('NRF', '사업일반공지', 'https://www.nrf.re.kr/page/364?menuNo=364'),
+    ('IRIS', '범부처 사업공고', 'https://www.iris.go.kr/contents/retrieveBsnsAncmBtinSituListView.do'),
+    ('MSIT', '사업공고', 'https://www.msit.go.kr/bbs/list.do?mId=311&mPid=121&sCode=user'),
+    ('MOE', '교육부 공고', 'https://www.moe.go.kr/boardCnts/listRenew.do?boardID=333&m=0205&s=moe'),
+]
+PROGRAMS = ('세종과학', '학문후속세대', '박사후국내', '박사후 국외', '박사후국외', '박사후 국내',
+            '우수신진', '신진연구', '신진 연구', '개인기초', '개인 기초', '기초연구', '창의도전',
+            'Brain Pool', '브레인풀', '해외우수연구자', '국제공동연구', '국제 공동연구', '공동연구지원',
+            '인터내셔널 모빌리티', '해외연수', '국외연수', '복귀·유치', '복귀유치')
+EXCLUDE = re.compile(r'채용|초빙|원장|총장|이사장|입찰|용역|구매|선정\s*결과|선정\s*공고|선정\s*명단|합격|평가위원|기획위원|명단공개|수요\s*조사|만족도|성과\s*조사')
+FUNDING = re.compile(r'공모|신규\s*과제|신규\s*지원|신청|접수|지원\s*계획|연구비|펠로우십|fellowship|grant|call for', re.I)
+
+
+def get(url):
+    r = requests.get(url, timeout=(25, 35), headers={'User-Agent': 'KoreanResearchMonitor/2.0'})
+    r.raise_for_status()
+    if not r.encoding or r.encoding.lower() == 'iso-8859-1':
+        r.encoding = r.apparent_encoding
+    return r.text
+
+
+def candidates_from_page(agency, source_name, url, markup):
+    soup = BeautifulSoup(markup, 'html.parser')
+    result, seen = [], set()
+    for a in soup.select('a'):
+        title = re.sub(r'\s+', ' ', a.get_text(' ', strip=True)).strip()
+        if not FUNDING.search(title) or EXCLUDE.search(title):
+            continue
+        href = a.get('href', '')
+        if agency == 'NRF' and a.get('data-post_no') and a.get('data-post_close_yn') != 'Y':
+            href = '/biz/notice/view?' + urlencode(dict(ac='view', menuNo='362' if '신규' in source_name else '364', postNo=a['data-post_no'], bizNo=a.get('data-biz_no', ''), bizNotGubn='guide' if '신규' in source_name else 'notice'))
+        if agency == 'IRIS':
+            m = re.search(r"BtinSituListForm_view\('([0-9]+)'", a.get('onclick', ''))
+            if m:
+                href = '/contents/retrieveBsnsAncmView.do?ancmId=' + m.group(1)
+        if not href or href.startswith(('javascript:', '#')):
+            continue
+        full = canonical_url(urljoin(url, href))
+        if full == canonical_url(url) or full in seen:
+            continue
+        if not matches(title, PROGRAMS) and not (research_matches(title) or matches(title, ('수소', '에너지소재', '에너지 소재'))):
+            continue
+        seen.add(full)
+        row = a.find_parent('tr') or a.find_parent('li') or a.parent
+        result.append(dict(agency=agency, source_name=source_name, title=title, url=full,
+                           row=row.get_text(' ', strip=True)[:1500], detail='', errors=[]))
+    return result[:30]
+
+
+def enrich(c):
+    try:
+        markup = get(c['url'])
+        c['detail'] = article_text(markup)
+        for url in attachment_links(markup, c['url']):
+            try:
+                with requests.get(url, timeout=(25, 25), stream=True) as response:
+                    response.raise_for_status()
+                    data = response.raw.read(MAX_BYTES + 1, decode_content=True)
+                extracted = document_text(data)
+                if extracted:
+                    c['detail'] += '\n' + extracted
+            except Exception as e:
+                c['errors'].append('attachment: ' + type(e).__name__)
+    except Exception as e:
+        c['errors'].append('detail: ' + type(e).__name__)
+    return c
+
+
+def evidence(text, pattern, fallback):
+    compact = re.sub(r'\s+', ' ', text)
+    m = re.search(pattern, compact, re.I)
+    return compact[m.start():m.start()+260] if m else fallback
+
+
+def evaluate(c, today=None):
+    today = today or datetime.now(KST).date()
+    title, detail = c['title'], c['detail']
+    if EXCLUDE.search(title) or not FUNDING.search(title) or len(detail) < 80:
+        return None
+    text = title + '\n' + detail
+    # Match the actual title, so navigation and attachment boilerplate cannot qualify a call.
+    programs = matches(title, PROGRAMS)
+    fields = research_matches(title) + matches(title, ('수소', '에너지소재', '에너지 소재'))
+    if not programs and not fields:
+        return None
+    start, deadline, deadline_evidence = application_period(detail)
+    if deadline and deadline < today:
+        return None
+    announced_dates = dates(c['row'])
+    announced = max((d for d in announced_dates if d <= today), default=None)
+    if not deadline and not (announced and (today-announced).days <= 21):
+        return None
+    eligibility = evidence(detail, r'신청\s*자격|지원\s*대상(?!\s*연구개발과제)|신청\s*대상|연구책임자\s*자격', '자격 정보 미확인')
+    host = evidence(detail, r'주관\s*연구개발기관|주관\s*기관|소속\s*기관|기관\s*승인', '주관기관·국내 소속 조건 미확인')
+    amount = evidence(detail, r'지원\s*규모|지원\s*기간|과제\s*기간|연구비\s*규모', '지원 규모·기간 미확인')
+    early = bool(matches(title, PROGRAMS[:14]) or matches(title, ('해외연수', '국외연수', '복귀·유치', '복귀유치')))
+    # No claim of personal eligibility until residency/host/appointment requirements are checked.
+    category = '개인·신진 연구자 지원 (자격 확인 필요)' if early else '기관·공동연구형 (국내 PI·주관기관 조건 확인)'
+    priority = '우선 검토' if early else '협력·향후 임용 참고'
+    if not deadline:
+        priority = '일정 확인 필요'
+    fingerprint = hashlib.sha256('|'.join([title, str(deadline), eligibility, host, amount]).encode()).hexdigest()
+    key = hashlib.sha256(canonical_url(c['url']).encode()).hexdigest()[:24]
+    return dict(kind='funding', key=key, fingerprint=fingerprint, title=title,
+                institution=c['agency'], url=canonical_url(c['url']), deadline=deadline.isoformat() if deadline else None,
+                priority=priority, category=category, fields=list(fields or programs),
+                eligibility=eligibility, host=host, amount=amount, deadline_evidence=deadline_evidence,
+                action='국외 체류·국내 소속·박사학위 경과연수·기수혜 제한을 공고문에서 대조',
+                errors=c['errors'])
+
+
+def collect():
+    health, candidates = [], []
+    def source(entry):
+        agency, name, url = entry
+        try:
+            markup = get(url)
+            found = candidates_from_page(agency, name, url, markup)
+            # IRIS has server-rendered first pages; fetch a second page and upcoming calls.
+            if agency == 'IRIS':
+                for suffix in ('?pageIndex=2', '?ancmPrg=ancmPre'):
+                    try:
+                        found += candidates_from_page(agency, name, url, get(url + suffix))
+                    except Exception:
+                        pass
+            return found, dict(source=agency + ' ' + name, url=url, count=len(found), status='ok' if found else 'no_matching_links', errors=[])
+        except Exception as e:
+            return [], dict(source=agency + ' ' + name, url=url, count=0, status='failed', errors=[type(e).__name__ + ': ' + str(e)[:250]])
+    with ThreadPoolExecutor(max_workers=5) as pool:
+        for found, h in pool.map(source, SOURCES):
+            candidates.extend(found)
+            health.append(h)
+    unique = {c['url']:c for c in candidates}
+    with ThreadPoolExecutor(max_workers=5) as pool:
+        detailed = list(pool.map(enrich, list(unique.values())[:80]))
+    for h in health:
+        h['detail_failures'] = sum(bool(c['errors']) for c in detailed if c['agency'] in h['source'])
+    return [op for c in detailed if (op := evaluate(c))], health
+
+
+def main():
+    # Compatibility entry point uses the same single delivery/state pipeline.
+    from tools.research_monitor import main as run
+    return run()
+
+
+if __name__ == '__main__':
+    raise SystemExit(main())

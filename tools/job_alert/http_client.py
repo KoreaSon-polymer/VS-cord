@@ -13,7 +13,7 @@ LIMITS: Final = httpx2.Limits(
     max_keepalive_connections=40,
     keepalive_expiry=30.0,
 )
-TIMEOUT: Final = httpx2.Timeout(connect=5.0, read=30.0, write=10.0, pool=10.0)
+TIMEOUT: Final = httpx2.Timeout(connect=10.0, read=20.0, write=10.0, pool=10.0)
 SOCKET_OPTIONS: Final = [(socket.IPPROTO_TCP, socket.TCP_NODELAY, 1)]
 
 
@@ -34,16 +34,11 @@ async def _log_response(response: httpx2.Response) -> None:
 
 
 def create_async_client() -> httpx2.AsyncClient:
-    transport = httpx2.AsyncHTTPTransport(
-        http2=True,
-        retries=3,
-        limits=LIMITS,
-        socket_options=SOCKET_OPTIONS,
-    )
     return httpx2.AsyncClient(
-        transport=transport,
+        limits=LIMITS,
+        trust_env=True,
         timeout=TIMEOUT,
-        headers={"User-Agent": "KoreanResearchJobAlert/1.0"},
+        headers={"User-Agent": "KoreanResearchMonitor/2.0"},
         event_hooks={"request": [_log_request], "response": [_log_response]},
         follow_redirects=True,
     )

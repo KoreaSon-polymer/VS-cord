@@ -2,196 +2,61 @@ from __future__ import annotations
 
 import re
 from datetime import date
-from typing import Final
 
+from tools.notice_utils import application_period, matches, research_matches
 from .models import JobPosting, RawPosting
 
-POSITION_KEYWORDS: Final = (
-    "박사후연구원",
-    "박사후 연구원",
-    "postdoctoral researcher",
-    "post-doc",
-    "postdoc",
-    "연구교수",
-    "research professor",
-    "책임연구원",
-    "principal researcher",
-    "선임연구원",
-    "senior researcher",
-    "전임연구원",
-    "정규직 연구",
-    "연구직",
-    "위촉연구원",
-    "석사후연구원",
-)
-INTEREST_KEYWORDS: Final = (
-    "유기반도체",
-    "고분자 반도체",
-    "광촉매",
-    "수소 생산",
-    "수소생산",
-    "수소 센서",
-    "전기화학",
-    "유기전자",
-    "omiec",
-    "oect",
-    "n-type sam",
-    "계면 전하이동",
-    "계면 전하 이동",
-    "광전소자",
-    "소자물리",
-    "재료화학",
-)
-EXCLUDED_KEYWORDS: Final = (
-    "합격자 발표",
-    "합격자발표",
-    "최종합격",
-    "서류전형 결과",
-    "면접 결과",
-    "선정 결과",
-    "선정결과",
-    "입찰",
-    "용역 공고",
-    "사업 공고",
-    "사업공고",
-    "연구비",
-    "신규과제",
-    "지원사업",
-    "과제 공모",
-    "수혜자 모집",
-)
-LOCATIONS: Final = (
-    "서울",
-    "대전",
-    "세종",
-    "경기",
-    "인천",
-    "광주",
-    "대구",
-    "부산",
-    "울산",
-    "창원",
-    "포항",
-    "전북",
-    "전남",
-    "충북",
-    "충남",
-    "경북",
-    "경남",
-    "제주",
-)
-DATE_RE: Final = re.compile(r"(20\d{2})[.\-/년]\s*(\d{1,2})[.\-/월]\s*(\d{1,2})")
-SHORT_END_DATE_RE: Final = re.compile(
-    r"(20\d{2})[.\-/년]\s*\d{1,2}[.\-/월]\s*\d{1,2}\D{0,8}~\s*"
-    + r"(\d{1,2})[.\-/월]\s*(\d{1,2})"
-)
-GENERIC_PAGE_TITLES: Final = (
-    "개인정보처리방침",
-    "채용안내",
-    "채용 안내",
-    "채용정보",
-    "채용 정보",
-    "채용공고",
-    "인력채용 faq",
-)
-APPLICATION_DATE_MARKERS: Final = (
-    "접수기간",
-    "접수 기간",
-    "접수마감",
-    "접수 마감",
-    "지원기간",
-    "지원 기간",
-    "모집기간",
-    "모집 기간",
-    "마감일",
-)
-
-
-def _dates(text: str) -> tuple[date, ...]:
-    found: list[date] = []
-    for match in DATE_RE.finditer(text):
-        year, month, day = match.groups()
-        try:
-            found.append(date(int(year), int(month), int(day)))
-        except ValueError:
-            continue
-    for match in SHORT_END_DATE_RE.finditer(text):
-        year, month, day = match.groups()
-        try:
-            found.append(date(int(year), int(month), int(day)))
-        except ValueError:
-            continue
-    return tuple(found)
-
-
-def _first_match(text: str, values: tuple[str, ...], fallback: str) -> str:
-    folded = text.casefold()
-    return next((value for value in values if value.casefold() in folded), fallback)
-
-
-def _application_dates(text: str) -> tuple[date, ...]:
-    folded = text.casefold()
-    for marker in APPLICATION_DATE_MARKERS:
-        start = 0
-        while (index := folded.find(marker.casefold(), start)) >= 0:
-            dates = _dates(text[index : index + 260])
-            if dates:
-                return dates[:2]
-            start = index + len(marker)
-    return ()
+POSITION_KEYWORDS = ("전임교원", "전임 교원", "전임교수", "교수 초빙", "교수초빙", "교원", "정년트랙", "정년 트랙", "정규직", "정규 연구직", "연구직", "선임연구원", "tenure-track", "faculty", "permanent")
+INTEREST_KEYWORDS = ("유기반도체", "고분자", "광촉매", "전기화학", "신소재", "화학")
+EXCLUDED_KEYWORDS = ("합격자 발표", "합격자발표", "최종합격", "합격자", "매뉴얼", "서류전형 결과", "면접 결과", "입찰", "연구비", "신규과제", "지원사업", "선정결과")
+EXCLUDED_ROLES = re.compile(r"박사\s*후|포닥|post[\s-]?doc|연수직|연수연구원|위촉|기간제|계약직|비정규|비\s*전임|비\s*정년|연구교수|연구교원|산학교수|겸임|객원|강사|초빙교수|특임|석좌|(?:원장|총장|이사장|기관장|소장|CEO|대표이사)\s*(?:초빙|공모|채용|모집)", re.I)
+FACULTY = re.compile(r"(?<!비)전임\s*(?:교원|교수)|(?<!비)정년\s*트랙|tenure[ -]?track|assistant professor", re.I)
+PERMANENT = re.compile(r"(?<!비)정규\s*직|정규\s*연구직|permanent", re.I)
+LOCATIONS = ("서울", "대전", "세종", "경기", "인천", "광주", "대구", "부산", "울산", "창원", "포항", "전북", "전남", "충북", "충남", "경북", "경남", "제주")
 
 
 def evaluate_posting(raw: RawPosting, today: date) -> JobPosting | None:
-    combined = f"{raw.title} {raw.text}"
-    folded = combined.casefold()
-    title_folded = raw.title.casefold()
-    if any(keyword.casefold() in title_folded for keyword in EXCLUDED_KEYWORDS):
+    title = re.sub(r"\s+", " ", raw.title).strip()
+    combined = title + "\n" + raw.text
+    if EXCLUDED_ROLES.search(title) or matches(title, EXCLUDED_KEYWORDS):
         return None
-    if any(title_folded == title.casefold() for title in GENERIC_PAGE_TITLES):
+    if not re.search(r"채용|초빙|모집|임용|recruit|position|opening", title, re.I):
         return None
-    position = _first_match(raw.title, POSITION_KEYWORDS, "")
-    if not position:
+    if "상세 페이지 접근 실패" in raw.text:
         return None
-    parsed_dates = _dates(raw.title) or _application_dates(combined)
-    if not parsed_dates and "채용시까지" not in folded:
+    # Positive employment evidence is mandatory; 비정규직 must never match 정규직.
+    faculty = bool(FACULTY.search(title) or FACULTY.search(raw.text))
+    permanent = bool(PERMANENT.search(title) or PERMANENT.search(raw.text))
+    if re.search(r"비\s*정년", combined) and not re.search(r"(?<!비)정년\s*트랙|tenure[ -]?track", combined, re.I):
         return None
-    past_dates = tuple(item for item in parsed_dates if item <= today)
-    future_dates = tuple(item for item in parsed_dates if item >= today)
-    start_date = max(past_dates) if past_dates else None
-    deadline = min(future_dates) if future_dates else None
-    if parsed_dates and deadline is None:
+    if not (faculty or permanent):
         return None
-    fields = tuple(
-        keyword for keyword in INTEREST_KEYWORDS if keyword.casefold() in folded
-    )
-    reasons = fields + ((position,) if position else ())
-    score = min(100, 35 + (15 * len(fields)) + (15 if "박사" in folded else 0))
-    employment_type = _first_match(
-        combined,
-        ("정규직", "무기계약직", "계약직", "비정규직", "연수직"),
-        "원문 확인",
-    )
-    location = _first_match(combined, LOCATIONS, "원문 확인")
-    qualification_match = re.search(
-        r"((?:지원|응시)\s*자격.{0,240}|박사학위.{0,160})", combined, re.IGNORECASE
-    )
-    qualifications = (
-        qualification_match.group(1).strip() if qualification_match else "원문 확인"
-    )
+    # Generic titles require an unambiguous permanent role in the body.
+    if not (FACULTY.search(title) or PERMANENT.search(title)) and EXCLUDED_ROLES.search(raw.text[:1200]):
+        return None
+    if not faculty and not re.search(r"연구직|연구원|연구분야|연구 분야|research", combined, re.I):
+        return None
+    fields = research_matches(combined)
+    if not fields:
+        return None
+    start_date, deadline, _ = application_period(raw.text, title)
+    if deadline and deadline < today:
+        return None
+    # Ongoing recruitment is useful; unlabeled dates are never substituted.
+    if not deadline and not re.search(r"채용\s*시까지|상시\s*(?:채용|초빙|모집)|연중\s*(?:채용|초빙)|until filled|rolling", combined, re.I):
+        return None
+    if faculty:
+        position, employment = "전임교원 신규 임용", "전임교원 (정년트랙 여부 원문 확인)"
+        if re.search(r"(?<!비)정년\s*트랙|tenure[ -]?track", combined, re.I):
+            employment = "정년트랙 전임교원"
+    else:
+        position, employment = "정규 연구직", "정규직"
+    qualification = re.search(r"(?:관련\s*(?:분야)?\s*)?박사\s*학위[^\n]{0,220}|(?:학력|학위)\s*(?:요건|조건)[^\n]{0,220}", raw.text) or re.search(r"(?:지원|응시|공통)\s*자격[\s\S]{0,350}|박사\s*학위[\s\S]{0,200}", raw.text)
     return JobPosting(
-        institution=raw.institution,
-        title=raw.title.strip(),
-        position=position,
-        employment_type=employment_type,
-        research_fields=fields or ("세부 연구 분야 원문 확인",),
-        qualifications=qualifications,
-        location=location,
-        start_date=start_date,
-        deadline=deadline,
-        url=raw.url,
-        first_seen=today,
-        previously_notified=False,
-        fit_score=score,
-        fit_reasons=reasons,
-        change_note=None,
+        institution=raw.institution, title=title, position=position, employment_type=employment,
+        research_fields=fields, qualifications=re.sub(r"\s+", " ", qualification.group(0)) if qualification else "세부 학위·경력·논문 요건 원문 확인",
+        location=next((v for v in LOCATIONS if v in combined), "원문 확인"),
+        start_date=start_date, deadline=deadline, url=raw.url, first_seen=today,
+        previously_notified=False, fit_score=min(100, 55 + 10 * len(fields)),
+        fit_reasons=fields + (position,), change_note=None,
     )

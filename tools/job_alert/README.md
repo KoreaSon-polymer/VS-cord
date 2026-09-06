@@ -1,3 +1,7 @@
+# Superseded by the unified permanent-career monitor
+
+See [RESEARCH_MONITOR.md](../RESEARCH_MONITOR.md) for current filters, source coverage, scheduling and delivery. The historical instructions below describe v1 and must not be used to re-enable its schedules.
+
 # Daily Korean Research Job Alert
 
 This monitor is independent from `.github/workflows/korean-funding-monitor.yml`.
