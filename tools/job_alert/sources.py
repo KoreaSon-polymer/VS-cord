@@ -113,5 +113,9 @@ SOURCES += (
     Source("PUSAN", "부산대학교", "https://www.pusan.ac.kr/kor/CMS/Board/Board.do?mCode=MN103"),
     Source("PKNU", "국립부경대학교", "https://www.pknu.ac.kr/main/163"),
     Source("KNU", "경북대학교", "https://prad.knu.ac.kr/"),
-    *(Source(f"KCUE-{page}", "대교협 전국 대학", f"https://www.kcue.or.kr/notice/sub04.php?pagenumber={page}") for page in range(1, 7)),
+    *(Source(f"KCUE-{page}", "대교협 전국 대학", f"https://www.kcue.or.kr/notice/sub04.php?pagenumber={page}") for page in range(1, 11)),
+    *(Source(f"NST-{page}", "NST 소관 출연연", f"https://www.nst.re.kr/www/selectBbsNttList.do?bbsNo=19&key=61&pageIndex={page}") for page in range(1, 7)),
+    Source("KRIBB", "한국생명공학연구원 (KRIBB)", "https://www.kribb.re.kr/kor/sub03/sub03_01_01.jsp"),
+    Source("KIGAM", "한국지질자원연구원 (KIGAM)", "https://www.kigam.re.kr/board.es?mid=a10705030000&bid=0029"),
+    Source("KFRI", "한국식품연구원 (KFRI)", "https://www.kfri.re.kr/web/board/13/postList"),
 )

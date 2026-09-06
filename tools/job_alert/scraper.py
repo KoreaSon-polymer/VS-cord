@@ -16,6 +16,28 @@ from .sources import SOURCES, Source
 MAX_LINKS_PER_SOURCE = 25
 
 
+def forwarded_notice(source, markup):
+    """NST republishes a source URL, not the actual qualifications/deadline."""
+    if not source.name.startswith('NST-'):
+        return None
+    soup = BeautifulSoup(markup, 'html.parser')
+    institution, target = source.institution, None
+    for row in soup.select('tr'):
+        label = row.find('th')
+        value = row.find('td')
+        if not label or not value:
+            continue
+        if label.get_text(strip=True) == '소관기관':
+            institution = value.get_text(' ', strip=True)
+        if '주소' in label.get_text() and '링크' in label.get_text():
+            a = value.find('a', href=True)
+            match = re.search(r'https?://[^\s<>]+', value.get_text(' ', strip=True))
+            target = a['href'] if a else match.group(0) if match else None
+    if target and target.startswith(('https://', 'http://')):
+        return institution, canonical_url(target)
+    return None
+
+
 @dataclass(frozen=True, slots=True)
 class SourceResult:
     source_name: str
@@ -27,6 +49,17 @@ class SourceResult:
 
 def _candidate_links(source: Source, markup: str):
     soup = BeautifulSoup(markup, 'html.parser')
+    # KFRI uses clickable table rows instead of anchors. Read literal paths
+    # from this known board; do not execute JavaScript.
+    if source.name == 'KFRI':
+        for row in soup.select('tr[onclick]'):
+            match = re.search(r"location\.href\s*=\s*['\"](/web/board/13/\d+)['\"]", row['onclick'])
+            cell = row.select_one('.tit_td')
+            if match and cell and not cell.find('a'):
+                a = soup.new_tag('a', href=match.group(1))
+                a.string = cell.get_text(' ', strip=True)
+                cell.clear()
+                cell.append(a)
     found, seen = [], set()
     for a in soup.select('a[href]'):
         href = a.get('href', '').strip()
@@ -38,7 +71,7 @@ def _candidate_links(source: Source, markup: str):
             continue
         if not re.search(r'채용|초빙|임용|모집|recruit|vacan|faculty', title, re.I):
             continue
-        if title in ('교수초빙/직원채용', '교수초빙', '교수 초빙', '채용공고', '채용정보', '채용안내'):
+        if title in ('교수초빙/직원채용', '교수초빙', '교수 초빙', '채용공고', '채용정보', '채용안내', '채용공고(온라인)'):
             continue
         url = canonical_url(urljoin(source.url, href))
         if not url.startswith(('https://', 'http://')) or url == canonical_url(source.url) or url in seen:
@@ -65,6 +98,12 @@ async def _collect_one(client, source):
             try:
                 detail = await client.get(url)
                 detail.raise_for_status()
+                institution = source.institution
+                forwarded = forwarded_notice(source, detail.text)
+                if forwarded:
+                    institution, url = forwarded
+                    detail = await client.get(url)
+                    detail.raise_for_status()
                 text = article_text(detail.text)
                 if re.search(r'전임|교원|교수|정규|연구직', title):
                     for attachment in attachment_links(detail.text, url):
@@ -81,7 +120,7 @@ async def _collect_one(client, source):
                             text += '\n' + extra
                         except Exception:
                             detail_errors += 1
-                postings.append(RawPosting(source.institution, title, url, text))
+                postings.append(RawPosting(institution, title, url, text))
             except Exception:
                 detail_errors += 1
         error = 'no_candidate_links: 게시판·동적 목록 확인 필요' if not links else None

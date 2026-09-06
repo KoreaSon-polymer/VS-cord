@@ -3,7 +3,8 @@ from __future__ import annotations
 import re
 from datetime import date
 
-from tools.notice_utils import application_period, matches, research_matches
+from tools.notice_utils import application_period, matches
+from .relevance import job_relevance, LABELS
 from .models import JobPosting, RawPosting
 
 POSITION_KEYWORDS = ("전임교원", "전임 교원", "전임교수", "교수 초빙", "교수초빙", "교원", "정년트랙", "정년 트랙", "정규직", "정규 연구직", "연구직", "선임연구원", "tenure-track", "faculty", "permanent")
@@ -36,7 +37,7 @@ def evaluate_posting(raw: RawPosting, today: date) -> JobPosting | None:
         return None
     if not faculty and not re.search(r"연구직|연구원|연구분야|연구 분야|research", combined, re.I):
         return None
-    fields = research_matches(combined)
+    fields, relevance_rank = job_relevance(combined)
     if not fields:
         return None
     start_date, deadline, _ = application_period(raw.text, title)
@@ -57,6 +58,6 @@ def evaluate_posting(raw: RawPosting, today: date) -> JobPosting | None:
         research_fields=fields, qualifications=re.sub(r"\s+", " ", qualification.group(0)) if qualification else "세부 학위·경력·논문 요건 원문 확인",
         location=next((v for v in LOCATIONS if v in combined), "원문 확인"),
         start_date=start_date, deadline=deadline, url=raw.url, first_seen=today,
-        previously_notified=False, fit_score=min(100, 55 + 10 * len(fields)),
-        fit_reasons=fields + (position,), change_note=None,
+        previously_notified=False, fit_score=(90, 70, 50)[relevance_rank],
+        fit_reasons=(LABELS[relevance_rank],) + fields + (position,), change_note=None,
     )
