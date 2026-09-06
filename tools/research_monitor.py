@@ -5,6 +5,7 @@ import hashlib
 import html
 import json
 import os
+import re
 from pathlib import Path
 from datetime import datetime, date, timedelta, timezone
 
@@ -43,6 +44,7 @@ def to_opportunity(posting):
                 url=posting.url, deadline=str(posting.deadline) if posting.deadline else None,
                 priority='전임교원 신규 임용' if '교원' in posting.position else '정규 연구직',
                 category=posting.employment_type, fields=list(posting.research_fields),
+                relevance=posting.fit_reasons[0], relevance_rank={90: 0, 70: 1, 50: 2}.get(posting.fit_score, 2),
                 eligibility=posting.qualifications, host='', amount='',
                 action='초빙 분야·직무기술서와 학위·경력·논문 요건 대조', errors=[])
 
@@ -52,8 +54,10 @@ def notification_events(opportunities, state, today):
     events, seen = [], set()
     records = state['records']
     for op in opportunities:
-        # Cross-source mirrors use title+deadline; distinct calls with the same URL update in place.
-        mirror = hashlib.sha256((op['kind'] + '|' + ''.join(op['title'].split()).lower() + '|' + str(op['deadline'])).encode()).hexdigest()
+        # Common faculty titles at different universities are distinct calls.
+        # Ignore an optional English institute abbreviation for direct/NST mirrors.
+        institution = re.sub(r'\s*\([A-Za-z -]+\)', '', op['institution'])
+        mirror = hashlib.sha256((op['kind'] + '|' + ''.join(institution.split()).lower() + '|' + ''.join(op['title'].split()).lower() + '|' + str(op['deadline'])).encode()).hexdigest()
         if op['key'] in seen or mirror in seen:
             continue
         seen.update((op['key'], mirror))
@@ -74,7 +78,7 @@ def notification_events(opportunities, state, today):
             reason = f'마감 {days}일 전'
         if reason:
             events.append(dict(op=op, reason=reason, bucket=bucket, mirror=mirror, previous=previous))
-    return sorted(events, key=lambda e:(e['op']['kind'] != 'job', e['op']['priority'] == '협력·향후 임용 참고', e['op']['deadline'] or '9999'))
+    return sorted(events, key=lambda e:(e['op']['kind'] != 'job', e['op'].get('relevance_rank', 0), e['op']['priority'] == '협력·향후 임용 참고', e['op']['deadline'] or '9999'))
 
 
 def mark_delivered(state, events, today):
@@ -98,6 +102,8 @@ def render(events, health, today, include_health=False):
                   f"마감(KST): {deadline} | 분류: {op['priority']}",
                   '연구·사업 관련 근거: ' + ', '.join(op['fields'][:8]),
                   '자격: ' + op['eligibility']]
+        if op['kind'] == 'job':
+            parts += ['전공 관련성: ' + op.get('relevance', '원문 확인') + ' (공고 키워드 기준, 지원 자격·합격 가능성을 의미하지 않음)']
         if op['kind'] == 'funding':
             parts += ['기관 조건: ' + op['host'], '지원 규모·기간: ' + op['amount']]
         parts += ['다음 확인: ' + op['action'], op['url'], '']
