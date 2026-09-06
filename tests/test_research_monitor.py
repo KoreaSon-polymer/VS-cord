@@ -81,3 +81,15 @@ def test_changed_deadline_gets_one_update(tmp_path):
     changed=deepcopy(op);changed.update(deadline='2026-09-30',fingerprint='different')
     event=notification_events([changed],state,TODAY)
     assert len(event)==1 and event[0]['reason']=='조건·일정 변경'
+
+
+def test_iris_attachment_url_and_non_tenure_body():
+    from tools.notice_documents import attachment_links
+    from tools.job_alert.filtering import evaluate_posting
+    from tools.job_alert.models import RawPosting
+    markup='''<a href="javascript:f_bsnsAncm_downloadAtchFile('abc==','x/y==','공고.hwp','2000');">공고.hwp</a>'''
+    links=attachment_links(markup,'https://www.iris.go.kr/contents/retrieveBsnsAncmView.do?ancmId=1')
+    assert len(links)==1 and '/comm/file/fileDownload.do?' in links[0]
+    assert 'atchFileId=x%2Fy%3D%3D' in links[0]
+    raw=RawPosting('대학','화학 전임교원 신규채용','https://x/1','비정년트랙 화학 전공 접수기간 2026.09.01 ~ 2026.09.20')
+    assert evaluate_posting(raw,TODAY) is None

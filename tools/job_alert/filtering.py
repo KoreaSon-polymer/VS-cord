@@ -51,7 +51,7 @@ def evaluate_posting(raw: RawPosting, today: date) -> JobPosting | None:
             employment = "정년트랙 전임교원"
     else:
         position, employment = "정규 연구직", "정규직"
-    qualification = re.search(r"(?:지원|응시|공통)\s*자격[\s\S]{0,350}|박사\s*학위[\s\S]{0,200}", raw.text)
+    qualification = re.search(r"(?:관련\s*(?:분야)?\s*)?박사\s*학위[^\n]{0,220}|(?:학력|학위)\s*(?:요건|조건)[^\n]{0,220}", raw.text) or re.search(r"(?:지원|응시|공통)\s*자격[\s\S]{0,350}|박사\s*학위[\s\S]{0,200}", raw.text)
     return JobPosting(
         institution=raw.institution, title=title, position=position, employment_type=employment,
         research_fields=fields, qualifications=re.sub(r"\s+", " ", qualification.group(0)) if qualification else "세부 학위·경력·논문 요건 원문 확인",

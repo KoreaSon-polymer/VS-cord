@@ -1,8 +1,12 @@
 """Read bounded PDF/HWPX attachments without executing document contents."""
 from io import BytesIO
 import zipfile
+import re
+import struct
+import zlib
+import olefile
 from xml.etree import ElementTree
-from urllib.parse import urljoin
+from urllib.parse import urljoin, urlencode, urlsplit
 from bs4 import BeautifulSoup
 from pdfminer.high_level import extract_text
 
@@ -14,7 +18,10 @@ def attachment_links(markup, base):
     result = []
     for a in soup.select('a[href]'):
         href = a.get('href', '')
-        if href.startswith(('javascript:', '#')):
+        iris = re.search(r"f_bsnsAncm_downloadAtchFile\('([^']+)','([^']+)'", href)
+        if iris and urlsplit(base).hostname == 'www.iris.go.kr':
+            href = '/comm/file/fileDownload.do?' + urlencode(dict(atchDocId=iris.group(1), atchFileId=iris.group(2)))
+        elif href.startswith(('javascript:', '#')):
             continue
         if any(v in (href + ' ' + a.get_text()).lower() for v in ('.pdf', '.hwpx', '.zip', 'download', 'filedown', '첨부')):
             url = urljoin(base, href)
@@ -26,6 +33,37 @@ def attachment_links(markup, base):
 def document_text(data):
     if len(data) > MAX_BYTES:
         raise ValueError('Attachment exceeds 12 MiB')
+    if data.startswith(bytes.fromhex('d0cf11e0a1b11ae1')):
+        with olefile.OleFileIO(BytesIO(data)) as ole:
+            if not ole.exists('FileHeader'):
+                return ''
+            header = ole.openstream('FileHeader').read()
+            flags = struct.unpack_from('<I', header, 36)[0]
+            if flags & 2:
+                raise ValueError('Encrypted HWP is not supported')
+            paragraphs = []
+            for path in ole.listdir():
+                if len(path) != 2 or path[0] != 'BodyText' or not path[1].startswith('Section'):
+                    continue
+                stream = ole.openstream(path).read()
+                if flags & 1:
+                    stream = zlib.decompressobj(-15).decompress(stream, 30 * 1024 * 1024 + 1)
+                if len(stream) > 30 * 1024 * 1024:
+                    raise ValueError('Expanded HWP section too large')
+                pos = 0
+                while pos + 4 <= len(stream):
+                    record = struct.unpack_from('<I', stream, pos)[0]; pos += 4
+                    tag, size = record & 0x3ff, record >> 20
+                    if size == 0xfff:
+                        if pos + 4 > len(stream): break
+                        size = struct.unpack_from('<I', stream, pos)[0]; pos += 4
+                    if pos + size > len(stream): break
+                    if tag == 67:
+                        text = stream[pos:pos+size].decode('utf-16le', errors='replace')
+                        text = re.sub(r'[\x00-\x08\x0b\x0c\x0e-\x1f]', ' ', text)
+                        paragraphs.append(text)
+                    pos += size
+            return '\n'.join(paragraphs)[:90000]
     if data.startswith(b'%PDF'):
         return extract_text(BytesIO(data), maxpages=25)[:90000]
     if data.startswith(b'PK'):

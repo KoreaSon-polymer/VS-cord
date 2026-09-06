@@ -107,7 +107,7 @@ def evaluate(c, today=None):
     announced = max((d for d in announced_dates if d <= today), default=None)
     if not deadline and not (announced and (today-announced).days <= 21):
         return None
-    eligibility = evidence(detail, r'신청\s*자격|지원\s*대상|신청\s*대상|연구책임자\s*자격', '자격 정보 미확인')
+    eligibility = evidence(detail, r'신청\s*자격|지원\s*대상(?!\s*연구개발과제)|신청\s*대상|연구책임자\s*자격', '자격 정보 미확인')
     host = evidence(detail, r'주관\s*연구개발기관|주관\s*기관|소속\s*기관|기관\s*승인', '주관기관·국내 소속 조건 미확인')
     amount = evidence(detail, r'지원\s*규모|지원\s*기간|과제\s*기간|연구비\s*규모', '지원 규모·기간 미확인')
     early = bool(matches(title, PROGRAMS[:14]) or matches(title, ('해외연수', '국외연수', '복귀·유치', '복귀유치')))
