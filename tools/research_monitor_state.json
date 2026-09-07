@@ -1,1 +1,34 @@
-{"version":2,"records":{},"last_health_sent":null}
+{
+  "version": 2,
+  "records": {
+    "202f8e1430ac026df3289f2e": {
+      "fingerprint": "77cf784e2948965276b6ef20c73f76619142182877a2c43e51d803883c6d3590",
+      "mirror": "bd92c370241aea41a7c4ae3a16defa0869591ee2e44120b2efd5dc9873535ccb",
+      "url": "https://www.kims.re.kr/v17/bbx/board.php?bx_table=03_05&page=1&wr_id=656",
+      "deadline": "2026-09-17",
+      "sent_at": "2026-09-07",
+      "reminders": [
+        "2026-09-17:14"
+      ]
+    },
+    "58fc7b5036554049b344b979": {
+      "fingerprint": "a7101e13d0667e0d4bd4a68ac2c199cab8d9f40b7ebfc4f7de41131ba5fcde4a",
+      "mirror": "2e61cf003c405d93772ede4055bb57bd34c9ac14a29fbe2d2f7caf741f27ee3b",
+      "url": "https://etri.re.kr/kor/bbs/view.etri?b_board_id=ETRI39&b_idx=19798",
+      "deadline": "2026-09-17",
+      "sent_at": "2026-09-07",
+      "reminders": [
+        "2026-09-17:14"
+      ]
+    },
+    "50a1b6972284c07b6f570ab1": {
+      "fingerprint": "9f76a62552487003c18e2bbaecf5222a88b0684c70bfa33445f1066642459c5d",
+      "mirror": "c5a286e4df8a51dfd16f8c7c6e96799976f1b0344a75bfcce0e46e5df8c9a381",
+      "url": "https://www.iris.go.kr/contents/retrieveBsnsAncmView.do?ancmId=023777",
+      "deadline": "2026-09-23",
+      "sent_at": "2026-09-07",
+      "reminders": []
+    }
+  },
+  "last_health_sent": "2026-09-07"
+}
