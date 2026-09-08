@@ -28,6 +28,32 @@
       "deadline": "2026-09-23",
       "sent_at": "2026-09-07",
       "reminders": []
+    },
+    "cea69eb35de98bf120948358": {
+      "fingerprint": "660c431fa2769466f0234e9bf4fb13b22a46b92befee78c32b6b3214ab47c1d3",
+      "mirror": "3492df31128057c9d0f8ca5e5aaf968084d5ab93e5d247e1ab96a1af36846222",
+      "url": "https://www.kaist.ac.kr/kr/html/footer/0814.html?mode=V&no=c29547c698ecf90783178d05b6b016ca",
+      "deadline": "2026-10-02",
+      "sent_at": "2026-09-08",
+      "reminders": []
+    },
+    "7b241b33dc35760ed43d9e50": {
+      "fingerprint": "0b7925e806b75e3ead29e18e886e4cd5902d11541bd35cf7b3cc4362b117ad13",
+      "mirror": "35ebc20861ec41bf60ff1d5f174c668a9de558297d6a271daf0ea2bf9f109df7",
+      "url": "https://www.iris.go.kr/contents/retrieveBsnsAncmView.do?ancmId=023557",
+      "deadline": "2026-09-16",
+      "sent_at": "2026-09-08",
+      "reminders": [
+        "2026-09-16:14"
+      ]
+    },
+    "0ef8a29601a12ae450035d58": {
+      "fingerprint": "39d0eeec7e023f9c64f7df73e27264e55b5a92c5d90d399ed6d4a63971477a30",
+      "mirror": "36d4064efb0752b97556cbde94e01fc74ac403623f0ee9392460b993cf0bf91f",
+      "url": "https://www.nrf.re.kr/biz/notice/view?ac=view&bizNo=294&bizNotGubn=guide&menuNo=362&postNo=280133",
+      "deadline": "2026-09-23",
+      "sent_at": "2026-09-08",
+      "reminders": []
     }
   },
   "last_health_sent": "2026-09-07"
