@@ -52,8 +52,28 @@
       "mirror": "36d4064efb0752b97556cbde94e01fc74ac403623f0ee9392460b993cf0bf91f",
       "url": "https://www.nrf.re.kr/biz/notice/view?ac=view&bizNo=294&bizNotGubn=guide&menuNo=362&postNo=280133",
       "deadline": "2026-09-23",
-      "sent_at": "2026-09-08",
+      "sent_at": "2026-09-09",
+      "reminders": [
+        "2026-09-23:14"
+      ]
+    },
+    "f3dbe59716988d87f6f80344": {
+      "fingerprint": "5c8345e4c9fcb947e45715b2c124cd9af3f71281065138d8a306c732a4c5bff8",
+      "mirror": "71ed0376c89c2ec51f3fb026783469e9a65d4881e8789325ecded3188ac7e75f",
+      "url": "https://job.alio.go.kr/mobile2021/recruit/recruitView.do?idx=304628",
+      "deadline": "2026-09-30",
+      "sent_at": "2026-09-09",
       "reminders": []
+    },
+    "9b4fe716774d4b2dea3fd9f7": {
+      "fingerprint": "4d120af063bddaa97f2b0f8c0ad6c36f8732cb0e3bd1f7b20d12fffe94768f9f",
+      "mirror": "8e92fef08ac7d7b01cb1de8ddee38f37bd115586d3eb5e031a1a622b3213a22e",
+      "url": "https://www.iris.go.kr/contents/retrieveBsnsAncmView.do?ancmId=023597",
+      "deadline": "2026-09-18",
+      "sent_at": "2026-09-09",
+      "reminders": [
+        "2026-09-18:14"
+      ]
     }
   },
   "last_health_sent": "2026-09-07"
