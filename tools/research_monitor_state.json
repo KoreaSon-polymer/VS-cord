@@ -6,19 +6,21 @@
       "mirror": "bd92c370241aea41a7c4ae3a16defa0869591ee2e44120b2efd5dc9873535ccb",
       "url": "https://www.kims.re.kr/v17/bbx/board.php?bx_table=03_05&page=1&wr_id=656",
       "deadline": "2026-09-17",
-      "sent_at": "2026-09-07",
+      "sent_at": "2026-09-10",
       "reminders": [
-        "2026-09-17:14"
+        "2026-09-17:14",
+        "2026-09-17:7"
       ]
     },
     "58fc7b5036554049b344b979": {
-      "fingerprint": "a7101e13d0667e0d4bd4a68ac2c199cab8d9f40b7ebfc4f7de41131ba5fcde4a",
+      "fingerprint": "9af892a135c76b0df0dceab52bd7dfecd4909634e312365b97df03a6ff374bc8",
       "mirror": "2e61cf003c405d93772ede4055bb57bd34c9ac14a29fbe2d2f7caf741f27ee3b",
       "url": "https://etri.re.kr/kor/bbs/view.etri?b_board_id=ETRI39&b_idx=19798",
       "deadline": "2026-09-17",
-      "sent_at": "2026-09-07",
+      "sent_at": "2026-09-10",
       "reminders": [
-        "2026-09-17:14"
+        "2026-09-17:14",
+        "2026-09-17:7"
       ]
     },
     "50a1b6972284c07b6f570ab1": {
@@ -38,13 +40,14 @@
       "reminders": []
     },
     "7b241b33dc35760ed43d9e50": {
-      "fingerprint": "0b7925e806b75e3ead29e18e886e4cd5902d11541bd35cf7b3cc4362b117ad13",
+      "fingerprint": "322e903701d72311af37f98b2a95654496e439bcc501a39d364f8c8ac7a561fa",
       "mirror": "35ebc20861ec41bf60ff1d5f174c668a9de558297d6a271daf0ea2bf9f109df7",
       "url": "https://www.iris.go.kr/contents/retrieveBsnsAncmView.do?ancmId=023557",
       "deadline": "2026-09-16",
-      "sent_at": "2026-09-08",
+      "sent_at": "2026-09-10",
       "reminders": [
-        "2026-09-16:14"
+        "2026-09-16:14",
+        "2026-09-16:7"
       ]
     },
     "0ef8a29601a12ae450035d58": {
