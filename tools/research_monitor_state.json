@@ -13,11 +13,11 @@
       ]
     },
     "58fc7b5036554049b344b979": {
-      "fingerprint": "9af892a135c76b0df0dceab52bd7dfecd4909634e312365b97df03a6ff374bc8",
+      "fingerprint": "a7101e13d0667e0d4bd4a68ac2c199cab8d9f40b7ebfc4f7de41131ba5fcde4a",
       "mirror": "2e61cf003c405d93772ede4055bb57bd34c9ac14a29fbe2d2f7caf741f27ee3b",
       "url": "https://etri.re.kr/kor/bbs/view.etri?b_board_id=ETRI39&b_idx=19798",
       "deadline": "2026-09-17",
-      "sent_at": "2026-09-10",
+      "sent_at": "2026-09-11",
       "reminders": [
         "2026-09-17:14",
         "2026-09-17:7"
@@ -73,10 +73,29 @@
       "mirror": "8e92fef08ac7d7b01cb1de8ddee38f37bd115586d3eb5e031a1a622b3213a22e",
       "url": "https://www.iris.go.kr/contents/retrieveBsnsAncmView.do?ancmId=023597",
       "deadline": "2026-09-18",
-      "sent_at": "2026-09-09",
+      "sent_at": "2026-09-11",
       "reminders": [
-        "2026-09-18:14"
+        "2026-09-18:14",
+        "2026-09-18:7"
       ]
+    },
+    "a1a8204ef97f7cfc45e553c0": {
+      "fingerprint": "ef90d6e4f55ae9d1a416e3a18443acc8d36b3240757281d275f9d8a9ab31d0a1",
+      "mirror": "04e38be9cb483daa9e9d8eb12d77e2fa82335945618d271c99b6864e7591a309",
+      "url": "https://job.alio.go.kr/mobile2021/recruit/recruitView.do?idx=304836",
+      "deadline": "2026-09-21",
+      "sent_at": "2026-09-11",
+      "reminders": [
+        "2026-09-21:14"
+      ]
+    },
+    "1d49e77b951a0867b7e9c335": {
+      "fingerprint": "49202301f2c4f81b3fbb359fb3f0876331c7e9ba509ede80be0a439ded13a421",
+      "mirror": "fbe1a924e19795aba8b9a502ed6a8839b1deed0845dbcf4e6df733e916ac804e",
+      "url": "https://www.iris.go.kr/contents/retrieveBsnsAncmView.do?ancmId=023897",
+      "deadline": "2026-10-08",
+      "sent_at": "2026-09-11",
+      "reminders": []
     }
   },
   "last_health_sent": "2026-09-07"
