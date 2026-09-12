@@ -28,8 +28,10 @@
       "mirror": "c5a286e4df8a51dfd16f8c7c6e96799976f1b0344a75bfcce0e46e5df8c9a381",
       "url": "https://www.iris.go.kr/contents/retrieveBsnsAncmView.do?ancmId=023777",
       "deadline": "2026-09-23",
-      "sent_at": "2026-09-07",
-      "reminders": []
+      "sent_at": "2026-09-12",
+      "reminders": [
+        "2026-09-23:14"
+      ]
     },
     "cea69eb35de98bf120948358": {
       "fingerprint": "660c431fa2769466f0234e9bf4fb13b22a46b92befee78c32b6b3214ab47c1d3",
