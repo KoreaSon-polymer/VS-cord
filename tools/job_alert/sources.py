@@ -134,3 +134,11 @@ SOURCES += tuple(Source(code, name, url, True, "university") for code, name, url
 SOURCES += tuple(Source(code, name, url, True, "institute") for code, name, url in ADDITIONAL_INSTITUTES)
 # Verified national republisher, used only as discovery and never as eligibility proof.
 SOURCES += (Source("HIBRAIN", "하이브레인넷", "https://www.hibrain.net/recruitment", False, "aggregate"),)
+
+# Additional current entry points for sources whose old boards failed.
+SOURCES += (
+    Source("DGIST-faculty", "대구경북과학기술원 (DGIST)",
+           "https://www.dgist.ac.kr/prog/bbsArticle/BBSMSTR_000000000070/view.do", True, "university"),
+    Source("KIMM-home", "한국기계연구원 (KIMM)", "https://www.kimm.re.kr/", True),
+    Source("KERI-recruit", "한국전기연구원 (KERI)", "https://keri.fairy.im", True),
+)

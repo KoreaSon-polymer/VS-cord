@@ -8,11 +8,11 @@ from tools.notice_utils import application_period, canonical_url
 from .models import RawPosting
 from .relevance import job_relevance
 
-TEMP = re.compile(r"박사\s*후|석사\s*후|포닥|post[\s.-]?doc(?:toral)?|연수직|연수연구원|위촉|기간제|비\s*정규|무기계약|비\s*전임|비\s*정년|연구교수|연구교원|겸임|객원|강사|초빙교수|특임|석좌|시간제|인턴|별정제", re.I)
+TEMP = re.compile(r"박사\s*후|석사\s*후|포닥|post[\s.-]?doc(?:toral)?|연수직|연수연구원|위촉|기간제|비\s*정규|무기계약|비\s*전임|비\s*정년|연구교수|연구교원|겸임|객원|강사|초빙교수|특임|석좌|시간제|인턴|별정제|non[ -]tenure|research professor|adjunct|visiting professor|temporary|fixed[ -]term", re.I)
 EXECUTIVE = re.compile(r"(?:원장|총장|이사장|기관장|대표이사|상임감사|소장|director|president)\s*(?:공개\s*)?(?:초빙|공모|채용|모집)", re.I)
 REGULAR = re.compile(r"(?<![비무])정규\s*(?:직|연구직)|\bpermanent\b", re.I)
 TENURE = re.compile(r"(?<!비)(?<!비 )정년\s*트랙|\btenure[ -]track\b", re.I)
-FACULTY = re.compile(r"(?<!비)(?<!비 )전임\s*(?:교원|교수)|교수\s*초빙|교원\s*(?:초빙|공채)|\bfaculty\b|assistant professor", re.I)
+FACULTY = re.compile(r"(?<!비)(?<!비 )전임\s*(?:직\s*)?(?:교원|교수)|교수\s*초빙|교원\s*(?:초빙|공채)|\bfaculty\b|assistant professor", re.I)
 RESEARCH = re.compile(r"연구직|연구원|연구\s*분야|연구개발|\bresearch\b", re.I)
 ADMIN = re.compile(r"행정(?:직|원|실무)|사무(?:직|원|보조)|시설직|조리원|간호사|생산관리|시험보조")
 FIELD_LABEL = re.compile(r"모집\s*(?:분야|전공)|채용\s*분야|초빙\s*(?:분야|전공)|담당\s*(?:업무|연구)|직무\s*(?:내용|수행)|연구\s*분야|research area", re.I)

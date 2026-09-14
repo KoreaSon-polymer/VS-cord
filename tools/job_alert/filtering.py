@@ -12,7 +12,7 @@ POSITION_KEYWORDS = ("전임교원", "전임 교원", "전임교수", "교수 �
 INTEREST_KEYWORDS = ("유기반도체", "고분자", "광촉매", "전기화학", "신소재", "화학")
 EXCLUDED_KEYWORDS = ("합격자 발표", "합격자발표", "최종합격", "합격자", "매뉴얼", "서류전형 결과", "면접 결과", "입찰", "연구비", "신규과제", "지원사업", "선정결과")
 EXCLUDED_ROLES = re.compile(r"박사\s*후|포닥|post[\s-]?doc|연수직|연수연구원|위촉|기간제|계약직|비정규|비\s*전임|비\s*정년|연구교수|연구교원|산학교수|겸임|객원|강사|초빙교수|특임|석좌|(?:원장|총장|이사장|기관장|소장|CEO|대표이사)\s*(?:초빙|공모|채용|모집)", re.I)
-FACULTY = re.compile(r"(?<!비)전임\s*(?:교원|교수)|(?<!비)정년\s*트랙|tenure[ -]?track|assistant professor", re.I)
+FACULTY = re.compile(r"(?<!비)전임\s*(?:직\s*)?(?:교원|교수)|(?<!비)정년\s*트랙|tenure[ -]?track|assistant professor", re.I)
 PERMANENT = re.compile(r"(?<!비)정규\s*직|정규\s*연구직|permanent", re.I)
 LOCATIONS = ("서울", "대전", "세종", "경기", "인천", "광주", "대구", "부산", "울산", "창원", "포항", "전북", "전남", "충북", "충남", "경북", "경남", "제주")
 

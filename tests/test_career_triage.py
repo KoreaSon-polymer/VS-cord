@@ -93,3 +93,40 @@ def test_alio_source_is_not_institution_name():
 def test_registry_has_regions_and_unique_codes():
     assert len({s.institution for s in SOURCES if s.kind == "university"}) >= 60
     assert len({s.name for s in SOURCES}) == len(SOURCES)
+
+
+@pytest.mark.parametrize("title", ["Non-tenure Track Faculty Position Opening", "Research Professor Position Opening"])
+def test_english_temporary_faculty_is_excluded(title):
+    assert classify(title, "organic semiconductor tenure-track"+PERIOD) == ([], [])
+
+def test_korean_full_time_faculty_spelling():
+    accepted, review = classify("전임직교원 공개초빙", "모집분야 유기반도체 정년트랙"+PERIOD)
+    assert len(accepted) == 1 and not review
+
+
+def test_scan_only_and_dry_run_never_send_or_mark_delivered(tmp_path, monkeypatch):
+    import anyio
+    import json
+    from types import SimpleNamespace
+    import tools.research_monitor as monitor
+    from tools.job_alert.scraper import SourceResult
+    monkeypatch.chdir(tmp_path)
+    (tmp_path/"tools").mkdir()
+    async def collect():
+        raw = RawPosting("예시연구원", "정규직 유기반도체 연구원 채용",
+                         "https://example.test/42", "담당업무 고분자 합성\n상시채용")
+        return (SourceResult("EX", (raw,), None, 1, 0, "예시연구원",
+                             "https://example.test", "institute"),)
+    monkeypatch.setattr(monitor, "collect_sources", collect)
+    monkeypatch.setattr(monitor, "collect_funding", lambda: ([], []))
+    def forbidden(*args):
+        raise AssertionError("A preview or collection-only run attempted SMTP")
+    monkeypatch.setattr(monitor, "send_email", forbidden)
+    assert anyio.run(monitor.run, {"DRY_RUN":"true"}) == 0
+    assert not monitor.STATE_PATH.exists()
+    assert anyio.run(monitor.run, {"SEND_DIGEST":"false"}) == 0
+    state = json.loads(monitor.STATE_PATH.read_text())
+    assert len(state["pending"]) == 1 and state["records"] == {}
+    original = monitor.STATE_PATH.read_text()
+    assert anyio.run(monitor.run, {"DRY_RUN":"true"}) == 0
+    assert monitor.STATE_PATH.read_text() == original
