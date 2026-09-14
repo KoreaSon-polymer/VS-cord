@@ -19,6 +19,18 @@ FIELD_LABEL = re.compile(r"모집\s*(?:분야|전공)|채용\s*분야|초빙\s*(
 STOP_LABEL = re.compile(r"지원\s*자격|응시\s*자격|관련\s*학과|지원\s*가능\s*전공|우대\s*(?:사항|조건)|접수\s*기간|공통\s*자격|학력\s*(?:요건|조건)", re.I)
 ROLE_HEADER = re.compile(r"^\s*(?:\[([A-Za-z가-힣]{0,6}[-_]?\d{1,3}(?:[-_]\d{1,3})?)\]|(?:직무|채용|분야)\s*코드\s*[:：]?\s*([A-Za-z가-힣]{0,6}[-_]?\d{1,3}(?:[-_]\d{1,3})?))", re.I)
 
+NON_JOB = re.compile(r"참가\s*모집|참여자|튜터|학생발굴단|학군사관|수시모집|정시모집|신입생|채용\s*박람회|채용\s*설명회|기업\s*탐방|기술개발과제|연구과제|전형\s*결과|전형\s*안내|발표\s*전형|추천채용|부연구단장|연구단장|이노코어|펠로우", re.I)
+
+
+def is_recruitment_title(title):
+    # Homepage cards sometimes put an entire research article inside one anchor.
+    # Recruitment of stem cells and student events are not job announcements.
+    if len(title) > 250 or NON_JOB.search(title):
+        return False
+    role = FACULTY.search(title) or RESEARCH.search(title) or REGULAR.search(title) or re.search(r"교원|교수|신입직원|직원.*채용|공개채용|scientist", title, re.I)
+    action = re.search(r"채용|초빙|모집|신규\s*임용|recruit|position|opening|vacanc", title, re.I)
+    return bool(role and action)
+
 
 def role_title_excluded(title):
     if EXECUTIVE.search(title):
@@ -68,7 +80,9 @@ def split_roles(raw):
     """Split explicit role-code blocks only. Do not infer PDF column alignment."""
     raw = replace(raw, title=re.sub(r"비\s+(?=정규|정년|전임)", "비", raw.title), text=re.sub(r"비\s+(?=정규|정년|전임)", "비", raw.text))
     lines = raw.text.splitlines()
-    starts = [(i, ROLE_HEADER.match(line)) for i, line in enumerate(lines) if ROLE_HEADER.match(line)]
+    starts = [(i, ROLE_HEADER.match(line)) for i, line in enumerate(lines)
+              if ROLE_HEADER.match(line) and not re.search(r"\.(?:hwp|pdf|zip)", line, re.I)
+              and (REGULAR.search(line) or TENURE.search(line) or TEMP.search(line) or RESEARCH.search(line))]
     if len(starts) < 2:
         return [raw]
     common = "\n".join(line for line in lines if re.search(r"접수\s*기간|접수\s*마감|제출\s*기한|온라인\s*접수", line))
@@ -133,11 +147,14 @@ def classify_notice(raw, today, evaluator):
     for role in split_roles(raw):
         if role_title_excluded(role.title):
             continue
-        if not re.search(r"채용|초빙|모집|임용|recruit|position|opening", role.title, re.I):
+        if not is_recruitment_title(role.title):
             continue
         if re.search(r"합격자|선정결과|입찰|신규과제|지원사업", role.title):
             continue
         combined = role.title + "\n" + role.text
+        years = re.findall(r"(20\d{2})\s*(?:년|학년도)", role.title)
+        if years and max(map(int, years)) < today.year and not re.search(r"상시|연중|연장|재공고|rolling|until filled", role.title, re.I):
+            continue
         if re.search(r"비\s*정년", combined) and not TENURE.search(combined):
             continue
         # Explicit nonregular role bodies with no competing permanent evidence.
@@ -149,6 +166,9 @@ def classify_notice(raw, today, evaluator):
         if end and end < today:
             continue
         fields, _ = job_relevance(field_context(role.title, role.text))
+        title_fields, _ = job_relevance(role.title)
+        if not title_fields and re.search(r"회계\s*분야|EFL|영어교육|법학과|국어교육", role.title, re.I):
+            continue
         # Generic faculty/institute research calls with unreadable fields must
         # remain discoverable, but unrelated explicit fields should not leak in.
         missing_document = bool(role.review_notes) or role.text.startswith("상세 페이지 접근 실패")

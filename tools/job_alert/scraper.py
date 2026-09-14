@@ -9,7 +9,7 @@ from bs4 import BeautifulSoup
 from tools.notice_utils import article_text, canonical_url
 from tools.notice_documents import attachment_links, document_text, MAX_BYTES
 from .filtering import EXCLUDED_ROLES, EXCLUDED_KEYWORDS
-from .triage import role_title_excluded
+from .triage import role_title_excluded, is_recruitment_title
 from .discovery import board_links, nst_registry, notice_institution, DIRECTORY
 from .http_client import create_async_client
 from .models import RawPosting
@@ -75,7 +75,7 @@ def _candidate_links(source: Source, markup: str):
         # Do not borrow a sibling posting's title from the whole parent container.
         if len(title) < 8 or role_title_excluded(title) or any(k in title for k in EXCLUDED_KEYWORDS):
             continue
-        if not re.search(r'채용|초빙|임용|모집|recruit|vacan|faculty', title, re.I):
+        if not is_recruitment_title(title):
             continue
         if title in ('교수초빙/직원채용', '교수초빙', '교수 초빙', '채용공고', '채용정보', '채용안내', '채용공고(온라인)'):
             continue
@@ -174,7 +174,7 @@ async def _collect_one(client, source):
                             text += "\n" + extra
                         except Exception as exc:
                             notes.append("첨부 미확인: "+type(exc).__name__)
-                    if "첨부" in text and not attachments:
+                    if re.search(r"첨부\s*(?:파일|문서).*?(?:참조|확인)|붙임.*?공고문", text) and not attachments:
                         notes.append("첨부 링크 추출 여부 확인 필요")
                     if len(text.strip()) < 100:
                         notes.append("상세 본문 불충분")

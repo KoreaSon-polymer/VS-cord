@@ -137,3 +137,34 @@ def test_mobile_and_paginated_notice_identity():
     assert canonical_url("https://job.alio.go.kr/mobile2021/recruit/recruitView.do?idx=42") == canonical_url("https://job.alio.go.kr/recruitview.do?idx=42")
     assert canonical_url("https://www.kims.re.kr/board.php?wr_id=42&page=1") == canonical_url("https://www.kims.re.kr/board.php?page=2&wr_id=42")
     assert canonical_url("https://example.test/board?page=1") != canonical_url("https://example.test/board?page=2")
+
+@pytest.mark.parametrize('title', [
+    "[부산앵커센터] 찾아가는 굿잡 버스 참가 모집 안내",
+    "2027학년도 수시모집 경쟁률 발표",
+    "연구팀, 줄기세포 recruitment를 이용한 신소재 개발",
+    "학습지원 프로그램 튜터 모집 안내",
+    "2026년 하반기 부연구단장 공개 모집",
+    "정규직 채용 발표전형 결과 및 3단계 전형 안내",
+    "신소재 연구직(이노코어 펠로우) 채용 공고",
+])
+def test_live_discovery_false_positives_are_not_jobs(title):
+    assert classify(title, '정규직 유기반도체 연구원'+PERIOD) == ([], [])
+
+
+def test_old_unknown_deadline_notice_not_new_review():
+    assert classify('2024년 정규직 연구원 공개채용', '고분자 연구 첨부 확인 필요') == ([], [])
+
+
+def test_attachment_number_is_not_a_role_code():
+    from tools.job_alert.triage import split_roles
+    raw = RawPosting('대학', '전임교원 신규채용', 'https://example.test/1',
+        '[1] 교수초빙지원서.hwp\n[2] 연구계획서.pdf\n모집분야 화학')
+    assert split_roles(raw) == [raw]
+
+
+@pytest.mark.parametrize('title', [
+    'KAIST 경영공학부 회계 분야 전임직 교원 채용 공고',
+    'KAIST Full-time EFL Faculty Opening',
+])
+def test_explicit_unrelated_field_not_rescued_by_attachment(title):
+    assert classify(title, '모집분야 첨부파일 참조'+PERIOD) == ([], [])
