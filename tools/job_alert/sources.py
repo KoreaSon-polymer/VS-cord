@@ -9,13 +9,15 @@ class Source:
     name: str
     institution: str
     url: str
+    discover: bool = False
+    kind: str = "institute"
 
 
 SOURCES: Final = (
     Source(
-        "JOB-ALIO", "JOB-ALIO", "https://job.alio.go.kr/mobile2021/recruit/recruit.do"
+        "JOB-ALIO", "JOB-ALIO", "https://job.alio.go.kr/recruit.do"
     ),
-    Source("ALIO", "ALIO", "https://www.alio.go.kr/information/informationRecruit.do"),
+    Source("ALIO", "ALIO", "https://alio.go.kr/information/informationRecruitList.do"),
     Source(
         "KRICT",
         "한국화학연구원 (KRICT)",
@@ -119,3 +121,16 @@ SOURCES += (
     Source("KIGAM", "한국지질자원연구원 (KIGAM)", "https://www.kigam.re.kr/board.es?mid=a10705030000&bid=0029"),
     Source("KFRI", "한국식품연구원 (KFRI)", "https://www.kfri.re.kr/web/board/13/postList"),
 )
+
+
+from dataclasses import replace
+from .university_registry import UNIVERSITIES, ADDITIONAL_INSTITUTES
+
+UNIVERSITY_IDS = {"SNU", "POSTECH", "KOREA", "YONSEI", "YONSEI-faculty",
+                  "SKKU", "HANYANG", "PUSAN", "PKNU", "KNU", "KAIST", "GIST", "DGIST", "UNIST"}
+SOURCES = tuple(replace(s, kind="aggregate" if s.name.startswith(("KCUE-", "NST-")) or s.name in ("ALIO", "JOB-ALIO")
+                        else "university" if s.name in UNIVERSITY_IDS else "institute") for s in SOURCES)
+SOURCES += tuple(Source(code, name, url, True, "university") for code, name, url in UNIVERSITIES)
+SOURCES += tuple(Source(code, name, url, True, "institute") for code, name, url in ADDITIONAL_INSTITUTES)
+# Verified national republisher, used only as discovery and never as eligibility proof.
+SOURCES += (Source("HIBRAIN", "하이브레인넷", "https://www.hibrain.net/recruitment", False, "aggregate"),)

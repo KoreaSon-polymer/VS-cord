@@ -21,6 +21,9 @@ class RawPosting:
     title: str
     url: str
     text: str
+    role_id: str = ""
+    parent_title: str = ""
+    review_notes: tuple[str, ...] = ()
 
 
 @dataclass(frozen=True, slots=True)
@@ -40,6 +43,7 @@ class JobPosting:
     fit_score: int
     fit_reasons: tuple[str, ...]
     change_note: str | None
+    role_id: str = ""
 
     @property
     def url_key(self) -> str:

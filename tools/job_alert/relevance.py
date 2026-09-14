@@ -19,7 +19,7 @@ CHEMISTRY_FIELDS = (
     'macromolecular', 'conjugated polymer', 'conjugated polymers',
 )
 DIRECT_FIELDS = tuple(k for k in CORE_FIELDS if k not in ('계면', 'interface')) + (
-    '유기화학', 'organic chemistry', '광전소자', '광전자', '유기전자소자',
+    '광전소자', '광전자', '유기전자소자',
     'optoelectronics', 'OFET', 'organic transistor', 'organic transistors',
     'macromolecular', 'conjugated polymer', 'conjugated polymers',
 )

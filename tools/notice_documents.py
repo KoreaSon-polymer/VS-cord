@@ -23,7 +23,7 @@ def attachment_links(markup, base):
             href = '/comm/file/fileDownload.do?' + urlencode(dict(atchDocId=iris.group(1), atchFileId=iris.group(2)))
         elif href.startswith(('javascript:', '#')):
             continue
-        if any(v in (href + ' ' + a.get_text()).lower() for v in ('.pdf', '.hwpx', '.zip', 'download', 'filedown', '첨부')):
+        if any(v in (href + ' ' + a.get_text()).lower() for v in ('.pdf', '.hwp', '.hwpx', '.zip', 'download', 'filedown', '첨부')):
             url = urljoin(base, href)
             if url.startswith(('https://', 'http://')) and url not in result:
                 result.append(url)

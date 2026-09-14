@@ -1,7 +1,8 @@
 name: Korean permanent careers and funding
 on:
   schedule:
-    - cron: '30 0 * * *'
+    - cron: '0 0 * * *'
+    - cron: '0 9 * * *'
   workflow_dispatch:
     inputs:
       dry_run:
@@ -22,7 +23,7 @@ concurrency:
 jobs:
   monitor:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 40
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -35,8 +36,9 @@ jobs:
       - run: pip install -r tools/research_monitor_requirements.txt pytest
       - name: Regression tests
         run: python -m pytest tests -q
-      - name: Collect and deliver one digest
+      - name: Collect twice daily; deliver one evening digest
         env:
+          SEND_DIGEST: ${{ github.event.schedule != '0 0 * * *' }}
           DRY_RUN: ${{ github.event_name == 'push' || inputs.dry_run == true }}
           MONITOR_EMAIL_TO: ${{ secrets.MONITOR_EMAIL_TO }}
           SMTP_HOST: ${{ secrets.SMTP_HOST }}
@@ -45,7 +47,7 @@ jobs:
           SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
           SMTP_FROM: ${{ secrets.SMTP_FROM }}
         run: python -m tools.research_monitor
-      - name: Persist successful delivery state
+      - name: Persist pending discoveries, health, and successful deliveries
         if: ${{ success() && github.event_name != 'push' && inputs.dry_run != true }}
         run: |
           if git diff --quiet -- tools/research_monitor_state.json; then

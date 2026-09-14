@@ -49,3 +49,48 @@ Broad chemistry areas include organic/inorganic/physical/analytical/computationa
 The digest orders jobs by three transparent keyword-based tiers: direct research overlap, adjacent/application fields, and broad chemistry review. All three remain eligible for notification. The tiers are not eligibility or hiring-probability scores. Faculty and permanent institute research jobs use the same field policy. Funding vocabulary is unchanged. Identical titles at different institutions no longer collapse into one notification.
 
 Live probes found NST listing and original-link extraction working, and KFRI row parsing working. KRIBB and KIGAM direct listing requests returned HTTP errors in this environment and are recorded as collection limitations. Existing tenure/contract and deadline safeguards still apply. Mixed permanent/contract titles and calls with unreadable field/deadline attachments may require manual review.
+
+
+## Role-scoped nationwide update (2026-09-14)
+
+The active monitor now distinguishes confirmed job candidates from unresolved
+notices. Historical misclassifications were already partly fixed in September;
+this update preserves those fixes and adds regression tests for their boundaries.
+
+- Explicit role-code blocks are evaluated independently. Mixed calls without
+  reliable role boundaries are shown as "확인 필요", never declared wholly
+  permanent. No PDF-column alignment is guessed.
+- Temporary appointments and executive recruitment are excluded by recruited
+  role, not by incidental postdoctoral experience or a director's signature.
+- Missing deadlines, tenure-track evidence, failed/scanned attachments and
+  ambiguous mixed calls remain review candidates. No claim of eligibility is made.
+- Field relevance prefers duties/recruitment fields over eligible-degree lists.
+  Qualifications omit generic fraud boilerplate and flag missing experience digits.
+- 52 additional university discovery seeds and four non-NST institutes supplement
+  existing direct boards. These are homepage/board seeds, not a claim of 52
+  working faculty feeds. Seeds follow bounded recruitment links published by the
+  institution. KCUE and Hibrain remain supplemental discovery sources; no
+  institution or region whitelist is applied to candidate filtering.
+- The current NST public institution directory is read at runtime to discover
+  institutes missing from direct registration.
+- Transient GET errors are retried three times. TLS verification is preserved.
+  Unsupported dynamic pages, capped pages, exhausted budgets and attachment
+  failures remain visible. HWP links and empty/scanned document detection are added.
+- Health identifies source queries separately from institutions and records
+  discovered boards, last full source success and consecutive failures.
+- Two scheduled collections: 09:00 and 18:00 KST. Morning discoveries are queued
+  separately from delivered records for the evening digest. Job candidates,
+  unresolved jobs and research funding have separate sections. No automatic
+  message to employers, applications, issue comments or test emails are sent.
+- Reminders are D-7, D-3 and D-1. State updates for delivery still require SMTP
+  success. Push runs remain dry-run and do not alter runtime state.
+- The dry-run report includes review-needed.json alongside candidates.json,
+  health.json and digest.txt.
+
+Remaining limits: official university master-list synchronization is not yet
+automated; the explicit seed registry and national boards are complementary.
+All-source coverage and all individual department boards are not guaranteed.
+HTML/attachment formats without explicit role codes require review. Deadlines
+are currently date-level; same-day submission times must be checked in the source.
+Initial 90-day nationwide backfill and browser rendering/OCR are not implemented.
+Existing funding collection is preserved.

@@ -6,6 +6,7 @@ from datetime import date
 from tools.notice_utils import application_period, matches
 from .relevance import job_relevance, LABELS
 from .models import JobPosting, RawPosting
+from .triage import role_title_excluded, field_context, qualifications, TEMP, REGULAR, TENURE
 
 POSITION_KEYWORDS = ("전임교원", "전임 교원", "전임교수", "교수 초빙", "교수초빙", "교원", "정년트랙", "정년 트랙", "정규직", "정규 연구직", "연구직", "선임연구원", "tenure-track", "faculty", "permanent")
 INTEREST_KEYWORDS = ("유기반도체", "고분자", "광촉매", "전기화학", "신소재", "화학")
@@ -19,7 +20,7 @@ LOCATIONS = ("서울", "대전", "세종", "경기", "인천", "광주", "대구
 def evaluate_posting(raw: RawPosting, today: date) -> JobPosting | None:
     title = re.sub(r"\s+", " ", raw.title).strip()
     combined = title + "\n" + raw.text
-    if EXCLUDED_ROLES.search(title) or matches(title, EXCLUDED_KEYWORDS):
+    if role_title_excluded(title) or matches(title, EXCLUDED_KEYWORDS):
         return None
     if not re.search(r"채용|초빙|모집|임용|recruit|position|opening", title, re.I):
         return None
@@ -33,11 +34,11 @@ def evaluate_posting(raw: RawPosting, today: date) -> JobPosting | None:
     if not (faculty or permanent):
         return None
     # Generic titles require an unambiguous permanent role in the body.
-    if not (FACULTY.search(title) or PERMANENT.search(title)) and EXCLUDED_ROLES.search(raw.text[:1200]):
+    if not (FACULTY.search(title) or PERMANENT.search(title)) and re.search(r"(?:고용형태|직종|직급)\s*[:：]?\s*(?:비정규직|기간제|계약직|박사후연구원|연수직)", raw.text):
         return None
     if not faculty and not re.search(r"연구직|연구원|연구분야|연구 분야|research", combined, re.I):
         return None
-    fields, relevance_rank = job_relevance(combined)
+    fields, relevance_rank = job_relevance(field_context(title, raw.text))
     if not fields:
         return None
     start_date, deadline, _ = application_period(raw.text, title)
@@ -54,8 +55,8 @@ def evaluate_posting(raw: RawPosting, today: date) -> JobPosting | None:
         position, employment = "정규 연구직", "정규직"
     qualification = re.search(r"(?:관련\s*(?:분야)?\s*)?박사\s*학위[^\n]{0,220}|(?:학력|학위)\s*(?:요건|조건)[^\n]{0,220}", raw.text) or re.search(r"(?:지원|응시|공통)\s*자격[\s\S]{0,350}|박사\s*학위[\s\S]{0,200}", raw.text)
     return JobPosting(
-        institution=raw.institution, title=title, position=position, employment_type=employment,
-        research_fields=fields, qualifications=re.sub(r"\s+", " ", qualification.group(0)) if qualification else "세부 학위·경력·논문 요건 원문 확인",
+        institution=raw.institution, title=(raw.parent_title + " / " + title if raw.parent_title else title), position=position, employment_type=employment, role_id=raw.role_id,
+        research_fields=fields, qualifications=qualifications(raw.text),
         location=next((v for v in LOCATIONS if v in combined), "원문 확인"),
         start_date=start_date, deadline=deadline, url=raw.url, first_seen=today,
         previously_notified=False, fit_score=(90, 70, 50)[relevance_rank],
