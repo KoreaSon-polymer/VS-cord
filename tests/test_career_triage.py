@@ -130,3 +130,10 @@ def test_scan_only_and_dry_run_never_send_or_mark_delivered(tmp_path, monkeypatc
     original = monitor.STATE_PATH.read_text()
     assert anyio.run(monitor.run, {"DRY_RUN":"true"}) == 0
     assert monitor.STATE_PATH.read_text() == original
+
+
+def test_mobile_and_paginated_notice_identity():
+    from tools.notice_utils import canonical_url
+    assert canonical_url("https://job.alio.go.kr/mobile2021/recruit/recruitView.do?idx=42") == canonical_url("https://job.alio.go.kr/recruitview.do?idx=42")
+    assert canonical_url("https://www.kims.re.kr/board.php?wr_id=42&page=1") == canonical_url("https://www.kims.re.kr/board.php?page=2&wr_id=42")
+    assert canonical_url("https://example.test/board?page=1") != canonical_url("https://example.test/board?page=2")

@@ -94,3 +94,5 @@ HTML/attachment formats without explicit role codes require review. Deadlines
 are currently date-level; same-day submission times must be checked in the source.
 Initial 90-day nationwide backfill and browser rendering/OCR are not implemented.
 Existing funding collection is preserved.
+
+CI isolation: source pushes now run the dedicated `career-tests.yml` workflow with read-only repository permissions and no SMTP secrets. Live collection is scheduled or manually previewed; the implementation branch was separately live-previewed without sending email. This supersedes the earlier push-collection description.

@@ -9,17 +9,11 @@ on:
         description: 'Preview without sending mail or changing delivery state'
         type: boolean
         default: true
-  push:
-    paths:
-      - 'tools/**/*.py'
-      - 'tools/*requirements.txt'
-      - 'tests/**'
-      - '.github/workflows/research-career-monitor.yml'
 permissions:
   contents: write
 concurrency:
   group: research-career-monitor-${{ github.ref }}
-  cancel-in-progress: ${{ github.event_name == 'push' && github.ref != 'refs/heads/main' }}
+  cancel-in-progress: false
 jobs:
   monitor:
     runs-on: ubuntu-latest

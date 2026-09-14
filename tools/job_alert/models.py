@@ -63,7 +63,7 @@ class JobPosting:
                 self.title,
                 self.position,
                 self.employment_type,
-                ",".join(self.research_fields),
+                ",".join(sorted(self.research_fields)),
                 self.qualifications,
                 self.location,
                 str(self.start_date),

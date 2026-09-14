@@ -1,0 +1,28 @@
+name: Career monitor regression tests
+on:
+  push:
+    paths:
+      - 'tools/**'
+      - 'tests/**'
+      - '.github/workflows/**'
+  pull_request:
+    paths:
+      - 'tools/**'
+      - 'tests/**'
+      - '.github/workflows/**'
+permissions:
+  contents: read
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: pip
+          cache-dependency-path: tools/research_monitor_requirements.txt
+      - run: pip install -r tools/research_monitor_requirements.txt pytest
+      - run: python -m compileall -q tools
+      - run: python -m pytest tests -q

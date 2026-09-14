@@ -13,7 +13,12 @@ def canonical_url(url: str) -> str:
     parts = urlsplit(url)
     ignored = {"jsessionid", "sessionid", "phpsessid", "gotopage", "pageindex",
                "pagenumber", "pagenum", "cpage", "searchtxt", "searchopt", "title"}
-    pairs = [(k, v) for k, v in parse_qsl(parts.query, keep_blank_values=True)
+    query_pairs = parse_qsl(parts.query, keep_blank_values=True)
+    if any(k.lower() in {"idx", "wr_id", "nttseqno", "nttno", "articleno", "board_seq", "bbs_seq", "list_no", "postno"} for k, v in query_pairs):
+        ignored.update({"page", "pageno", "pagenum", "article.offset", "articlelimit", "rowcnt"})
+    if parts.netloc.lower() == "job.alio.go.kr" and parts.path.lower().endswith("/recruitview.do"):
+        parts = parts._replace(path="/recruitview.do")
+    pairs = [(k, v) for k, v in query_pairs
              if k.lower() not in ignored and not k.lower().startswith("utm_")]
     return urlunsplit((parts.scheme.lower(), parts.netloc.lower(), parts.path,
                        urlencode(sorted(pairs)), ""))
