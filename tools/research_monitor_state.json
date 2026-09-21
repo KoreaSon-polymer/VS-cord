@@ -642,491 +642,491 @@
   "source_health": {
     "AJOU": {
       "last_success": null,
-      "consecutive_failures": 12
+      "consecutive_failures": 13
     },
     "ALIO": {
       "last_success": null,
-      "consecutive_failures": 12
+      "consecutive_failures": 13
     },
     "CATHOLIC": {
       "last_success": null,
-      "consecutive_failures": 12
+      "consecutive_failures": 13
     },
     "CAU": {
       "last_success": null,
-      "consecutive_failures": 12
+      "consecutive_failures": 13
     },
     "CBNU": {
       "last_success": null,
-      "consecutive_failures": 12
+      "consecutive_failures": 13
     },
     "CHANGWON": {
       "last_success": null,
-      "consecutive_failures": 12
+      "consecutive_failures": 13
     },
     "CHOSUN": {
       "last_success": null,
-      "consecutive_failures": 12
+      "consecutive_failures": 13
     },
     "CNU": {
       "last_success": null,
-      "consecutive_failures": 12
+      "consecutive_failures": 13
     },
     "DANKOOK": {
       "last_success": null,
-      "consecutive_failures": 12
+      "consecutive_failures": 13
     },
     "DEU": {
       "last_success": "2026-09-20T22:34:27.046942+09:00",
-      "consecutive_failures": 0
+      "consecutive_failures": 1
     },
     "DGIST": {
       "last_success": null,
-      "consecutive_failures": 12
+      "consecutive_failures": 13
     },
     "DGIST-faculty": {
       "last_success": null,
-      "consecutive_failures": 12
+      "consecutive_failures": 13
     },
     "DONGA": {
       "last_success": null,
-      "consecutive_failures": 12
+      "consecutive_failures": 13
     },
     "DONGGUK": {
       "last_success": null,
-      "consecutive_failures": 12
+      "consecutive_failures": 13
     },
     "ETRI": {
       "last_success": null,
-      "consecutive_failures": 12
+      "consecutive_failures": 13
     },
     "EWHA": {
-      "last_success": null,
-      "consecutive_failures": 12
+      "last_success": "2026-09-21T13:38:11.841232+09:00",
+      "consecutive_failures": 0
     },
     "GACHON": {
       "last_success": null,
-      "consecutive_failures": 12
+      "consecutive_failures": 13
     },
     "GIST": {
       "last_success": null,
-      "consecutive_failures": 12
+      "consecutive_failures": 13
     },
     "GNU": {
       "last_success": null,
-      "consecutive_failures": 12
+      "consecutive_failures": 13
     },
     "HALLYM": {
       "last_success": null,
-      "consecutive_failures": 12
+      "consecutive_failures": 13
     },
     "HANBAT": {
       "last_success": null,
-      "consecutive_failures": 12
+      "consecutive_failures": 13
     },
     "HANYANG": {
-      "last_success": "2026-09-19T21:58:43.177481+09:00",
-      "consecutive_failures": 2
+      "last_success": "2026-09-21T13:38:11.841232+09:00",
+      "consecutive_failures": 0
     },
     "HIBRAIN": {
       "last_success": null,
-      "consecutive_failures": 12
+      "consecutive_failures": 13
     },
     "HONGIK": {
       "last_success": null,
-      "consecutive_failures": 12
+      "consecutive_failures": 13
     },
     "HOSEO": {
       "last_success": null,
-      "consecutive_failures": 12
+      "consecutive_failures": 13
     },
     "IBS": {
-      "last_success": "2026-09-20T22:34:27.046942+09:00",
+      "last_success": "2026-09-21T13:38:11.841232+09:00",
       "consecutive_failures": 0
     },
     "INHA": {
       "last_success": null,
-      "consecutive_failures": 12
+      "consecutive_failures": 13
     },
     "INU": {
       "last_success": null,
-      "consecutive_failures": 12
+      "consecutive_failures": 13
     },
     "JBNU": {
       "last_success": null,
-      "consecutive_failures": 12
+      "consecutive_failures": 13
     },
     "JEJU": {
       "last_success": null,
-      "consecutive_failures": 12
+      "consecutive_failures": 13
     },
     "JJ": {
       "last_success": null,
-      "consecutive_failures": 12
+      "consecutive_failures": 13
     },
     "JNU": {
       "last_success": null,
-      "consecutive_failures": 12
+      "consecutive_failures": 13
     },
     "JOB-ALIO": {
       "last_success": null,
-      "consecutive_failures": 12
+      "consecutive_failures": 13
     },
     "KAERI": {
       "last_success": null,
-      "consecutive_failures": 12
+      "consecutive_failures": 13
     },
     "KAIST": {
       "last_success": null,
-      "consecutive_failures": 12
+      "consecutive_failures": 13
     },
     "KANC": {
       "last_success": null,
-      "consecutive_failures": 12
+      "consecutive_failures": 13
     },
     "KANGWON": {
       "last_success": null,
-      "consecutive_failures": 12
+      "consecutive_failures": 13
     },
     "KBSI": {
       "last_success": null,
-      "consecutive_failures": 12
+      "consecutive_failures": 13
     },
     "KCUE-1": {
       "last_success": null,
-      "consecutive_failures": 12
+      "consecutive_failures": 13
     },
     "KCUE-10": {
       "last_success": null,
-      "consecutive_failures": 12
+      "consecutive_failures": 13
     },
     "KCUE-2": {
-      "last_success": "2026-09-20T22:34:27.046942+09:00",
+      "last_success": "2026-09-21T13:38:11.841232+09:00",
       "consecutive_failures": 0
     },
     "KCUE-3": {
       "last_success": null,
-      "consecutive_failures": 12
+      "consecutive_failures": 13
     },
     "KCUE-4": {
       "last_success": null,
-      "consecutive_failures": 12
+      "consecutive_failures": 13
     },
     "KCUE-5": {
-      "last_success": "2026-09-20T22:34:27.046942+09:00",
+      "last_success": "2026-09-21T13:38:11.841232+09:00",
       "consecutive_failures": 0
     },
     "KCUE-6": {
-      "last_success": "2026-09-20T22:34:27.046942+09:00",
+      "last_success": "2026-09-21T13:38:11.841232+09:00",
       "consecutive_failures": 0
     },
     "KCUE-7": {
       "last_success": null,
-      "consecutive_failures": 12
+      "consecutive_failures": 13
     },
     "KCUE-8": {
       "last_success": null,
-      "consecutive_failures": 12
+      "consecutive_failures": 13
     },
     "KCUE-9": {
       "last_success": null,
-      "consecutive_failures": 12
+      "consecutive_failures": 13
     },
     "KENTECH": {
       "last_success": null,
-      "consecutive_failures": 12
+      "consecutive_failures": 13
     },
     "KERI": {
       "last_success": null,
-      "consecutive_failures": 12
+      "consecutive_failures": 13
     },
     "KERI-recruit": {
       "last_success": null,
-      "consecutive_failures": 12
+      "consecutive_failures": 13
     },
     "KETI": {
       "last_success": null,
-      "consecutive_failures": 12
+      "consecutive_failures": 13
     },
     "KFRI": {
       "last_success": null,
-      "consecutive_failures": 12
+      "consecutive_failures": 13
     },
     "KHU": {
       "last_success": null,
-      "consecutive_failures": 12
+      "consecutive_failures": 13
     },
     "KICET": {
       "last_success": null,
-      "consecutive_failures": 12
+      "consecutive_failures": 13
     },
     "KICT": {
       "last_success": null,
-      "consecutive_failures": 12
+      "consecutive_failures": 13
     },
     "KIER": {
       "last_success": null,
-      "consecutive_failures": 12
+      "consecutive_failures": 13
     },
     "KIGAM": {
-      "last_success": "2026-09-20T22:34:27.046942+09:00",
+      "last_success": "2026-09-21T13:38:11.841232+09:00",
       "consecutive_failures": 0
     },
     "KIMM": {
       "last_success": null,
-      "consecutive_failures": 12
+      "consecutive_failures": 13
     },
     "KIMM-home": {
       "last_success": null,
-      "consecutive_failures": 12
+      "consecutive_failures": 13
     },
     "KIMS": {
-      "last_success": "2026-09-20T22:34:27.046942+09:00",
+      "last_success": "2026-09-21T13:38:11.841232+09:00",
       "consecutive_failures": 0
     },
     "KIST": {
-      "last_success": "2026-09-20T22:34:27.046942+09:00",
+      "last_success": "2026-09-21T13:38:11.841232+09:00",
       "consecutive_failures": 0
     },
     "KISTI": {
       "last_success": null,
-      "consecutive_failures": 12
+      "consecutive_failures": 13
     },
     "KITECH": {
       "last_success": null,
-      "consecutive_failures": 12
+      "consecutive_failures": 13
     },
     "KMU": {
       "last_success": null,
-      "consecutive_failures": 12
+      "consecutive_failures": 13
     },
     "KNU": {
       "last_success": null,
-      "consecutive_failures": 12
+      "consecutive_failures": 13
     },
     "KONGJU": {
       "last_success": null,
-      "consecutive_failures": 12
+      "consecutive_failures": 13
     },
     "KONKUK": {
       "last_success": null,
-      "consecutive_failures": 12
+      "consecutive_failures": 13
     },
     "KOOKMIN": {
       "last_success": null,
-      "consecutive_failures": 12
+      "consecutive_failures": 13
     },
     "KOREA": {
       "last_success": null,
-      "consecutive_failures": 12
+      "consecutive_failures": 13
     },
     "KOREATECH": {
       "last_success": null,
-      "consecutive_failures": 12
+      "consecutive_failures": 13
     },
     "KRIBB": {
-      "last_success": "2026-09-20T22:34:27.046942+09:00",
+      "last_success": "2026-09-21T13:38:11.841232+09:00",
       "consecutive_failures": 0
     },
     "KRICT": {
       "last_success": null,
-      "consecutive_failures": 12
+      "consecutive_failures": 13
     },
     "KRISS": {
       "last_success": null,
-      "consecutive_failures": 12
+      "consecutive_failures": 13
     },
     "KS": {
       "last_success": null,
-      "consecutive_failures": 12
+      "consecutive_failures": 13
     },
     "KUMOH": {
       "last_success": null,
-      "consecutive_failures": 12
+      "consecutive_failures": 13
     },
     "KUNSAN": {
       "last_success": null,
-      "consecutive_failures": 12
+      "consecutive_failures": 13
     },
     "KWANGWOON": {
       "last_success": null,
-      "consecutive_failures": 12
+      "consecutive_failures": 13
     },
     "MOKPO": {
       "last_success": null,
-      "consecutive_failures": 12
+      "consecutive_failures": 13
     },
     "MYONGJI": {
       "last_success": null,
-      "consecutive_failures": 12
+      "consecutive_failures": 13
     },
     "NNFC": {
       "last_success": null,
-      "consecutive_failures": 12
+      "consecutive_failures": 13
     },
     "NST-1": {
-      "last_success": "2026-09-20T22:34:27.046942+09:00",
+      "last_success": "2026-09-21T13:38:11.841232+09:00",
       "consecutive_failures": 0
     },
     "NST-2": {
-      "last_success": "2026-09-20T22:34:27.046942+09:00",
+      "last_success": "2026-09-21T13:38:11.841232+09:00",
       "consecutive_failures": 0
     },
     "NST-3": {
       "last_success": null,
-      "consecutive_failures": 12
+      "consecutive_failures": 13
     },
     "NST-4": {
       "last_success": null,
-      "consecutive_failures": 12
+      "consecutive_failures": 13
     },
     "NST-5": {
-      "last_success": "2026-09-20T22:34:27.046942+09:00",
+      "last_success": "2026-09-21T13:38:11.841232+09:00",
       "consecutive_failures": 0
     },
     "NST-6": {
-      "last_success": "2026-09-20T22:34:27.046942+09:00",
+      "last_success": "2026-09-21T13:38:11.841232+09:00",
       "consecutive_failures": 0
     },
     "NST-directory-etri": {
       "last_success": null,
-      "consecutive_failures": 12
+      "consecutive_failures": 13
     },
     "NST-directory-gtck": {
       "last_success": null,
-      "consecutive_failures": 12
+      "consecutive_failures": 13
     },
     "NST-directory-kfe": {
       "last_success": null,
-      "consecutive_failures": 12
+      "consecutive_failures": 13
     },
     "NST-directory-kiom": {
       "last_success": null,
-      "consecutive_failures": 12
+      "consecutive_failures": 13
     },
     "NST-directory-kitox": {
       "last_success": null,
-      "consecutive_failures": 12
+      "consecutive_failures": 13
     },
     "NST-directory-krri": {
       "last_success": null,
-      "consecutive_failures": 12
+      "consecutive_failures": 13
     },
     "NST-directory-wikim": {
       "last_success": null,
-      "consecutive_failures": 12
+      "consecutive_failures": 13
     },
     "NST-registry": {
-      "last_success": "2026-09-20T22:34:27.046942+09:00",
+      "last_success": "2026-09-21T13:38:11.841232+09:00",
       "consecutive_failures": 0
     },
     "PKNU": {
       "last_success": null,
-      "consecutive_failures": 12
+      "consecutive_failures": 13
     },
     "POSTECH": {
-      "last_success": "2026-09-20T22:34:27.046942+09:00",
+      "last_success": "2026-09-21T13:38:11.841232+09:00",
       "consecutive_failures": 0
     },
     "PUSAN": {
       "last_success": null,
-      "consecutive_failures": 12
+      "consecutive_failures": 13
     },
     "SCH": {
       "last_success": null,
-      "consecutive_failures": 12
+      "consecutive_failures": 13
     },
     "SCNU": {
       "last_success": null,
-      "consecutive_failures": 12
+      "consecutive_failures": 13
     },
     "SEJONG": {
       "last_success": null,
-      "consecutive_failures": 12
+      "consecutive_failures": 13
     },
     "SEOULTECH": {
       "last_success": null,
-      "consecutive_failures": 12
+      "consecutive_failures": 13
     },
     "SKKU": {
-      "last_success": "2026-09-20T22:34:27.046942+09:00",
+      "last_success": "2026-09-21T13:38:11.841232+09:00",
       "consecutive_failures": 0
     },
     "SNU": {
       "last_success": null,
-      "consecutive_failures": 12
+      "consecutive_failures": 13
     },
     "SOGANG": {
       "last_success": null,
-      "consecutive_failures": 12
+      "consecutive_failures": 13
     },
     "SOOKMYUNG": {
       "last_success": null,
-      "consecutive_failures": 12
+      "consecutive_failures": 13
     },
     "SSU": {
       "last_success": null,
-      "consecutive_failures": 12
+      "consecutive_failures": 13
     },
     "SUNMOON": {
       "last_success": null,
-      "consecutive_failures": 12
+      "consecutive_failures": 13
     },
     "TUKOREA": {
       "last_success": null,
-      "consecutive_failures": 12
+      "consecutive_failures": 13
     },
     "ULSAN": {
       "last_success": null,
-      "consecutive_failures": 12
+      "consecutive_failures": 13
     },
     "UNIST": {
       "last_success": null,
-      "consecutive_failures": 12
+      "consecutive_failures": 13
     },
     "UOS": {
       "last_success": null,
-      "consecutive_failures": 12
+      "consecutive_failures": 13
     },
     "UT": {
       "last_success": "2026-09-15T23:16:51.590181+09:00",
-      "consecutive_failures": 10
+      "consecutive_failures": 11
     },
     "WKU": {
       "last_success": null,
-      "consecutive_failures": 12
+      "consecutive_failures": 13
     },
     "YONSEI": {
-      "last_success": "2026-09-20T22:34:27.046942+09:00",
+      "last_success": "2026-09-21T13:38:11.841232+09:00",
       "consecutive_failures": 0
     },
     "YONSEI-faculty": {
-      "last_success": "2026-09-20T22:34:27.046942+09:00",
+      "last_success": "2026-09-21T13:38:11.841232+09:00",
       "consecutive_failures": 0
     },
     "YU": {
       "last_success": null,
-      "consecutive_failures": 12
+      "consecutive_failures": 13
     },
     "NRF 신규사업공모": {
-      "last_success": "2026-09-20T22:34:27.046942+09:00",
+      "last_success": "2026-09-21T13:38:11.841232+09:00",
       "consecutive_failures": 0
     },
     "NRF 사업일반공지": {
       "last_success": null,
-      "consecutive_failures": 12
+      "consecutive_failures": 13
     },
     "IRIS 범부처 사업공고": {
-      "last_success": "2026-09-20T22:34:27.046942+09:00",
+      "last_success": "2026-09-21T13:38:11.841232+09:00",
       "consecutive_failures": 0
     },
     "MSIT 사업공고": {
       "last_success": null,
-      "consecutive_failures": 12
+      "consecutive_failures": 13
     },
     "MOE 교육부 공고": {
       "last_success": null,
-      "consecutive_failures": 12
+      "consecutive_failures": 13
     }
   },
   "pending": {
@@ -1156,7 +1156,7 @@
         ],
         "review": true
       },
-      "seen_at": "2026-09-20"
+      "seen_at": "2026-09-21"
     },
     "8de638335472a208e49cdb7b": {
       "op": {
@@ -1185,7 +1185,7 @@
         ],
         "review": true
       },
-      "seen_at": "2026-09-20"
+      "seen_at": "2026-09-21"
     },
     "971bb6818bb0e7b4a10359dc": {
       "op": {
@@ -1215,7 +1215,7 @@
         ],
         "review": true
       },
-      "seen_at": "2026-09-20"
+      "seen_at": "2026-09-21"
     },
     "7fe8d026b34c73ba682e6082": {
       "op": {
@@ -1243,7 +1243,7 @@
         ],
         "review": true
       },
-      "seen_at": "2026-09-20"
+      "seen_at": "2026-09-21"
     },
     "cea69eb35de98bf120948358": {
       "op": {
@@ -1271,7 +1271,7 @@
         ],
         "review": true
       },
-      "seen_at": "2026-09-20"
+      "seen_at": "2026-09-21"
     },
     "32bf1a1f7d1d93126eb90cb3": {
       "op": {
@@ -1300,7 +1300,7 @@
         ],
         "review": true
       },
-      "seen_at": "2026-09-20"
+      "seen_at": "2026-09-21"
     },
     "f40758f0593dff44ee885e68": {
       "op": {
@@ -1329,7 +1329,7 @@
         ],
         "review": true
       },
-      "seen_at": "2026-09-20"
+      "seen_at": "2026-09-21"
     },
     "36fa3f17859ea1e61c4e48c2": {
       "op": {
@@ -1359,7 +1359,7 @@
         ],
         "review": true
       },
-      "seen_at": "2026-09-20"
+      "seen_at": "2026-09-21"
     },
     "e1dacd2aff74fbcecc19e022": {
       "op": {
@@ -1387,7 +1387,7 @@
         ],
         "review": true
       },
-      "seen_at": "2026-09-20"
+      "seen_at": "2026-09-21"
     },
     "6954a031fe47a20f7ddcbb87": {
       "op": {
@@ -1416,7 +1416,7 @@
         ],
         "review": true
       },
-      "seen_at": "2026-09-20"
+      "seen_at": "2026-09-21"
     },
     "e137adbe8b66eb6116a5805f": {
       "op": {
@@ -1445,7 +1445,7 @@
         ],
         "review": true
       },
-      "seen_at": "2026-09-20"
+      "seen_at": "2026-09-21"
     },
     "94c8197bb751c6851bf9169d": {
       "op": {
@@ -1473,7 +1473,7 @@
         ],
         "review": true
       },
-      "seen_at": "2026-09-20"
+      "seen_at": "2026-09-21"
     },
     "523fb89c10af35a2fda00008": {
       "op": {
@@ -1504,7 +1504,7 @@
         ],
         "review": true
       },
-      "seen_at": "2026-09-20"
+      "seen_at": "2026-09-21"
     },
     "a35261e1e1f33de559ee91f8": {
       "op": {
@@ -1533,7 +1533,7 @@
         ],
         "review": true
       },
-      "seen_at": "2026-09-20"
+      "seen_at": "2026-09-21"
     },
     "f7645425b98c2657954ea694": {
       "op": {
@@ -1562,7 +1562,7 @@
         ],
         "review": true
       },
-      "seen_at": "2026-09-20"
+      "seen_at": "2026-09-21"
     },
     "561f2b84f46eb111d193ef97": {
       "op": {
@@ -1590,7 +1590,7 @@
         ],
         "review": true
       },
-      "seen_at": "2026-09-20"
+      "seen_at": "2026-09-21"
     },
     "be12269b4b247326ad8ffac3": {
       "op": {
@@ -1618,7 +1618,7 @@
         ],
         "review": true
       },
-      "seen_at": "2026-09-20"
+      "seen_at": "2026-09-21"
     },
     "ad9c48113c5ab0ae92997e2a": {
       "op": {
@@ -1646,7 +1646,7 @@
         ],
         "review": true
       },
-      "seen_at": "2026-09-20"
+      "seen_at": "2026-09-21"
     },
     "efb76c26c6a239886b792bb7": {
       "op": {
@@ -1674,7 +1674,7 @@
         ],
         "review": true
       },
-      "seen_at": "2026-09-20"
+      "seen_at": "2026-09-21"
     },
     "c552de1f9f25d5209f326901": {
       "op": {
@@ -1703,7 +1703,7 @@
         ],
         "review": true
       },
-      "seen_at": "2026-09-20"
+      "seen_at": "2026-09-21"
     },
     "17902553afeff826a04ea0d1": {
       "op": {
@@ -1732,7 +1732,7 @@
         ],
         "review": true
       },
-      "seen_at": "2026-09-20"
+      "seen_at": "2026-09-21"
     },
     "127193912381713e5d1d8c41": {
       "op": {
@@ -1761,7 +1761,7 @@
         ],
         "review": true
       },
-      "seen_at": "2026-09-20"
+      "seen_at": "2026-09-21"
     },
     "7ad358b01daea959a1ccc779": {
       "op": {
@@ -1790,7 +1790,7 @@
         ],
         "review": true
       },
-      "seen_at": "2026-09-20"
+      "seen_at": "2026-09-21"
     },
     "a4fd99abad8f622dbddb0256": {
       "op": {
@@ -1820,7 +1820,7 @@
         ],
         "review": true
       },
-      "seen_at": "2026-09-20"
+      "seen_at": "2026-09-21"
     },
     "e439513e9c83147c388640b5": {
       "op": {
@@ -1847,7 +1847,7 @@
         ],
         "review": true
       },
-      "seen_at": "2026-09-20"
+      "seen_at": "2026-09-21"
     },
     "c7f38e4393d63acfe4597621": {
       "op": {
@@ -1875,7 +1875,7 @@
         ],
         "review": true
       },
-      "seen_at": "2026-09-20"
+      "seen_at": "2026-09-21"
     },
     "558ad2a7a8fcc2afa9ab3416": {
       "op": {
@@ -1905,7 +1905,7 @@
         ],
         "review": true
       },
-      "seen_at": "2026-09-20"
+      "seen_at": "2026-09-21"
     },
     "525f8e7c725addc5d66cb57a": {
       "op": {
@@ -1933,7 +1933,7 @@
         ],
         "review": true
       },
-      "seen_at": "2026-09-20"
+      "seen_at": "2026-09-21"
     },
     "90f987c73c947bf5433cb678": {
       "op": {
@@ -1965,7 +1965,7 @@
         ],
         "review": true
       },
-      "seen_at": "2026-09-20"
+      "seen_at": "2026-09-21"
     },
     "a75f3d3e328a854c6d262112": {
       "op": {
@@ -1999,7 +1999,7 @@
         ],
         "review": true
       },
-      "seen_at": "2026-09-20"
+      "seen_at": "2026-09-21"
     },
     "98c1d9e4f023227b9f53307d": {
       "op": {
@@ -2028,7 +2028,7 @@
         ],
         "review": true
       },
-      "seen_at": "2026-09-20"
+      "seen_at": "2026-09-21"
     },
     "4022dc29e5b11d18542ff5d3": {
       "op": {
@@ -2056,7 +2056,7 @@
         ],
         "review": true
       },
-      "seen_at": "2026-09-20"
+      "seen_at": "2026-09-21"
     },
     "52b6e698b5c44052252bd0a6": {
       "op": {
@@ -2088,7 +2088,7 @@
         ],
         "review": true
       },
-      "seen_at": "2026-09-20"
+      "seen_at": "2026-09-21"
     },
     "01635424f65bbda163cb1c7f": {
       "op": {
@@ -2118,7 +2118,7 @@
         ],
         "review": true
       },
-      "seen_at": "2026-09-20"
+      "seen_at": "2026-09-21"
     },
     "a1e1d852b51e459196601649": {
       "op": {
@@ -2146,7 +2146,7 @@
         ],
         "review": true
       },
-      "seen_at": "2026-09-20"
+      "seen_at": "2026-09-21"
     },
     "314cfdcbb96437a7f381c5bd": {
       "op": {
@@ -2175,7 +2175,7 @@
         ],
         "review": true
       },
-      "seen_at": "2026-09-20"
+      "seen_at": "2026-09-21"
     },
     "6e667069bb21e382e2de72a0": {
       "op": {
@@ -2230,7 +2230,7 @@
         ],
         "review": true
       },
-      "seen_at": "2026-09-20"
+      "seen_at": "2026-09-21"
     },
     "a7ddbd2a4df3f30cb96d8582": {
       "op": {
@@ -2258,7 +2258,7 @@
         ],
         "review": true
       },
-      "seen_at": "2026-09-20"
+      "seen_at": "2026-09-21"
     },
     "261de209269860e8aa2ee2da": {
       "op": {
@@ -2289,7 +2289,7 @@
         ],
         "review": true
       },
-      "seen_at": "2026-09-20"
+      "seen_at": "2026-09-21"
     },
     "674d26fcf58d81b1dac34b94": {
       "op": {
@@ -2316,7 +2316,7 @@
         ],
         "review": true
       },
-      "seen_at": "2026-09-20"
+      "seen_at": "2026-09-21"
     },
     "92c41d6cab92030908a3e069": {
       "op": {
@@ -2344,7 +2344,7 @@
         ],
         "review": true
       },
-      "seen_at": "2026-09-20"
+      "seen_at": "2026-09-21"
     },
     "933a6bf9822e3e299253b26c": {
       "op": {
@@ -2375,7 +2375,7 @@
         ],
         "review": true
       },
-      "seen_at": "2026-09-20"
+      "seen_at": "2026-09-21"
     },
     "981641b73c20f6fcb87a4b73": {
       "op": {
@@ -2407,7 +2407,199 @@
         ],
         "review": true
       },
-      "seen_at": "2026-09-20"
+      "seen_at": "2026-09-21"
+    },
+    "2acb9b4888002236acf9e6ea": {
+      "op": {
+        "kind": "job",
+        "key": "2acb9b4888002236acf9e6ea",
+        "fingerprint": "28e5d41f8f3b0ff70db5316936951abc60f38cbd50aed1d965d9215dd0d8e428",
+        "title": "[서울교육대학교] 2026년도 전임교원 공개채용 공고",
+        "institution": "서울교육대학교",
+        "url": "https://www.kcue.or.kr/notice/sub04.php?at=view&idx=658882",
+        "role_id": "",
+        "deadline": "2026-09-21",
+        "priority": "확인 필요",
+        "category": "확인 필요 (정규직·지원 가능 판정 아님)",
+        "fields": [],
+        "relevance": "확인 필요",
+        "relevance_rank": 3,
+        "eligibility": "학위·필수 경력·논문 요건 확인 필요",
+        "host": "",
+        "amount": "",
+        "action": "첨부 미확인: ValueError; 정년트랙 여부 확인 필요; 모집 분야·담당 업무의 연구 관련성 확인 필요",
+        "errors": [
+          "첨부 미확인: ValueError",
+          "정년트랙 여부 확인 필요",
+          "모집 분야·담당 업무의 연구 관련성 확인 필요"
+        ],
+        "review": true
+      },
+      "seen_at": "2026-09-21"
+    },
+    "af4e53808b8a3f3358503cb6": {
+      "op": {
+        "kind": "job",
+        "key": "af4e53808b8a3f3358503cb6",
+        "fingerprint": "e5c7177b16384be75f19dde2c96dbc00306cd93709518ace54817c520e8765cd",
+        "title": "[국립한국해양대학교] 2026학년도 2학기 전임교원 신규채용(2차) 공고",
+        "institution": "국립한국해양대학교",
+        "url": "https://www.kcue.or.kr/notice/sub04.php?at=view&idx=658791",
+        "role_id": "",
+        "deadline": null,
+        "priority": "확인 필요",
+        "category": "확인 필요 (정규직·지원 가능 판정 아님)",
+        "fields": [],
+        "relevance": "확인 필요",
+        "relevance_rank": 3,
+        "eligibility": "학위·필수 경력·논문 요건 확인 필요",
+        "host": "",
+        "amount": "",
+        "action": "첨부 미확인: ValueError; 정년트랙 여부 확인 필요; 접수 마감 미확인; 모집 분야·담당 업무의 연구 관련성 확인 필요",
+        "errors": [
+          "첨부 미확인: ValueError",
+          "정년트랙 여부 확인 필요",
+          "접수 마감 미확인",
+          "모집 분야·담당 업무의 연구 관련성 확인 필요"
+        ],
+        "review": true
+      },
+      "seen_at": "2026-09-21"
+    },
+    "2a174b00bcc87032168b3fd5": {
+      "op": {
+        "kind": "job",
+        "key": "2a174b00bcc87032168b3fd5",
+        "fingerprint": "14989fa7c3f62bd81d5280f8f0a1a32d3027171855d502309e06610adddd53b5",
+        "title": "전임교원 Fall 2026 Kookmin University GRTF Recruitment: Announcement of Final Selection Results 2026.06.30 교원지원팀 양신아 조회수 13220",
+        "institution": "국민대학교",
+        "url": "https://www.kookmin.ac.kr/user/kmuNews/notice/17/12042/view.do?currentPageNo=1",
+        "role_id": "",
+        "deadline": null,
+        "priority": "확인 필요",
+        "category": "확인 필요 (정규직·지원 가능 판정 아님)",
+        "fields": [],
+        "relevance": "확인 필요",
+        "relevance_rank": 3,
+        "eligibility": "학위·필수 경력·논문 요건 확인 필요",
+        "host": "",
+        "amount": "",
+        "action": "정년트랙 여부 확인 필요; 접수 마감 미확인; 모집 분야·담당 업무의 연구 관련성 확인 필요",
+        "errors": [
+          "정년트랙 여부 확인 필요",
+          "접수 마감 미확인",
+          "모집 분야·담당 업무의 연구 관련성 확인 필요"
+        ],
+        "review": true
+      },
+      "seen_at": "2026-09-21"
+    },
+    "71bd1a7cf6d79b61fa5b3fd2": {
+      "op": {
+        "kind": "job",
+        "key": "71bd1a7cf6d79b61fa5b3fd2",
+        "fingerprint": "52f3fee00e4725fe8a552a340f4aaeb1ce13f00609c8abf5921bfea1e5d472b2",
+        "title": "전임교원 Fall 2026 Kookmin University GRTF Recruitment: Announcement of Preliminary Screening Results 2026.04.30 교원지원팀 양신아 조회수 36995",
+        "institution": "국민대학교",
+        "url": "https://www.kookmin.ac.kr/user/kmuNews/notice/17/11803/view.do?currentPageNo=1",
+        "role_id": "",
+        "deadline": null,
+        "priority": "확인 필요",
+        "category": "확인 필요 (정규직·지원 가능 판정 아님)",
+        "fields": [],
+        "relevance": "확인 필요",
+        "relevance_rank": 3,
+        "eligibility": "학위·필수 경력·논문 요건 확인 필요",
+        "host": "",
+        "amount": "",
+        "action": "정년트랙 여부 확인 필요; 접수 마감 미확인; 모집 분야·담당 업무의 연구 관련성 확인 필요",
+        "errors": [
+          "정년트랙 여부 확인 필요",
+          "접수 마감 미확인",
+          "모집 분야·담당 업무의 연구 관련성 확인 필요"
+        ],
+        "review": true
+      },
+      "seen_at": "2026-09-21"
+    },
+    "9c0c5363aefd8aa85d8cd29a": {
+      "op": {
+        "kind": "job",
+        "key": "9c0c5363aefd8aa85d8cd29a",
+        "fingerprint": "c6baebca4e10351e986dbc3e995be32949bd43f86087a1b5ce4451e2139364f6",
+        "title": "2027-1학기 교수초빙(9월공고_정년제 전임교원) 안내",
+        "institution": "세종대학교",
+        "url": "https://www.sejong.ac.kr/kor/intro/notice1.do?articleNo=893444&mode=view",
+        "role_id": "",
+        "deadline": "2026-10-01",
+        "priority": "확인 필요",
+        "category": "확인 필요 (정규직·지원 가능 판정 아님)",
+        "fields": [],
+        "relevance": "확인 필요",
+        "relevance_rank": 3,
+        "eligibility": "학생경력개발시스템 / CS(Computer Science) / 분야 우수국제학술대회 논문 입력가능하며",
+        "host": "",
+        "amount": "",
+        "action": "첨부 링크 추출 여부 확인 필요; 정년트랙 여부 확인 필요; 모집 분야·담당 업무의 연구 관련성 확인 필요; 모집 분야별 직무기술서 확인 필요",
+        "errors": [
+          "첨부 링크 추출 여부 확인 필요",
+          "정년트랙 여부 확인 필요",
+          "모집 분야·담당 업무의 연구 관련성 확인 필요",
+          "모집 분야별 직무기술서 확인 필요"
+        ],
+        "review": true
+      },
+      "seen_at": "2026-09-21"
+    },
+    "0ef8a29601a12ae450035d58": {
+      "op": {
+        "kind": "funding",
+        "key": "0ef8a29601a12ae450035d58",
+        "fingerprint": "39d0eeec7e023f9c64f7df73e27264e55b5a92c5d90d399ed6d4a63971477a30",
+        "title": "2026년도 한-EU 공동연구지원사업 신규과제 공모",
+        "institution": "NRF",
+        "url": "https://www.nrf.re.kr/biz/notice/view?ac=view&bizNo=294&bizNotGubn=guide&menuNo=362&postNo=280133",
+        "deadline": "2026-09-23",
+        "priority": "협력·향후 임용 참고",
+        "category": "기관·공동연구형 (국내 PI·주관기관 조건 확인)",
+        "fields": [
+          "공동연구지원"
+        ],
+        "eligibility": "자격 정보 미확인",
+        "host": "주관기관·국내 소속 조건 미확인",
+        "amount": "지원 규모·기간 미확인",
+        "deadline_evidence": "신청 기간 및 사업 금액 · 신청 기간 : 2026-08-31 00:00 ~ 2026-09-23",
+        "action": "국외 체류·국내 소속·박사학위 경과연수·기수혜 제한을 공고문에서 대조",
+        "errors": []
+      },
+      "seen_at": "2026-09-21"
+    },
+    "50a1b6972284c07b6f570ab1": {
+      "op": {
+        "kind": "funding",
+        "key": "50a1b6972284c07b6f570ab1",
+        "fingerprint": "e5dbead1c04ebbd8fe331c970e7ddc646b324dee1bd896d3923693062f548556",
+        "title": "2026년 한-EU 공동연구지원사업 신규과제 공모",
+        "institution": "IRIS",
+        "url": "https://www.iris.go.kr/contents/retrieveBsnsAncmView.do?ancmId=023777",
+        "deadline": "2026-09-23",
+        "priority": "협력·향후 임용 참고",
+        "category": "기관·공동연구형 (국내 PI·주관기관 조건 확인)",
+        "fields": [
+          "공동연구지원"
+        ],
+        "eligibility": "자격 정보 미확인",
+        "host": "주관기관·국내 소속 조건 미확인",
+        "amount": "지원 규모·기간 미확인",
+        "deadline_evidence": "접수기간 2026-08-31 ~ 2026-09-23",
+        "action": "국외 체류·국내 소속·박사학위 경과연수·기수혜 제한을 공고문에서 대조",
+        "errors": [
+          "attachment: ConnectTimeout",
+          "attachment: ConnectTimeout",
+          "attachment: ConnectTimeout"
+        ]
+      },
+      "seen_at": "2026-09-21"
     }
   }
 }
