@@ -407,11 +407,11 @@
       "reminders": []
     },
     "2a174b00bcc87032168b3fd5": {
-      "fingerprint": "3d6cff507a5e49c85927870a535d2196ad6e3b23c76de33f7505447ebb7dfbf7",
-      "mirror": "10dc2c26a63dcf6367bf62f117167799f7da46be5f88064b87fe36114ccd7180",
+      "fingerprint": "887e7821512a44139e20d96c45a58d44c9240307c3d785ee652dae3b6bbf62c1",
+      "mirror": "8255896a4f6e300cdcabca97f7ff571f1d19a2797a1f606459931350fdafed96",
       "url": "https://www.kookmin.ac.kr/user/kmuNews/notice/17/12042/view.do?currentPageNo=1",
       "deadline": null,
-      "sent_at": "2026-10-11",
+      "sent_at": "2026-10-12",
       "reminders": []
     },
     "71bd1a7cf6d79b61fa5b3fd2": {
@@ -725,8 +725,9 @@
       "mirror": "d0faf0fa3f3373fd9d90942ef1197b3634a1a2b18202c19acadf9d358236416c",
       "url": "https://www.gist.ac.kr/kr/html/sub06/060103.html?mode=V&no=223861",
       "deadline": "2026-10-13",
-      "sent_at": "2026-10-10",
+      "sent_at": "2026-10-12",
       "reminders": [
+        "2026-10-13:1",
         "2026-10-13:3",
         "2026-10-13:7"
       ]
@@ -782,11 +783,11 @@
       ]
     },
     "e9881fd295003ae8cf767661": {
-      "fingerprint": "e21cdd11af92de1c5fff40b456b90d6f1b7da0ddeb2f484178fb3e5472e9441a",
+      "fingerprint": "14d63d25a26634a8584e545c95210cf061fdddd24e8f4ada3e744a2164fec704",
       "mirror": "f0393cc8a2af040c11f7e64a0765e8ff88f252a8462c5073441a2f1e1ffa3558",
       "url": "https://www.kcue.or.kr/notice/sub04.php?at=view&idx=658903",
       "deadline": "2026-10-14",
-      "sent_at": "2026-10-11",
+      "sent_at": "2026-10-12",
       "reminders": [
         "2026-10-14:3",
         "2026-10-14:7"
@@ -915,8 +916,9 @@
       "mirror": "faf737f9da75c5ce262bb0c97b551e20ac8f71565fa88006629fedf2b25d380b",
       "url": "https://faculty.skku.edu/faculty/invite_prof/board.do?articleNo=226443&mode=view",
       "deadline": "2026-10-15",
-      "sent_at": "2026-10-09",
+      "sent_at": "2026-10-12",
       "reminders": [
+        "2026-10-15:3",
         "2026-10-15:7"
       ]
     },
@@ -989,12 +991,13 @@
       ]
     },
     "30c0895ec547fc574e989979": {
-      "fingerprint": "7bb98e870faa01fc1c0402e21d121b6fb25f9bced739ed500ab707c354f7889c",
+      "fingerprint": "244fb10a1a1899baf42f475702a3748c61a7559f0ff0303d6afd60436e6677fb",
       "mirror": "f58ce0e0c482828a019b76075cacac272c5415bb83450c2f6c3564c3d9ea4463",
       "url": "https://www.snu.ac.kr/snunow/notice/job-openings?bbsidx=176708&md=v",
       "deadline": "2026-10-13",
-      "sent_at": "2026-10-10",
+      "sent_at": "2026-10-12",
       "reminders": [
+        "2026-10-13:1",
         "2026-10-13:3",
         "2026-10-13:7"
       ]
@@ -1046,8 +1049,9 @@
       "mirror": "f04629dd0d204dc1d95aeb43c804127711949620790c2fe9c42cef674d78d98e",
       "url": "https://www.pusan.ac.kr/kor/CMS/Board/Board.do?board_seq=1511449&mCode=MN103&mgr_seq=10&mode=view",
       "deadline": "2026-10-13",
-      "sent_at": "2026-10-10",
+      "sent_at": "2026-10-12",
       "reminders": [
+        "2026-10-13:1",
         "2026-10-13:3",
         "2026-10-13:7"
       ]
@@ -1067,497 +1071,507 @@
       "deadline": "2026-10-31",
       "sent_at": "2026-10-10",
       "reminders": []
+    },
+    "a7e577a301c5148bec57d91a": {
+      "fingerprint": "707304f31121dbe57ab957a38d47aed5d7db5b7b95e00685215f41a9939dd711",
+      "mirror": "ad4e55d731c0ab4255148f05b1935f29646657071c74c480d28431a00a4211ca",
+      "url": "https://www.kcue.or.kr/notice/sub07.php?at=view&bid=univ_recruit&idx=658906",
+      "deadline": "2026-10-19",
+      "sent_at": "2026-10-12",
+      "reminders": [
+        "2026-10-19:7"
+      ]
     }
   },
-  "last_health_sent": "2026-09-14",
+  "last_health_sent": "2026-10-12",
   "source_health": {
     "AJOU": {
       "last_success": null,
-      "consecutive_failures": 53
+      "consecutive_failures": 54
     },
     "ALIO": {
       "last_success": null,
-      "consecutive_failures": 53
+      "consecutive_failures": 54
     },
     "CATHOLIC": {
       "last_success": null,
-      "consecutive_failures": 53
+      "consecutive_failures": 54
     },
     "CAU": {
       "last_success": null,
-      "consecutive_failures": 53
+      "consecutive_failures": 54
     },
     "CBNU": {
       "last_success": null,
-      "consecutive_failures": 53
+      "consecutive_failures": 54
     },
     "CHANGWON": {
       "last_success": null,
-      "consecutive_failures": 53
+      "consecutive_failures": 54
     },
     "CHOSUN": {
       "last_success": null,
-      "consecutive_failures": 53
+      "consecutive_failures": 54
     },
     "CNU": {
       "last_success": null,
-      "consecutive_failures": 53
+      "consecutive_failures": 54
     },
     "DANKOOK": {
       "last_success": null,
-      "consecutive_failures": 53
+      "consecutive_failures": 54
     },
     "DEU": {
-      "last_success": "2026-10-11T14:26:29.373398+09:00",
+      "last_success": "2026-10-12T00:27:20.453475+09:00",
       "consecutive_failures": 0
     },
     "DGIST": {
       "last_success": null,
-      "consecutive_failures": 53
+      "consecutive_failures": 54
     },
     "DGIST-faculty": {
       "last_success": null,
-      "consecutive_failures": 53
+      "consecutive_failures": 54
     },
     "DONGA": {
       "last_success": null,
-      "consecutive_failures": 53
+      "consecutive_failures": 54
     },
     "DONGGUK": {
       "last_success": "2026-10-02T01:07:17.482103+09:00",
-      "consecutive_failures": 19
+      "consecutive_failures": 20
     },
     "ETRI": {
       "last_success": null,
-      "consecutive_failures": 53
+      "consecutive_failures": 54
     },
     "EWHA": {
       "last_success": "2026-09-21T13:38:11.841232+09:00",
-      "consecutive_failures": 40
+      "consecutive_failures": 41
     },
     "GACHON": {
       "last_success": null,
-      "consecutive_failures": 53
+      "consecutive_failures": 54
     },
     "GIST": {
       "last_success": null,
-      "consecutive_failures": 53
+      "consecutive_failures": 54
     },
     "GNU": {
       "last_success": null,
-      "consecutive_failures": 53
+      "consecutive_failures": 54
     },
     "HALLYM": {
       "last_success": null,
-      "consecutive_failures": 53
+      "consecutive_failures": 54
     },
     "HANBAT": {
       "last_success": null,
-      "consecutive_failures": 53
+      "consecutive_failures": 54
     },
     "HANYANG": {
-      "last_success": "2026-10-11T14:26:29.373398+09:00",
+      "last_success": "2026-10-12T00:27:20.453475+09:00",
       "consecutive_failures": 0
     },
     "HIBRAIN": {
       "last_success": null,
-      "consecutive_failures": 53
+      "consecutive_failures": 54
     },
     "HONGIK": {
       "last_success": null,
-      "consecutive_failures": 53
+      "consecutive_failures": 54
     },
     "HOSEO": {
       "last_success": null,
-      "consecutive_failures": 53
+      "consecutive_failures": 54
     },
     "IBS": {
-      "last_success": "2026-10-11T14:26:29.373398+09:00",
+      "last_success": "2026-10-12T00:27:20.453475+09:00",
       "consecutive_failures": 0
     },
     "INHA": {
       "last_success": null,
-      "consecutive_failures": 53
+      "consecutive_failures": 54
     },
     "INU": {
       "last_success": null,
-      "consecutive_failures": 53
+      "consecutive_failures": 54
     },
     "JBNU": {
       "last_success": null,
-      "consecutive_failures": 53
+      "consecutive_failures": 54
     },
     "JEJU": {
       "last_success": null,
-      "consecutive_failures": 53
+      "consecutive_failures": 54
     },
     "JJ": {
       "last_success": null,
-      "consecutive_failures": 53
+      "consecutive_failures": 54
     },
     "JNU": {
       "last_success": null,
-      "consecutive_failures": 53
+      "consecutive_failures": 54
     },
     "JOB-ALIO": {
       "last_success": null,
-      "consecutive_failures": 53
+      "consecutive_failures": 54
     },
     "KAERI": {
       "last_success": null,
-      "consecutive_failures": 53
+      "consecutive_failures": 54
     },
     "KAIST": {
       "last_success": null,
-      "consecutive_failures": 53
+      "consecutive_failures": 54
     },
     "KANC": {
       "last_success": null,
-      "consecutive_failures": 53
+      "consecutive_failures": 54
     },
     "KANGWON": {
       "last_success": null,
-      "consecutive_failures": 53
+      "consecutive_failures": 54
     },
     "KBSI": {
       "last_success": null,
-      "consecutive_failures": 53
+      "consecutive_failures": 54
     },
     "KCUE-1": {
       "last_success": null,
-      "consecutive_failures": 53
+      "consecutive_failures": 54
     },
     "KCUE-10": {
       "last_success": null,
-      "consecutive_failures": 53
+      "consecutive_failures": 54
     },
     "KCUE-2": {
       "last_success": "2026-10-06T02:58:11.720997+09:00",
-      "consecutive_failures": 11
+      "consecutive_failures": 12
     },
     "KCUE-3": {
-      "last_success": "2026-10-11T14:26:29.373398+09:00",
+      "last_success": "2026-10-12T00:27:20.453475+09:00",
       "consecutive_failures": 0
     },
     "KCUE-4": {
       "last_success": null,
-      "consecutive_failures": 53
+      "consecutive_failures": 54
     },
     "KCUE-5": {
       "last_success": "2026-09-30T00:29:03.893386+09:00",
-      "consecutive_failures": 23
+      "consecutive_failures": 24
     },
     "KCUE-6": {
-      "last_success": "2026-10-11T14:26:29.373398+09:00",
+      "last_success": "2026-10-12T00:27:20.453475+09:00",
       "consecutive_failures": 0
     },
     "KCUE-7": {
-      "last_success": "2026-10-11T14:26:29.373398+09:00",
+      "last_success": "2026-10-12T00:27:20.453475+09:00",
       "consecutive_failures": 0
     },
     "KCUE-8": {
       "last_success": null,
-      "consecutive_failures": 53
+      "consecutive_failures": 54
     },
     "KCUE-9": {
       "last_success": null,
-      "consecutive_failures": 53
+      "consecutive_failures": 54
     },
     "KENTECH": {
       "last_success": null,
-      "consecutive_failures": 53
+      "consecutive_failures": 54
     },
     "KERI": {
       "last_success": null,
-      "consecutive_failures": 53
+      "consecutive_failures": 54
     },
     "KERI-recruit": {
       "last_success": null,
-      "consecutive_failures": 53
+      "consecutive_failures": 54
     },
     "KETI": {
       "last_success": null,
-      "consecutive_failures": 53
+      "consecutive_failures": 54
     },
     "KFRI": {
       "last_success": null,
-      "consecutive_failures": 53
+      "consecutive_failures": 54
     },
     "KHU": {
       "last_success": null,
-      "consecutive_failures": 53
+      "consecutive_failures": 54
     },
     "KICET": {
       "last_success": null,
-      "consecutive_failures": 53
+      "consecutive_failures": 54
     },
     "KICT": {
       "last_success": null,
-      "consecutive_failures": 53
+      "consecutive_failures": 54
     },
     "KIER": {
       "last_success": null,
-      "consecutive_failures": 53
+      "consecutive_failures": 54
     },
     "KIGAM": {
-      "last_success": "2026-10-11T14:26:29.373398+09:00",
+      "last_success": "2026-10-12T00:27:20.453475+09:00",
       "consecutive_failures": 0
     },
     "KIMM": {
       "last_success": null,
-      "consecutive_failures": 53
+      "consecutive_failures": 54
     },
     "KIMM-home": {
       "last_success": null,
-      "consecutive_failures": 53
+      "consecutive_failures": 54
     },
     "KIMS": {
-      "last_success": "2026-10-11T14:26:29.373398+09:00",
+      "last_success": "2026-10-12T00:27:20.453475+09:00",
       "consecutive_failures": 0
     },
     "KIST": {
-      "last_success": "2026-10-11T14:26:29.373398+09:00",
+      "last_success": "2026-10-12T00:27:20.453475+09:00",
       "consecutive_failures": 0
     },
     "KISTI": {
       "last_success": null,
-      "consecutive_failures": 53
+      "consecutive_failures": 54
     },
     "KITECH": {
       "last_success": null,
-      "consecutive_failures": 53
+      "consecutive_failures": 54
     },
     "KMU": {
       "last_success": null,
-      "consecutive_failures": 53
+      "consecutive_failures": 54
     },
     "KNU": {
       "last_success": null,
-      "consecutive_failures": 53
+      "consecutive_failures": 54
     },
     "KONGJU": {
       "last_success": null,
-      "consecutive_failures": 53
+      "consecutive_failures": 54
     },
     "KONKUK": {
       "last_success": null,
-      "consecutive_failures": 53
+      "consecutive_failures": 54
     },
     "KOOKMIN": {
       "last_success": null,
-      "consecutive_failures": 53
+      "consecutive_failures": 54
     },
     "KOREA": {
       "last_success": null,
-      "consecutive_failures": 53
+      "consecutive_failures": 54
     },
     "KOREATECH": {
       "last_success": null,
-      "consecutive_failures": 53
+      "consecutive_failures": 54
     },
     "KRIBB": {
-      "last_success": "2026-10-11T14:26:29.373398+09:00",
+      "last_success": "2026-10-12T00:27:20.453475+09:00",
       "consecutive_failures": 0
     },
     "KRICT": {
       "last_success": null,
-      "consecutive_failures": 53
+      "consecutive_failures": 54
     },
     "KRISS": {
       "last_success": null,
-      "consecutive_failures": 53
+      "consecutive_failures": 54
     },
     "KS": {
       "last_success": null,
-      "consecutive_failures": 53
+      "consecutive_failures": 54
     },
     "KUMOH": {
       "last_success": null,
-      "consecutive_failures": 53
+      "consecutive_failures": 54
     },
     "KUNSAN": {
       "last_success": null,
-      "consecutive_failures": 53
+      "consecutive_failures": 54
     },
     "KWANGWOON": {
       "last_success": null,
-      "consecutive_failures": 53
+      "consecutive_failures": 54
     },
     "MOKPO": {
       "last_success": null,
-      "consecutive_failures": 53
+      "consecutive_failures": 54
     },
     "MYONGJI": {
       "last_success": null,
-      "consecutive_failures": 53
+      "consecutive_failures": 54
     },
     "NNFC": {
       "last_success": null,
-      "consecutive_failures": 53
+      "consecutive_failures": 54
     },
     "NST-1": {
       "last_success": "2026-10-07T14:37:19.722801+09:00",
-      "consecutive_failures": 8
+      "consecutive_failures": 9
     },
     "NST-2": {
-      "last_success": "2026-10-11T14:26:29.373398+09:00",
+      "last_success": "2026-10-12T00:27:20.453475+09:00",
       "consecutive_failures": 0
     },
     "NST-3": {
-      "last_success": "2026-10-11T14:26:29.373398+09:00",
+      "last_success": "2026-10-12T00:27:20.453475+09:00",
       "consecutive_failures": 0
     },
     "NST-4": {
       "last_success": null,
-      "consecutive_failures": 53
+      "consecutive_failures": 54
     },
     "NST-5": {
       "last_success": "2026-09-29T14:29:23.382673+09:00",
-      "consecutive_failures": 24
+      "consecutive_failures": 25
     },
     "NST-6": {
       "last_success": "2026-10-06T15:03:49.815587+09:00",
-      "consecutive_failures": 10
+      "consecutive_failures": 11
     },
     "NST-directory-etri": {
       "last_success": null,
-      "consecutive_failures": 53
+      "consecutive_failures": 54
     },
     "NST-directory-gtck": {
       "last_success": null,
-      "consecutive_failures": 53
+      "consecutive_failures": 54
     },
     "NST-directory-kfe": {
       "last_success": null,
-      "consecutive_failures": 53
+      "consecutive_failures": 54
     },
     "NST-directory-kiom": {
       "last_success": null,
-      "consecutive_failures": 53
+      "consecutive_failures": 54
     },
     "NST-directory-kitox": {
       "last_success": null,
-      "consecutive_failures": 53
+      "consecutive_failures": 54
     },
     "NST-directory-krri": {
       "last_success": null,
-      "consecutive_failures": 53
+      "consecutive_failures": 54
     },
     "NST-directory-wikim": {
       "last_success": null,
-      "consecutive_failures": 53
+      "consecutive_failures": 54
     },
     "NST-registry": {
-      "last_success": "2026-10-11T14:26:29.373398+09:00",
+      "last_success": "2026-10-12T00:27:20.453475+09:00",
       "consecutive_failures": 0
     },
     "PKNU": {
       "last_success": "2026-10-01T00:44:34.921487+09:00",
-      "consecutive_failures": 21
+      "consecutive_failures": 22
     },
     "POSTECH": {
-      "last_success": "2026-10-11T14:26:29.373398+09:00",
+      "last_success": "2026-10-12T00:27:20.453475+09:00",
       "consecutive_failures": 0
     },
     "PUSAN": {
       "last_success": null,
-      "consecutive_failures": 53
+      "consecutive_failures": 54
     },
     "SCH": {
       "last_success": null,
-      "consecutive_failures": 53
+      "consecutive_failures": 54
     },
     "SCNU": {
       "last_success": null,
-      "consecutive_failures": 53
+      "consecutive_failures": 54
     },
     "SEJONG": {
       "last_success": null,
-      "consecutive_failures": 53
+      "consecutive_failures": 54
     },
     "SEOULTECH": {
       "last_success": null,
-      "consecutive_failures": 53
+      "consecutive_failures": 54
     },
     "SKKU": {
-      "last_success": "2026-10-11T14:26:29.373398+09:00",
+      "last_success": "2026-10-12T00:27:20.453475+09:00",
       "consecutive_failures": 0
     },
     "SNU": {
       "last_success": null,
-      "consecutive_failures": 53
+      "consecutive_failures": 54
     },
     "SOGANG": {
       "last_success": null,
-      "consecutive_failures": 53
+      "consecutive_failures": 54
     },
     "SOOKMYUNG": {
       "last_success": null,
-      "consecutive_failures": 53
+      "consecutive_failures": 54
     },
     "SSU": {
       "last_success": null,
-      "consecutive_failures": 53
+      "consecutive_failures": 54
     },
     "SUNMOON": {
       "last_success": null,
-      "consecutive_failures": 53
+      "consecutive_failures": 54
     },
     "TUKOREA": {
       "last_success": null,
-      "consecutive_failures": 53
+      "consecutive_failures": 54
     },
     "ULSAN": {
       "last_success": null,
-      "consecutive_failures": 53
+      "consecutive_failures": 54
     },
     "UNIST": {
       "last_success": null,
-      "consecutive_failures": 53
+      "consecutive_failures": 54
     },
     "UOS": {
       "last_success": null,
-      "consecutive_failures": 53
+      "consecutive_failures": 54
     },
     "UT": {
-      "last_success": "2026-10-11T14:26:29.373398+09:00",
+      "last_success": "2026-10-12T00:27:20.453475+09:00",
       "consecutive_failures": 0
     },
     "WKU": {
       "last_success": null,
-      "consecutive_failures": 53
+      "consecutive_failures": 54
     },
     "YONSEI": {
       "last_success": "2026-10-11T14:26:29.373398+09:00",
-      "consecutive_failures": 0
+      "consecutive_failures": 1
     },
     "YONSEI-faculty": {
-      "last_success": "2026-10-11T14:26:29.373398+09:00",
+      "last_success": "2026-10-12T00:27:20.453475+09:00",
       "consecutive_failures": 0
     },
     "YU": {
       "last_success": null,
-      "consecutive_failures": 53
+      "consecutive_failures": 54
     },
     "NRF 신규사업공모": {
       "last_success": "2026-09-30T14:16:40.279023+09:00",
-      "consecutive_failures": 22
+      "consecutive_failures": 23
     },
     "NRF 사업일반공지": {
       "last_success": null,
-      "consecutive_failures": 53
+      "consecutive_failures": 54
     },
     "IRIS 범부처 사업공고": {
       "last_success": "2026-10-08T14:46:16.076803+09:00",
-      "consecutive_failures": 6
+      "consecutive_failures": 7
     },
     "MSIT 사업공고": {
       "last_success": null,
-      "consecutive_failures": 53
+      "consecutive_failures": 54
     },
     "MOE 교육부 공고": {
       "last_success": null,
-      "consecutive_failures": 53
+      "consecutive_failures": 54
     }
   },
   "pending": {
@@ -1587,7 +1601,7 @@
         ],
         "review": true
       },
-      "seen_at": "2026-10-11"
+      "seen_at": "2026-10-12"
     },
     "8de638335472a208e49cdb7b": {
       "op": {
@@ -1674,7 +1688,7 @@
         ],
         "review": true
       },
-      "seen_at": "2026-10-11"
+      "seen_at": "2026-10-12"
     },
     "36fa3f17859ea1e61c4e48c2": {
       "op": {
@@ -1732,7 +1746,7 @@
         ],
         "review": true
       },
-      "seen_at": "2026-10-11"
+      "seen_at": "2026-10-12"
     },
     "6954a031fe47a20f7ddcbb87": {
       "op": {
@@ -1789,7 +1803,7 @@
         ],
         "review": true
       },
-      "seen_at": "2026-10-11"
+      "seen_at": "2026-10-12"
     },
     "523fb89c10af35a2fda00008": {
       "op": {
@@ -1820,7 +1834,7 @@
         ],
         "review": true
       },
-      "seen_at": "2026-10-11"
+      "seen_at": "2026-10-12"
     },
     "a35261e1e1f33de559ee91f8": {
       "op": {
@@ -1849,7 +1863,7 @@
         ],
         "review": true
       },
-      "seen_at": "2026-10-11"
+      "seen_at": "2026-10-12"
     },
     "f7645425b98c2657954ea694": {
       "op": {
@@ -1878,7 +1892,7 @@
         ],
         "review": true
       },
-      "seen_at": "2026-10-11"
+      "seen_at": "2026-10-12"
     },
     "561f2b84f46eb111d193ef97": {
       "op": {
@@ -1906,7 +1920,7 @@
         ],
         "review": true
       },
-      "seen_at": "2026-10-11"
+      "seen_at": "2026-10-12"
     },
     "be12269b4b247326ad8ffac3": {
       "op": {
@@ -1934,7 +1948,7 @@
         ],
         "review": true
       },
-      "seen_at": "2026-10-11"
+      "seen_at": "2026-10-12"
     },
     "ad9c48113c5ab0ae92997e2a": {
       "op": {
@@ -1962,7 +1976,7 @@
         ],
         "review": true
       },
-      "seen_at": "2026-10-11"
+      "seen_at": "2026-10-12"
     },
     "c552de1f9f25d5209f326901": {
       "op": {
@@ -1991,7 +2005,7 @@
         ],
         "review": true
       },
-      "seen_at": "2026-10-11"
+      "seen_at": "2026-10-12"
     },
     "17902553afeff826a04ea0d1": {
       "op": {
@@ -2020,7 +2034,7 @@
         ],
         "review": true
       },
-      "seen_at": "2026-10-11"
+      "seen_at": "2026-10-12"
     },
     "127193912381713e5d1d8c41": {
       "op": {
@@ -2049,7 +2063,7 @@
         ],
         "review": true
       },
-      "seen_at": "2026-10-11"
+      "seen_at": "2026-10-12"
     },
     "7ad358b01daea959a1ccc779": {
       "op": {
@@ -2163,7 +2177,7 @@
         ],
         "review": true
       },
-      "seen_at": "2026-10-11"
+      "seen_at": "2026-10-12"
     },
     "525f8e7c725addc5d66cb57a": {
       "op": {
@@ -2191,7 +2205,7 @@
         ],
         "review": true
       },
-      "seen_at": "2026-10-11"
+      "seen_at": "2026-10-12"
     },
     "90f987c73c947bf5433cb678": {
       "op": {
@@ -2223,7 +2237,7 @@
         ],
         "review": true
       },
-      "seen_at": "2026-10-11"
+      "seen_at": "2026-10-12"
     },
     "a75f3d3e328a854c6d262112": {
       "op": {
@@ -2257,7 +2271,7 @@
         ],
         "review": true
       },
-      "seen_at": "2026-10-11"
+      "seen_at": "2026-10-12"
     },
     "98c1d9e4f023227b9f53307d": {
       "op": {
@@ -2286,7 +2300,7 @@
         ],
         "review": true
       },
-      "seen_at": "2026-10-11"
+      "seen_at": "2026-10-12"
     },
     "4022dc29e5b11d18542ff5d3": {
       "op": {
@@ -2314,7 +2328,7 @@
         ],
         "review": true
       },
-      "seen_at": "2026-10-11"
+      "seen_at": "2026-10-12"
     },
     "52b6e698b5c44052252bd0a6": {
       "op": {
@@ -2346,7 +2360,7 @@
         ],
         "review": true
       },
-      "seen_at": "2026-10-11"
+      "seen_at": "2026-10-12"
     },
     "01635424f65bbda163cb1c7f": {
       "op": {
@@ -2376,7 +2390,7 @@
         ],
         "review": true
       },
-      "seen_at": "2026-10-11"
+      "seen_at": "2026-10-12"
     },
     "314cfdcbb96437a7f381c5bd": {
       "op": {
@@ -2405,7 +2419,7 @@
         ],
         "review": true
       },
-      "seen_at": "2026-10-11"
+      "seen_at": "2026-10-12"
     },
     "6e667069bb21e382e2de72a0": {
       "op": {
@@ -2461,7 +2475,7 @@
         ],
         "review": true
       },
-      "seen_at": "2026-10-11"
+      "seen_at": "2026-10-12"
     },
     "af4e53808b8a3f3358503cb6": {
       "op": {
@@ -2490,7 +2504,7 @@
         ],
         "review": true
       },
-      "seen_at": "2026-10-11"
+      "seen_at": "2026-10-12"
     },
     "b029dacd4c5e779fbf973c12": {
       "op": {
@@ -2690,34 +2704,6 @@
       },
       "seen_at": "2026-09-30"
     },
-    "a7e577a301c5148bec57d91a": {
-      "op": {
-        "kind": "job",
-        "key": "a7e577a301c5148bec57d91a",
-        "fingerprint": "707304f31121dbe57ab957a38d47aed5d7db5b7b95e00685215f41a9939dd711",
-        "title": "[충북대학교] 2027학년도 1학기(제91회) 전임교원 초빙 공고",
-        "institution": "충북대학교",
-        "url": "https://www.kcue.or.kr/notice/sub07.php?at=view&bid=univ_recruit&idx=658906",
-        "role_id": "",
-        "deadline": "2026-10-19",
-        "priority": "확인 필요",
-        "category": "확인 필요 (정규직·지원 가능 판정 아님)",
-        "fields": [],
-        "relevance": "확인 필요",
-        "relevance_rank": 3,
-        "eligibility": "★붙임4. 한국연구재단 Computer Science분야 국제 우수학술대회 논문 목록.pdf (312.98 Kb) / 한국연구재단 Computer Science분야 국제 우수학술대회 논문 목록 1부.",
-        "host": "",
-        "amount": "",
-        "action": "첨부 미확인: ValueError; 정년트랙 여부 확인 필요; 모집 분야·담당 업무의 연구 관련성 확인 필요",
-        "errors": [
-          "첨부 미확인: ValueError",
-          "정년트랙 여부 확인 필요",
-          "모집 분야·담당 업무의 연구 관련성 확인 필요"
-        ],
-        "review": true
-      },
-      "seen_at": "2026-10-06"
-    },
     "dddbb279c16611ed89974752": {
       "op": {
         "kind": "job",
@@ -2749,7 +2735,7 @@
       "op": {
         "kind": "job",
         "key": "cf933d2c0c48a9e8fb7af42b",
-        "fingerprint": "707304f31121dbe57ab957a38d47aed5d7db5b7b95e00685215f41a9939dd711",
+        "fingerprint": "80ccd09e247ba75a6e386651bda2379cf98d8c325a0408f77b10750aab4f7418",
         "title": "[충북대학교] 2027학년도 1학기(제91회) 전임교원 초빙 공고",
         "institution": "충북대학교",
         "url": "https://www.kcue.or.kr/notice/sub04.php?at=view&idx=658906",
@@ -2763,15 +2749,16 @@
         "eligibility": "★붙임4. 한국연구재단 Computer Science분야 국제 우수학술대회 논문 목록.pdf (312.98 Kb) / 한국연구재단 Computer Science분야 국제 우수학술대회 논문 목록 1부.",
         "host": "",
         "amount": "",
-        "action": "첨부 미확인: ValueError; 정년트랙 여부 확인 필요; 모집 분야·담당 업무의 연구 관련성 확인 필요",
+        "action": "첨부 미확인: ValueError; 첨부 미확인: RemoteProtocolError; 정년트랙 여부 확인 필요; 모집 분야·담당 업무의 연구 관련성 확인 필요",
         "errors": [
           "첨부 미확인: ValueError",
+          "첨부 미확인: RemoteProtocolError",
           "정년트랙 여부 확인 필요",
           "모집 분야·담당 업무의 연구 관련성 확인 필요"
         ],
         "review": true
       },
-      "seen_at": "2026-10-11"
+      "seen_at": "2026-10-12"
     },
     "33f425b41d3e9f91486f8721": {
       "op": {
@@ -2800,7 +2787,7 @@
         ],
         "review": true
       },
-      "seen_at": "2026-10-11"
+      "seen_at": "2026-10-12"
     },
     "a8a384906fad45af9c76c0ce": {
       "op": {
@@ -2829,7 +2816,7 @@
         ],
         "review": true
       },
-      "seen_at": "2026-10-11"
+      "seen_at": "2026-10-12"
     },
     "eca05e4a0363e10ed039f5fa": {
       "op": {
@@ -2858,7 +2845,7 @@
         ],
         "review": true
       },
-      "seen_at": "2026-10-11"
+      "seen_at": "2026-10-12"
     },
     "18fb14b247d6755c37efb3aa": {
       "op": {
@@ -2888,7 +2875,7 @@
         ],
         "review": true
       },
-      "seen_at": "2026-10-11"
+      "seen_at": "2026-10-12"
     },
     "cc1973894bebdc39ae9ef4ae": {
       "op": {
@@ -2915,7 +2902,7 @@
         ],
         "review": true
       },
-      "seen_at": "2026-10-11"
+      "seen_at": "2026-10-12"
     },
     "8221481adb661115c76f0b7d": {
       "op": {
@@ -2944,7 +2931,7 @@
         ],
         "review": true
       },
-      "seen_at": "2026-10-11"
+      "seen_at": "2026-10-12"
     },
     "1b310bfc14a1d027cc61ff47": {
       "op": {
@@ -2972,7 +2959,7 @@
         ],
         "review": true
       },
-      "seen_at": "2026-10-11"
+      "seen_at": "2026-10-12"
     },
     "4f0fec95c32986d077ee46a2": {
       "op": {
@@ -3000,7 +2987,7 @@
         ],
         "review": true
       },
-      "seen_at": "2026-10-11"
+      "seen_at": "2026-10-12"
     },
     "86b6491ec42b94b8e1b70c53": {
       "op": {
@@ -3028,7 +3015,7 @@
         ],
         "review": true
       },
-      "seen_at": "2026-10-11"
+      "seen_at": "2026-10-12"
     },
     "38eb520afcfae07f9cc661a4": {
       "op": {
@@ -3057,7 +3044,7 @@
         ],
         "review": true
       },
-      "seen_at": "2026-10-11"
+      "seen_at": "2026-10-12"
     },
     "856495dd394bd64aae7b5f13": {
       "op": {
@@ -3086,7 +3073,7 @@
         ],
         "review": true
       },
-      "seen_at": "2026-10-11"
+      "seen_at": "2026-10-12"
     },
     "0496647fb5c9c0ea93d11612": {
       "op": {
@@ -3115,7 +3102,7 @@
         ],
         "review": true
       },
-      "seen_at": "2026-10-11"
+      "seen_at": "2026-10-12"
     },
     "92c41d6cab92030908a3e069": {
       "op": {
@@ -3174,35 +3161,7 @@
         ],
         "review": true
       },
-      "seen_at": "2026-10-11"
-    },
-    "8cfef8ca7f38a784c1c5bbd1": {
-      "op": {
-        "kind": "job",
-        "key": "8cfef8ca7f38a784c1c5bbd1",
-        "fingerprint": "f9c7a36691933fcb00b513c22a53af915d32070b5d9140fafeae9c585f35036a",
-        "title": "[전자전기공학부] (공고수정)전임교원 상시채용(특별전형) 안내 (채용분야: 인공지능 신호.시스템.물리모델/전력전자 및 에너지응용/방산반도체)",
-        "institution": "성균관대학교",
-        "url": "https://faculty.skku.edu/faculty/invite_prof/board.do?articleNo=226443&mode=view",
-        "role_id": "",
-        "deadline": "2026-10-15",
-        "priority": "확인 필요",
-        "category": "확인 필요 (정규직·지원 가능 판정 아님)",
-        "fields": [
-          "반도체"
-        ],
-        "relevance": "확인 필요",
-        "relevance_rank": 3,
-        "eligibility": "- 국내/국외 관련 분야 박사학위 소지자 / - 전자전기컴퓨터공학/전자전기정보공학(Electrical and Computer Engineering; ECE) 혹은 컴퓨터과학 관련 전공 학사, 석사, 혹은 박사 학위 소지자 우대",
-        "host": "",
-        "amount": "",
-        "action": "정년트랙 여부 확인 필요",
-        "errors": [
-          "정년트랙 여부 확인 필요"
-        ],
-        "review": true
-      },
-      "seen_at": "2026-10-11"
+      "seen_at": "2026-10-12"
     },
     "c980c5c09881f3b070d7b28d": {
       "op": {
@@ -3230,36 +3189,7 @@
         ],
         "review": true
       },
-      "seen_at": "2026-10-11"
-    },
-    "bb9bbd9a10810f332be522ce": {
-      "op": {
-        "kind": "job",
-        "key": "bb9bbd9a10810f332be522ce",
-        "fingerprint": "b1e9e6028a5e47f8a5d84ed92a390fb32fa2282a619f7fa10c2de0c0fad3ce4c",
-        "title": "광주과학기술원 생명과학부 기능 유전체학 연구실 연구직 채용 공고",
-        "institution": "광주과학기술원 (GIST)",
-        "url": "https://www.gist.ac.kr/kr/html/sub06/060103.html?mode=V&no=223861",
-        "role_id": "",
-        "deadline": "2026-10-13",
-        "priority": "확인 필요",
-        "category": "확인 필요 (정규직·지원 가능 판정 아님)",
-        "fields": [
-          "화학"
-        ],
-        "relevance": "확인 필요",
-        "relevance_rank": 3,
-        "eligibility": "※ 해당 채용공고는 연구개발 활동에 직접 참여하는 연구인력을 채용을 목적으로 하며 직무적합성 확인을 위하여 학위취득기관명 ( 출신학교 ), 출신연구실 및 지도교수명 , 연구 · 논문 실적 등의 정보를 수집 · 활용함 / 학 력 • 석사학위 소지자 ※ 졸업예정자의 경우 학위취득 예정증명서 제출 가능한 경우에 한하며 , 임용일 전까지 학위증명서를 제출하여야 함 / 급여수준 • 기관 내부기준에 따름 ※ 경력수준에 따라 상이함",
-        "host": "",
-        "amount": "",
-        "action": "첨부 미확인: ValueError; 정규 연구직 여부 확인 필요",
-        "errors": [
-          "첨부 미확인: ValueError",
-          "정규 연구직 여부 확인 필요"
-        ],
-        "review": true
-      },
-      "seen_at": "2026-10-11"
+      "seen_at": "2026-10-12"
     },
     "e6272e682c0ab9cdc154b419": {
       "op": {
@@ -3315,67 +3245,7 @@
         ],
         "review": true
       },
-      "seen_at": "2026-10-11"
-    },
-    "d3a9ac20013c9006c47cac5e": {
-      "op": {
-        "kind": "job",
-        "key": "d3a9ac20013c9006c47cac5e",
-        "fingerprint": "41b0d149c1cbc9ec0c3a176adfd383113aa53965a72a3f55c1df9ac35643ced8",
-        "title": "부산대학교 전기화학 분자변환 연구센터 연구 교수 채용 공고",
-        "institution": "부산대학교",
-        "url": "https://www.pusan.ac.kr/kor/CMS/Board/Board.do?board_seq=1511449&mCode=MN103&mgr_seq=10&mode=view",
-        "role_id": "",
-        "deadline": "2026-10-13",
-        "priority": "확인 필요",
-        "category": "확인 필요 (정규직·지원 가능 판정 아님)",
-        "fields": [
-          "전기화학",
-          "화학"
-        ],
-        "relevance": "확인 필요",
-        "relevance_rank": 3,
-        "eligibility": "박사학위 증명서 사본 / 경력 / 라. 박사학위 증명서 사본 1 부",
-        "host": "",
-        "amount": "",
-        "action": "첨부 미확인: ValueError; 정년트랙 여부 확인 필요",
-        "errors": [
-          "첨부 미확인: ValueError",
-          "정년트랙 여부 확인 필요"
-        ],
-        "review": true
-      },
-      "seen_at": "2026-10-11"
-    },
-    "30c0895ec547fc574e989979": {
-      "op": {
-        "kind": "job",
-        "key": "30c0895ec547fc574e989979",
-        "fingerprint": "7bb98e870faa01fc1c0402e21d121b6fb25f9bced739ed500ab707c354f7889c",
-        "title": "서울대학교 화학생물공학부 자체직원(대체인력) 채용 공고 새글 첨부파일 있음",
-        "institution": "서울대학교",
-        "url": "https://www.snu.ac.kr/snunow/notice/job-openings?bbsidx=176708&md=v",
-        "role_id": "",
-        "deadline": "2026-10-13",
-        "priority": "확인 필요",
-        "category": "확인 필요 (정규직·지원 가능 판정 아님)",
-        "fields": [
-          "화학",
-          "생물공학"
-        ],
-        "relevance": "확인 필요",
-        "relevance_rank": 3,
-        "eligibility": "경력증명서(근무기간, 직위(직급), 부서명, 업무 명시)(해당자) 각 1부 / 성범죄 경력 조회 신청서(최종합격 후 임용 전) 1부",
-        "host": "",
-        "amount": "",
-        "action": "첨부 미확인: ValueError; 정규 연구직 여부 확인 필요",
-        "errors": [
-          "첨부 미확인: ValueError",
-          "정규 연구직 여부 확인 필요"
-        ],
-        "review": true
-      },
-      "seen_at": "2026-10-11"
+      "seen_at": "2026-10-12"
     },
     "7c2ed11c1e147a154face3c9": {
       "op": {
@@ -3421,63 +3291,7 @@
         ],
         "review": true
       },
-      "seen_at": "2026-10-11"
-    },
-    "e9881fd295003ae8cf767661": {
-      "op": {
-        "kind": "job",
-        "key": "e9881fd295003ae8cf767661",
-        "fingerprint": "e21cdd11af92de1c5fff40b456b90d6f1b7da0ddeb2f484178fb3e5472e9441a",
-        "title": "[경상국립대학교] 2027학년도 1학기 경상국립대학교 교수 초빙공고(기금교수 포함)",
-        "institution": "경상국립대학교",
-        "url": "https://www.kcue.or.kr/notice/sub04.php?at=view&idx=658903",
-        "role_id": "",
-        "deadline": "2026-10-14",
-        "priority": "확인 필요",
-        "category": "확인 필요 (정규직·지원 가능 판정 아님)",
-        "fields": [],
-        "relevance": "확인 필요",
-        "relevance_rank": 3,
-        "eligibility": "학위·필수 경력·논문 요건 확인 필요",
-        "host": "",
-        "amount": "",
-        "action": "첨부 미확인: ValueError; 정년트랙 여부 확인 필요; 모집 분야·담당 업무의 연구 관련성 확인 필요",
-        "errors": [
-          "첨부 미확인: ValueError",
-          "정년트랙 여부 확인 필요",
-          "모집 분야·담당 업무의 연구 관련성 확인 필요"
-        ],
-        "review": true
-      },
-      "seen_at": "2026-10-11"
-    },
-    "2a174b00bcc87032168b3fd5": {
-      "op": {
-        "kind": "job",
-        "key": "2a174b00bcc87032168b3fd5",
-        "fingerprint": "a6662bfc3ee2663fc992227017e4ace3fc98e6dbb7698b4831ecd0c77a713ba6",
-        "title": "전임교원 Fall 2026 Kookmin University GRTF Recruitment: Announcement of Final Selection Results 2026.06.30 교원지원팀 양신아 조회수 15026",
-        "institution": "국민대학교",
-        "url": "https://www.kookmin.ac.kr/user/kmuNews/notice/17/12042/view.do?currentPageNo=1",
-        "role_id": "",
-        "deadline": null,
-        "priority": "확인 필요",
-        "category": "확인 필요 (정규직·지원 가능 판정 아님)",
-        "fields": [],
-        "relevance": "확인 필요",
-        "relevance_rank": 3,
-        "eligibility": "학위·필수 경력·논문 요건 확인 필요",
-        "host": "",
-        "amount": "",
-        "action": "정년트랙 여부 확인 필요; 접수 마감 미확인; 모집 분야·담당 업무의 연구 관련성 확인 필요",
-        "errors": [
-          "정년트랙 여부 확인 필요",
-          "접수 마감 미확인",
-          "모집 분야·담당 업무의 연구 관련성 확인 필요"
-        ],
-        "review": true
-      },
-      "seen_at": "2026-10-11"
+      "seen_at": "2026-10-12"
     },
     "c2e70ee21782528063af265b": {
       "op": {
@@ -3506,7 +3320,7 @@
         ],
         "review": true
       },
-      "seen_at": "2026-10-11"
+      "seen_at": "2026-10-12"
     }
   }
 }
