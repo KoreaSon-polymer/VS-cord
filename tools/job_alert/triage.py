@@ -5,6 +5,7 @@ import hashlib
 import re
 
 from tools.notice_utils import application_period, canonical_url
+from .eligibility import eligibility_notes
 from .models import RawPosting
 from .relevance import job_relevance
 
@@ -18,8 +19,11 @@ ADMIN = re.compile(r"행정(?:직|원|실무)|사무(?:직|원|보조)|시설직
 FIELD_LABEL = re.compile(r"모집\s*(?:분야|전공)|채용\s*분야|초빙\s*(?:분야|전공)|담당\s*(?:업무|연구)|직무\s*(?:내용|수행)|연구\s*분야|research area", re.I)
 STOP_LABEL = re.compile(r"지원\s*자격|응시\s*자격|관련\s*학과|지원\s*가능\s*전공|우대\s*(?:사항|조건)|접수\s*기간|공통\s*자격|학력\s*(?:요건|조건)", re.I)
 ROLE_HEADER = re.compile(r"^\s*(?:\[([A-Za-z가-힣]{0,6}[-_]?\d{1,3}(?:[-_]\d{1,3})?)\]|(?:직무|채용|분야)\s*코드\s*[:：]?\s*([A-Za-z가-힣]{0,6}[-_]?\d{1,3}(?:[-_]\d{1,3})?))", re.I)
+CLOSED = re.compile(r"(?:본\s*)?(?:공고|채용|접수)[^\n]{0,15}(?:취소되었|취소됨|취소\s*(?:안내|[:：])|종료되었|종료됨|마감되었)|(?:공고|채용|접수)\s*상태\s*[:：]?\s*(?:접수\s*)?(?:취소|마감|종료)|\b(?:recruitment|vacancy|applications?)\s+(?:is|are|has been|have been)\s+(?:cancelled|canceled|closed)", re.I)
+CONTRACT_FORM = re.compile(r"(?:고용\s*형태|근무\s*형태|직종|직급)\s*[:：]?\s*(?:기간제|계약직|무기계약|비\s*정규)[^\n]{0,30}(?:정규직\s*전환|전환\s*가능)")
+START_UNANNOUNCED = re.compile(r"(?:접수|지원|신청)\s*(?:시작(?:일|일정)?|기간|일정)[^\n]{0,12}(?:추후|별도)\s*(?:공고|안내|공지|공개)|applications?\s+(?:will\s+open|opening\s+date)[^\n]{0,20}(?:to be announced|later)", re.I)
 
-NON_JOB = re.compile(r"참가\s*모집|참여자|튜터|학생발굴단|학군사관|수시모집|정시모집|신입생|채용\s*박람회|채용\s*설명회|기업\s*탐방|기술개발과제|연구과제|전형\s*결과|전형\s*안내|발표\s*전형|추천채용|부연구단장|연구단장|이노코어|펠로우", re.I)
+NON_JOB = re.compile(r"참가\s*모집|참여자|튜터|학생발굴단|학군사관|수시모집|정시모집|신입생|채용\s*박람회|채용\s*설명회|기업\s*탐방|기술개발과제|연구과제|전형\s*결과|전형\s*안내|발표\s*전형|추천채용|부연구단장|연구단장|이노코어|펠로우|합격자|친인척\s*채용|채용.*종료\s*안내|(?:selection|recruitment)\s+results", re.I)
 
 
 def is_recruitment_title(title):
@@ -142,8 +146,19 @@ def review_opportunity(raw, today, notes):
         host="", amount="", action="; ".join(notes), errors=list(notes), review=True)
 
 
-def classify_notice(raw, today, evaluator):
+def classify_notice(raw, today, evaluator, *, require_eligibility: bool = False):
     accepted, reviews = [], []
+    header = []
+    common_requirements = False
+    for line in raw.text.splitlines():
+        if ROLE_HEADER.match(line):
+            break
+        if re.search(r"직무별|분야별|^\s*\[?[A-Za-z]+[-_]?\d+\]?\s*[:：]", line):
+            common_requirements = False
+        if re.search(r"공통\s*(?:지원\s*)?(?:자격|요건)", line):
+            common_requirements = True
+        if common_requirements:
+            header.append(line)
     for role in split_roles(raw):
         if role_title_excluded(role.title):
             continue
@@ -152,6 +167,8 @@ def classify_notice(raw, today, evaluator):
         if re.search(r"합격자|선정결과|입찰|신규과제|지원사업", role.title):
             continue
         combined = role.title + "\n" + role.text
+        if CLOSED.search(combined) or CONTRACT_FORM.search(role.text):
+            continue
         years = re.findall(r"(20\d{2})\s*(?:년|학년도)", role.title)
         if years and max(map(int, years)) < today.year and not re.search(r"상시|연중|연장|재공고|rolling|until filled", role.title, re.I):
             continue
@@ -173,9 +190,16 @@ def classify_notice(raw, today, evaluator):
         # remain discoverable, but unrelated explicit fields should not leak in.
         missing_document = bool(role.review_notes) or role.text.startswith("상세 페이지 접근 실패")
         generic = bool(FACULTY.search(role.title) or (REGULAR.search(role.title) and RESEARCH.search(role.title)))
-        if not fields and not (generic and (missing_document or "첨부" in role.text)):
+        if not fields and not (generic and (missing_document or "첨부" in role.text or re.search(r"(?:추후|별도)\s*안내", role.text))):
             continue
         notes = uncertainty(role)
+        if require_eligibility:
+            text = "\n".join((*header, role.text)) if role.role_id else role.text
+            notes += eligibility_notes(text)
+            if START_UNANNOUNCED.search(text):
+                notes += ("접수 시작일이 아직 공지되지 않음",)
+            if end is None and not re.search(r"상시\s*채용|채용\s*시까지|until filled|rolling applications?", role.text, re.I):
+                notes += ("상시 접수 또는 마감일을 확인하지 못함",)
         if notes:
             reviews.append(review_opportunity(role, today, notes))
             continue

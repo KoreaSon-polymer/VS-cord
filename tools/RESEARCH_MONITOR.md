@@ -87,8 +87,8 @@ this update preserves those fixes and adds regression tests for their boundaries
 - The dry-run report includes review-needed.json alongside candidates.json,
   health.json and digest.txt.
 
-Remaining limits: official university master-list synchronization is not yet
-automated; the explicit seed registry and national boards are complementary.
+Remaining limits at the September update: the explicit seed registry and national
+boards were complementary. The nationwide discovery update below adds the master list.
 All-source coverage and all individual department boards are not guaranteed.
 HTML/attachment formats without explicit role codes require review. Deadlines
 are currently date-level; same-day submission times must be checked in the source.
@@ -96,3 +96,10 @@ Initial 90-day nationwide backfill and browser rendering/OCR are not implemented
 Existing funding collection is preserved.
 
 CI isolation: source pushes now run the dedicated `career-tests.yml` workflow with read-only repository permissions and no SMTP secrets. Live collection is scheduled or manually previewed; the implementation branch was separately live-previewed without sending email. This supersedes the earlier push-collection description.
+
+## Nationwide discovery and applicant screening
+
+- Existing direct boards, KCUE and NST remain in the twice-daily collection. The public KCUE national university and college dataset adds homepage discovery for institutions outside the existing registry. New homepages are rotated in batches of at most 40 per run. An official roster entry is a discovery target. The run report records how many additional homepages were listed, scheduled and read.
+- JOB-ALIO adds five pages of regular employment results. Three economic, humanities and social research council (NRC) pages supplement the NST feeds. Where available, the collector follows links to the originating notice.
+- The email includes jobs with evidence of an open application, relevant duties, permanent research employment or tenure track, and a doctorate qualification compatible with the known profile. Requirements that need missing applicant information, such as publication counts, career duration or a specific degree, go to `review-needed.json`. An approaching deadline may be reported on a later collection of the same source. Same-day deadlines are withheld because the scheduled evening job can start after the cutoff.
+- GitHub requests 09:00 and 18:00 KST starts. The evening digest may run later. Source health is available in every run artifact and can be included in a digest with opportunities. Pending jobs from the previous filter are reassessed before delivery. Funding keeps its own section and existing selection criteria.

@@ -15,7 +15,7 @@ def canonical_url(url: str) -> str:
                "pagenumber", "pagenum", "cpage", "searchtxt", "searchopt", "title"}
     query_pairs = parse_qsl(parts.query, keep_blank_values=True)
     if any(k.lower() in {"idx", "wr_id", "nttseqno", "nttno", "articleno", "board_seq", "bbs_seq", "list_no", "postno"} for k, v in query_pairs):
-        ignored.update({"page", "pageno", "pagenum", "article.offset", "articlelimit", "rowcnt"})
+        ignored.update({"page", "pageno", "pagenum", "npage", "article.offset", "articlelimit", "rowcnt"})
     if parts.netloc.lower() == "job.alio.go.kr" and parts.path.lower().endswith("/recruitview.do"):
         parts = parts._replace(path="/recruitview.do")
     pairs = [(k, v) for k, v in query_pairs
@@ -53,7 +53,7 @@ def article_text(markup: str) -> str:
 DATE = r"(20\d{2})\s*[./년-]\s*(\d{1,2})\s*[./월-]\s*(\d{1,2})"
 DATE_RE = re.compile(DATE)
 PERIOD_RE = re.compile(DATE + r"[.일]?\s*(?:\([^)]{1,5}\))?\s*(?:\d{1,2}:\d{2}(?::\d{2})?)?\s*[~∼～–-]\s*(?:(20\d{2})\s*[./년-]\s*)?(\d{1,2})\s*[./월-]\s*(\d{1,2})")
-MARKER_RE = re.compile(r"(?:연구책임자\s*)?(?:접수\s*기간|신청\s*기간|지원\s*기간|모집\s*기간|원서\s*접수|온라인\s*접수|접수\s*마감|신청\s*마감|마감일|제출\s*기한|deadline|application\s*period)", re.I)
+MARKER_RE = re.compile(r"(?:연구책임자\s*)?(?:접수\s*기간|신청\s*기간|지원\s*기간|모집\s*기간|채용\s*기간|원서\s*접수|온라인\s*접수|접수\s*마감|신청\s*마감|마감일|제출\s*기한|deadline|application\s*period)", re.I)
 
 
 def dates(text: str) -> tuple[date, ...]:
@@ -75,7 +75,7 @@ def application_period(text: str, title: str = "") -> tuple[date | None, date | 
         windows.insert(0, title)
     for window in windows:
         # Don't consume a later interview or appointment date as the deadline.
-        window = re.split(r"(?:임용예정|임용일|면접일|합격자\s*발표|기관\s*승인)", window)[0]
+        window = re.split(r"(?:임용예정|임용일|면접일|합격자\s*발표|기관\s*승인|(?:서류\s*)?(?:심사|평가)\s*(?:기간|일정))", window)[0]
         match = PERIOD_RE.search(window)
         if match:
             y, m, d, ey, em, ed = match.groups()

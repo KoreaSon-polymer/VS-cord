@@ -114,7 +114,7 @@ def test_scan_only_and_dry_run_never_send_or_mark_delivered(tmp_path, monkeypatc
     (tmp_path/"tools").mkdir()
     async def collect():
         raw = RawPosting("예시연구원", "정규직 유기반도체 연구원 채용",
-                         "https://example.test/42", "담당업무 고분자 합성\n상시채용")
+                         "https://example.test/42", "담당업무 고분자 합성\n상시채용\n지원자격: 관련 분야 박사학위 소지자")
         return (SourceResult("EX", (raw,), None, 1, 0, "예시연구원",
                              "https://example.test", "institute"),)
     monkeypatch.setattr(monitor, "collect_sources", collect)
@@ -125,11 +125,11 @@ def test_scan_only_and_dry_run_never_send_or_mark_delivered(tmp_path, monkeypatc
     assert anyio.run(monitor.run, {"DRY_RUN":"true"}) == 0
     assert not monitor.STATE_PATH.exists()
     assert anyio.run(monitor.run, {"SEND_DIGEST":"false"}) == 0
-    state = json.loads(monitor.STATE_PATH.read_text())
+    state = json.loads(monitor.STATE_PATH.read_text(encoding="utf-8"))
     assert len(state["pending"]) == 1 and state["records"] == {}
-    original = monitor.STATE_PATH.read_text()
+    original = monitor.STATE_PATH.read_text(encoding="utf-8")
     assert anyio.run(monitor.run, {"DRY_RUN":"true"}) == 0
-    assert monitor.STATE_PATH.read_text() == original
+    assert monitor.STATE_PATH.read_text(encoding="utf-8") == original
 
 
 def test_mobile_and_paginated_notice_identity():

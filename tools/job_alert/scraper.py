@@ -1,25 +1,35 @@
 from __future__ import annotations
 from dataclasses import dataclass, replace
+from datetime import datetime, timezone
 from urllib.parse import urljoin, urlsplit
+import os
 import re
 import time
 import anyio
 import httpx2
 from bs4 import BeautifulSoup
+from pydantic import ValidationError
 from tools.notice_utils import article_text, canonical_url
 from tools.notice_documents import attachment_links, document_text, MAX_BYTES
 from .filtering import EXCLUDED_ROLES, EXCLUDED_KEYWORDS
 from .triage import role_title_excluded, is_recruitment_title
-from .discovery import board_links, nst_registry, notice_institution, DIRECTORY
-from .http_client import create_async_client
+from .discovery import (DIRECTORY, aggregate_link_title, board_links, normalize_aggregate_text,
+                        nrc_fields, nst_registry, notice_institution)
+from .http_client import bounded_get, create_async_client, stream_public_page
 from .models import RawPosting
+from .national_registry import REGISTRY_URL, fetch_university_sources, university_batch
 from .sources import SOURCES, Source
 
 MAX_LINKS_PER_SOURCE = 50
 
 
 def forwarded_notice(source, markup):
-    """NST republishes a source URL, not the actual qualifications/deadline."""
+    """Follow the original notice when the council publishes a specific posting."""
+    if source.name.startswith('NRC-'):
+        fields = nrc_fields(markup)
+        target = fields.get('URL', '')
+        if target.startswith(('https://', 'http://')) and re.search(r'[?&]list_no=\d+|/\d{3,}(?:[?#]|$)', target):
+            return fields.get('채용기관', source.institution), canonical_url(target)
     if not source.name.startswith('NST-'):
         return None
     soup = BeautifulSoup(markup, 'html.parser')
@@ -51,6 +61,7 @@ class SourceResult:
     url: str = ""
     kind: str = "institute"
     board_urls: tuple[str, ...] = ()
+    scheduled_count: int = 0
 
 
 def _candidate_links(source: Source, markup: str):
@@ -71,7 +82,7 @@ def _candidate_links(source: Source, markup: str):
         href = a.get('href', '').strip()
         if not href or href.startswith(('javascript:', '#', 'mailto:')):
             continue
-        title = re.sub(r'\s+', ' ', a.get_text(' ', strip=True)).strip()
+        title = re.sub(r'\s+', ' ', aggregate_link_title(source, a, href)).strip()
         # Do not borrow a sibling posting's title from the whole parent container.
         if len(title) < 8 or role_title_excluded(title) or any(k in title for k in EXCLUDED_KEYWORDS):
             continue
@@ -94,9 +105,7 @@ async def get_with_retry(client, url):
     """Retry transient failures only; never disable TLS certificate validation."""
     for attempt in range(3):
         try:
-            response = await client.get(url)
-            response.raise_for_status()
-            return response
+            return await bounded_get(client, url, 4_000_000)
         except Exception as exc:
             status = getattr(getattr(exc, "response", None), "status_code", None)
             if status not in (None, 408, 429, 500, 502, 503, 504) or attempt == 2:
@@ -129,7 +138,7 @@ async def _collect_one(client, source):
                 queue += [(u, depth+1) for u in board_links(response.text, str(response.url))
                           if u not in seen_pages]
             # Preserve list pagination. Identity canonicalization strips pageIndex.
-            if not source.name.startswith(("KCUE-", "NST-")) and depth == 0:
+            if not source.name.startswith(("KCUE-", "NST-", "NRC-", "JOB-ALIO")) and depth == 0:
                 for a in BeautifulSoup(response.text, "html.parser").select("a[href]"):
                     if a.get_text(strip=True) in ("2", "3") and a.get("href") and not a["href"].startswith(("#", "javascript:")):
                         nxt = urljoin(str(response.url), a["href"])
@@ -152,18 +161,28 @@ async def _collect_one(client, source):
                     detail = await get_with_retry(client, url)
                     url = str(detail.url)
                     institution = notice_institution(source, title, detail.text)
+                    mirror_text = ''
                     forwarded = forwarded_notice(source, detail.text)
+                    if source.name.startswith('NRC-'):
+                        fields = nrc_fields(detail.text)
+                        if fields.get('마감여부') in {'마감', '종료', '완료'}:
+                            postings.append(RawPosting(institution, title, forwarded[1] if forwarded else url, '접수상태: 마감'))
+                            continue
+                        mirror_text = '채용기간 ' + fields.get('채용기간', '')
                     if forwarded:
-                        institution, url = forwarded
-                        detail = await get_with_retry(client, url)
-                    text = article_text(detail.text)
+                        target_institution, target_url = forwarded
+                        try:
+                            detail = await get_with_retry(client, target_url)
+                            institution, url = target_institution, str(detail.url)
+                        except httpx2.HTTPError:
+                            notes.append('공식 원문 접근 미확인')
+                    text = normalize_aggregate_text(source, article_text(detail.text)) + '\n' + mirror_text
                     attachments = attachment_links(detail.text, url)
                     for attachment in attachments:
                         try:
-                            async with client.stream("GET", attachment) as doc:
-                                doc.raise_for_status()
+                            async with stream_public_page(client, attachment) as doc:
                                 chunks, size = [], 0
-                                async for chunk in doc.aiter_bytes():
+                                async for chunk in doc.aiter_raw(chunk_size=65536):
                                     size += len(chunk)
                                     if size > MAX_BYTES:
                                         raise ValueError("Attachment too large")
@@ -196,10 +215,30 @@ async def _collect_one(client, source):
         return SourceResult(source.name, tuple(postings), type(exc).__name__, discovered,
                             len(errors), source.institution, source.url, source.kind, tuple(boards))
 
+async def _national_universities(client: httpx2.AsyncClient, sources: list[Source]) -> tuple[tuple[Source, ...], SourceResult]:
+    count = 0
+    scheduled: tuple[Source, ...] = ()
+    error = None
+    try:
+        with anyio.fail_after(25):
+            registry = await fetch_university_sources(client, sources)
+        count = len(registry)
+        today = datetime.now(timezone.utc).date()
+        evening = os.environ.get('SEND_DIGEST', 'true').lower() == 'true'
+        scheduled = university_batch(registry, today, evening=evening)
+        if not count:
+            error = "no_new_university_homepages"
+    except (httpx2.HTTPError, TimeoutError, ValidationError) as exc:
+        error = type(exc).__name__
+    return scheduled, SourceResult("KCUE-national-registry", (), error, count, 0,
+                                   "전국 대학·전문대학 명부", REGISTRY_URL, "registry",
+                                   scheduled_count=len(scheduled))
+
+
 async def collect_sources():
     results = []
     limiter = anyio.CapacityLimiter(8)
-    async with create_async_client() as client:
+    async with create_async_client(public_only=True) as client:
         sources = list(SOURCES)
         try:
             directory = await get_with_retry(client, DIRECTORY)
@@ -210,9 +249,13 @@ async def collect_sources():
         except Exception as exc:
             results.append(SourceResult("NST-registry", (), type(exc).__name__, institution="NST 기관 명부",
                                         url=DIRECTORY, kind="registry"))
+        university_batch, registry_result = await _national_universities(client, sources)
+        results.append(registry_result)
+        sources.extend(university_batch)
         async def one(source):
             async with limiter:
-                with anyio.move_on_after(180) as scope:
+                budget = 45 if source.name.startswith("KCUE-registry-") else 180
+                with anyio.move_on_after(budget) as scope:
                     result = await _collect_one(client, source)
                 if scope.cancel_called:
                     result = SourceResult(source.name, (), "source_time_budget_exceeded",

@@ -27,7 +27,7 @@ REMINDERS = (7, 3, 1)
 def load_state(path=STATE_PATH):
     if not path.exists():
         return {'version': 2, 'records': {}, 'last_health_sent': None}
-    state = json.loads(path.read_text())
+    state = json.loads(path.read_text(encoding='utf-8'))
     if state.get('version') != 2 or not isinstance(state.get('records'), dict):
         raise ValueError('Unsupported/corrupt delivery state; refusing to resend everything')
     return state
@@ -35,7 +35,7 @@ def load_state(path=STATE_PATH):
 
 def save_state(state, path=STATE_PATH):
     temp = path.with_suffix('.tmp')
-    temp.write_text(json.dumps(state, ensure_ascii=False, indent=2) + '\n')
+    temp.write_text(json.dumps(state, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
     temp.replace(path)
 
 
@@ -43,6 +43,7 @@ def to_opportunity(posting):
     return dict(kind='job', key=hashlib.sha256((canonical_url(posting.url) + ('|role:'+posting.role_id if posting.role_id else '')).encode()).hexdigest()[:24],
                 fingerprint=posting.content_hash, title=posting.title, institution=posting.institution,
                 url=posting.url, role_id=posting.role_id, deadline=str(posting.deadline) if posting.deadline else None,
+                start=posting.start_date.isoformat() if posting.start_date else None,
                 priority='전임교원 신규 임용' if '교원' in posting.position else '정규 연구직',
                 category=posting.employment_type, fields=list(posting.research_fields),
                 relevance=posting.fit_reasons[0], relevance_rank={90: 0, 70: 1, 50: 2}.get(posting.fit_score, 2),
@@ -55,6 +56,12 @@ def notification_events(opportunities, state, today):
     events, seen = [], set()
     records = state['records']
     for op in opportunities:
+        if op['kind'] == 'job':
+            if op.get('review') or (op.get('start') and date.fromisoformat(op['start']) > today):
+                continue
+            # The evening run may start after a same-day Korean cutoff.
+            if op['deadline'] and date.fromisoformat(op['deadline']) <= today:
+                continue
         # Common faculty titles at different universities are distinct calls.
         # Ignore an optional English institute abbreviation for direct/NST mirrors.
         institution = re.sub(r'\s*\([A-Za-z -]+\)', '', op['institution'])
@@ -73,7 +80,7 @@ def notification_events(opportunities, state, today):
             reason = '신규'
         elif previous['fingerprint'] != op['fingerprint']:
             # Mirrored source formatting alone must not create an update.
-            if previous.get('url') == op['url']:
+            if canonical_url(previous.get('url', '')) == canonical_url(op['url']):
                 reason = '조건·일정 변경'
         elif bucket is not None and f"{op['deadline']}:{bucket}" not in previous.get('reminders', []):
             reason = f'마감 {days}일 전'
@@ -98,7 +105,7 @@ def render(events, health, today, include_health=False):
     last_section = None
     for i, event in enumerate(events, 1):
         op = event['op']
-        section = '연구비 (채용과 별도)' if op['kind'] == 'funding' else '확인 필요: 미검증 채용 후보' if op.get('review') else '정규 연구직·정년트랙 후보'
+        section = '연구비 (채용과 별도)' if op['kind'] == 'funding' else '정규 연구직·정년트랙 지원 검토'
         if section != last_section:
             parts += ['', section, '']
             last_section = section
@@ -118,6 +125,9 @@ def render(events, health, today, include_health=False):
     impaired = [h for h in health if h['status'] != 'ok' or h.get('detail_failures')]
     if impaired:
         parts += [f'수집 제한: {len(impaired)}/{len(health)}개 조회에서 접근 실패·목록 또는 첨부 확인이 필요합니다. 확인하지 못한 기관에 공고가 없다는 의미가 아닙니다.']
+    registry = next((h for h in health if h['source'] == 'KCUE-national-registry'), None)
+    if registry and registry['status'] == 'ok':
+        parts += [f"전국 대학 명부에서 추가한 {registry['count']}개 홈페이지 중 이번 회차 {registry['scheduled_count']}개 조회 예정"]
     if include_health:
         institutions = {h.get('institution') for h in health if h.get('kind') in ('university', 'institute') and h.get('institution')}
         readable = {h.get('institution') for h in health if h.get('kind') in ('university', 'institute') and h.get('read_count', 0) > 0}
@@ -131,7 +141,8 @@ def render(events, health, today, include_health=False):
 
 
 async def run(environment):
-    today = datetime.now(KST).date()
+    now = datetime.now(KST)
+    today = now.date()
     dry_run = environment.get('DRY_RUN', '').lower() == 'true'
     state = load_state()
     # Save outputs even with no email: empty results and broken collection differ.
@@ -139,8 +150,8 @@ async def run(environment):
     job_ops, reviews = [], []
     for result in source_results:
         for raw in result.postings:
-            postings, unresolved = classify_notice(raw, today, evaluate_posting)
-            job_ops.extend(to_opportunity(p) for p in postings)
+            postings, unresolved = classify_notice(raw, today, evaluate_posting, require_eligibility=True)
+            job_ops.extend(dict(to_opportunity(p), eligibility_checked=True, checked_at=now.isoformat()) for p in postings)
             reviews.extend(unresolved)
     funding_ops, funding_health = await anyio.to_thread.run_sync(collect_funding)
     checked_at = datetime.now(KST).isoformat()
@@ -148,7 +159,7 @@ async def run(environment):
                    board_urls=list(r.board_urls), checked_at=checked_at,
                    read_count=sum(not p.text.startswith('상세 페이지 접근 실패') and not p.review_notes for p in r.postings),
                    count=r.discovered, status='ok' if not r.error else r.error,
-                   detail_failures=r.detail_errors) for r in source_results] + funding_health
+                   detail_failures=r.detail_errors, scheduled_count=r.scheduled_count) for r in source_results] + funding_health
     source_history = state.setdefault('source_health', {})
     for item in health:
         old = source_history.get(item['source'], {})
@@ -156,7 +167,7 @@ async def run(environment):
         item['consecutive_failures'] = 0 if item['status'] == 'ok' else old.get('consecutive_failures', 0)+1
         source_history[item['source']] = {k: item[k] for k in ('last_success', 'consecutive_failures')}
 
-    opportunities = job_ops + reviews + funding_ops
+    opportunities = job_ops + funding_ops
     # Morning scans queue discoveries for the evening digest. Pending is separate
     # from delivered records; a scan never marks an email as successfully sent.
     pending = state.setdefault('pending', {})
@@ -164,8 +175,12 @@ async def run(environment):
         pending[op['key']] = dict(op=op, seen_at=today.isoformat())
     checked_urls = {canonical_url(raw.url) for result in source_results for raw in result.postings if not raw.review_notes and not raw.text.startswith('상세 페이지 접근 실패')}
     current_keys = {op['key'] for op in opportunities}
+    review_keys = {op['key'] for op in reviews}
     for key, item in list(pending.items()):
-        if item['op']['kind'] == 'job' and canonical_url(item['op']['url']) in checked_urls and key not in current_keys:
+        op = item['op']
+        if op['kind'] == 'job' and (not op.get('eligibility_checked') or (
+            key not in current_keys and (key in review_keys or canonical_url(op['url']) in checked_urls)
+        )):
             del pending[key]
             continue
         end = item['op'].get('deadline')
@@ -174,22 +189,27 @@ async def run(environment):
             del pending[key]
     opportunities = [item['op'] for item in pending.values()]
 
-    events = notification_events(opportunities, state, today)
+    actionable = [op for op in opportunities if op['kind'] != 'job' or (
+        now - datetime.fromisoformat(op['checked_at']) <= timedelta(hours=24)
+        and (not op['start'] or op['start'] <= op['checked_at'][:10])
+    )]
+    events = notification_events(actionable, state, today)
     last = state.get('last_health_sent')
     health_due = today.weekday() == 0 and (not last or (today-date.fromisoformat(last)).days >= 7)
     email = render(events, health, today, include_health=health_due)
     OUTPUT_PATH.mkdir(exist_ok=True)
-    (OUTPUT_PATH/'digest.txt').write_text(email.text_body)
-    (OUTPUT_PATH/'health.json').write_text(json.dumps(health, ensure_ascii=False, indent=2))
-    (OUTPUT_PATH/'candidates.json').write_text(json.dumps(opportunities, ensure_ascii=False, indent=2))
-    (OUTPUT_PATH/'review-needed.json').write_text(json.dumps(reviews, ensure_ascii=False, indent=2))
+    (OUTPUT_PATH/'digest.txt').write_text(email.text_body, encoding='utf-8')
+    (OUTPUT_PATH/'health.json').write_text(json.dumps(health, ensure_ascii=False, indent=2), encoding='utf-8')
+    (OUTPUT_PATH/'candidates.json').write_text(json.dumps(opportunities, ensure_ascii=False, indent=2), encoding='utf-8')
+    (OUTPUT_PATH/'review-needed.json').write_text(json.dumps(reviews, ensure_ascii=False, indent=2), encoding='utf-8')
     summary = f"Jobs accepted: {len(job_ops)}; review needed: {len(reviews)}; funding accepted: {len(funding_ops)}; notification events: {len(events)}; dry-run: {dry_run}\n"
     summary += '\n'.join(f"- {h['source']}: {h['status']}, candidates={h['count']}" for h in health)
     print(summary)
     for op in opportunities[:40]:
-        print('PREVIEW:', op['category'], '|', op['institution'], '|', op['title'], '|', op['action'])
+        preview = ' | '.join(' '.join(op[field].split()) for field in ('category', 'institution', 'title', 'action'))
+        print('PREVIEW:', preview)
     if environment.get('GITHUB_STEP_SUMMARY'):
-        Path(environment['GITHUB_STEP_SUMMARY']).write_text(summary)
+        Path(environment['GITHUB_STEP_SUMMARY']).write_text(summary, encoding='utf-8')
     if dry_run:
         print('Preview saved; no email sent and delivery state unchanged.')
         return 0
@@ -197,7 +217,7 @@ async def run(environment):
         save_state(state)
         print('Collection saved for the evening digest; no email sent.')
         return 0
-    if not events and not health_due:
+    if not events:
         save_state(state)
         print('No new actionable notices. No email.')
         return 0

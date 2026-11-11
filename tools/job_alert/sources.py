@@ -142,3 +142,12 @@ SOURCES += (
     Source("KIMM-home", "한국기계연구원 (KIMM)", "https://www.kimm.re.kr/", True),
     Source("KERI-recruit", "한국전기연구원 (KERI)", "https://keri.fairy.im", True),
 )
+
+SOURCES += (
+    *(Source(f"JOB-ALIO-regular-{page}", "JOB-ALIO 정규직",
+             f"https://job.alio.go.kr/recruit.do?pageNo={page}&work_type=R1010",
+             kind="aggregate") for page in range(1, 6)),
+    *(Source(f"NRC-{page}", "경제·인문사회연구회 소관기관",
+             f"https://nrc.re.kr/board.es?mid=a12105100000&bid=0012&nPage={page}",
+             kind="aggregate") for page in range(1, 4)),
+)
