@@ -9,7 +9,17 @@ from .eligibility import eligibility_notes
 from .models import RawPosting
 from .relevance import job_relevance
 
-TEMP = re.compile(r"박사\s*후|석사\s*후|포닥|post[\s.-]?doc(?:toral)?|연수직|연수연구원|위촉|기간제|비\s*정규|무기계약|비\s*전임|비\s*정년|연구교수|연구교원|겸임|객원|강사|초빙교수|특임|석좌|시간제|인턴|별정제|non[ -]tenure|research professor|adjunct|visiting professor|temporary|fixed[ -]term", re.I)
+EARLY_RESEARCH_ROLE = (
+    r"(?:박사|석사)\s*후\s*연구(?:원|직)|석사\s*급\s*연구(?:원|직)|"
+    r"\bmaster(?:['’]s)?[ -]level\s+research(?:er|\s+(?:scientist|position))|"
+    r"\bpost[\s.-]?doc(?:toral)?\s+(?:researcher|research\s+(?:associate|fellow)|fellow)"
+)
+TEMP = re.compile(rf"{EARLY_RESEARCH_ROLE}|박사\s*후|석사\s*후|포닥|post[\s.-]?doc(?:toral)?|연수직|연수연구원|위촉|기간제|비\s*정규|무기계약|비\s*전임|비\s*정년|연구교수|연구교원|겸임|객원|강사|초빙교수|특임|석좌|시간제|인턴|별정제|non[ -]tenure|research professor|adjunct|visiting professor|temporary|fixed[ -]term", re.I)
+EARLY_ROLE_FIELD = re.compile(
+    r"^[ \t•○-]*(?:(?:채용|모집)\s*)?(?:직급|직종|직위|고용\s*형태|근무\s*형태|구분)"
+    rf"\s*[:：]?\s*(?:{EARLY_RESEARCH_ROLE})(?:[ \t]*\([^\n]*\))?[ \t]*$",
+    re.I | re.M,
+)
 EXECUTIVE = re.compile(r"(?:원장|총장|이사장|기관장|대표이사|상임감사|소장|director|president)\s*(?:공개\s*)?(?:초빙|공모|채용|모집)", re.I)
 REGULAR = re.compile(r"(?<![비무])정규\s*(?:직|연구직)|\bpermanent\b", re.I)
 TENURE = re.compile(r"(?<!비)(?<!비 )정년\s*트랙|\btenure[ -]track\b", re.I)
@@ -167,7 +177,7 @@ def classify_notice(raw, today, evaluator, *, require_eligibility: bool = False)
         if re.search(r"합격자|선정결과|입찰|신규과제|지원사업", role.title):
             continue
         combined = role.title + "\n" + role.text
-        if CLOSED.search(combined) or CONTRACT_FORM.search(role.text):
+        if CLOSED.search(combined) or CONTRACT_FORM.search(role.text) or EARLY_ROLE_FIELD.search(role.text):
             continue
         years = re.findall(r"(20\d{2})\s*(?:년|학년도)", role.title)
         if years and max(map(int, years)) < today.year and not re.search(r"상시|연중|연장|재공고|rolling|until filled", role.title, re.I):

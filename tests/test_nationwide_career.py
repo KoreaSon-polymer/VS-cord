@@ -24,6 +24,12 @@ BODY = "담당업무: 공액 고분자 합성\n접수기간 2026.11.01 ~ 2026.11
     ("requirement", "eligible"),
     [
         ("지원자격: 관련 분야 박사학위 소지자", True),
+        ("지원자격: 화학 박사학위 소지자", True),
+        ("지원자격: 화학 전공 박사학위 보유자", True),
+        ("지원자격: 화학 또는 관련 분야 박사학위 소지자", True),
+        ("Minimum qualifications: Ph.D. in Chemistry", True),
+        ("지원자격: 화학공학 박사학위 소지자", False),
+        ("지원자격: 화학 박사학위 소지자\n필수 경력 3년 이상", False),
         ("지원자격: 관련 분야 박사학위 소지자\n우대사항: 경력 3년 이상", True),
         ("지원자격: 관련 분야 박사학위 소지자\n박사학위 취득 후 경력 3년 이상", False),
         ("지원자격: 관련 분야 박사학위 소지자 및 SCIE 논문 3편 이상", False),
@@ -69,6 +75,46 @@ def test_email_triage_requires_evidence_of_known_requirements(
 def test_unresolved_legacy_job_never_creates_a_mail_event() -> None:
     review = {"kind": "job", "review": True}
     assert notification_events([review], {"records": {}}, TODAY) == []
+
+
+@pytest.mark.parametrize(
+    ("title", "role"),
+    [
+        ("유기반도체 박사 후 연구원 채용", ""),
+        ("유기반도체 석사 후 연구원 채용", ""),
+        ("유기반도체 석사급 연구원 채용", ""),
+        ("Permanent Organic Semiconductor Master's-level Researcher Opening", ""),
+        (TITLE, "채용 직급: 박사후연구원\n"),
+        (TITLE, "모집 직종: 석사후연구원\n"),
+    ],
+)
+def test_early_career_role_is_excluded_even_with_permanent_wording(
+    title: str,
+    role: str,
+) -> None:
+    raw = RawPosting(
+        "한국예시연구원",
+        title,
+        "https://example.test/1",
+        role + BODY + "지원자격: 관련 분야 박사학위 소지자",
+    )
+    assert classify_notice(raw, TODAY, evaluate_posting, require_eligibility=True) == (
+        [],
+        [],
+    )
+
+
+def test_postdoc_experience_as_preference_does_not_exclude_a_permanent_job() -> None:
+    raw = RawPosting(
+        "한국예시연구원",
+        TITLE,
+        "https://example.test/1",
+        BODY + "지원자격: 화학 박사학위 소지자\n우대사항: 박사후연구 경력",
+    )
+    accepted, reviews = classify_notice(
+        raw, TODAY, evaluate_posting, require_eligibility=True
+    )
+    assert len(accepted) == 1 and not reviews
 
 
 def test_nrc_recruitment_is_monitored() -> None:

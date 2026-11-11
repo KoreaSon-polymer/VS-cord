@@ -1,4 +1,4 @@
-"""Check clearly stated qualifications against the known completed doctorate."""
+"""Check clearly stated qualifications against a completed chemistry doctorate."""
 
 import re
 from typing import Final
@@ -24,11 +24,15 @@ MANDATORY: Final = re.compile(
     r"필수|반드시|최소|\bmust\b|\brequired\b|한함|(?:자|사람)만\s*지원",
     re.IGNORECASE,
 )
+RELATED_FIELD: Final = (
+    r"\(?\s*(?:관련|해당)\s*(?:연구\s*)?(?:분야|전공)\s*\)?\s*(?:의\s*)?"
+)
+CHEMISTRY: Final = r"화학(?:과|\s*(?:전공|분야))?\s+"
 DOCTORATE: Final = re.compile(
-    r"(?:\(?\s*(?:관련|해당)\s*(?:연구\s*)?(?:분야|전공)\s*\)?\s*(?:의\s*)?)?"
+    rf"(?:{CHEMISTRY}(?:또는\s+{RELATED_FIELD})?|{RELATED_FIELD})?"
     r"(?:박사\s*학위\s*(?:소지자?|보유자?|취득자?|이상)|"
     r"(?:a\s+)?(?:ph\.?\s?d\.?|doctorate|doctoral\s+degree)"
-    r"(?:\s+in\s+(?:a|the)\s+(?:relevant|related)\s+(?:field|discipline))?)"
+    r"(?:\s+in\s+(?:chemistry|(?:a|the)\s+(?:relevant|related)\s+(?:field|discipline)))?)"
     r"[\s.]*",
     re.IGNORECASE,
 )
