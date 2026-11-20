@@ -1828,11 +1828,11 @@
       "reminders": []
     },
     "720c2108c0f7f047c78ee31c": {
-      "fingerprint": "f36a0bb0fe9de477b9670b8057f8f19594406851852c0fe865e784a6c89ac26e",
+      "fingerprint": "dfe0090e427ce75053a9bec2888f31d99f52662dc8e22cbd18c2c41a9ea2ae8d",
       "mirror": "d80301d5b62b408680df6c289870158085a3a17e31a9c2b6405090329c532761",
       "url": "https://www.iris.go.kr/contents/retrieveBsnsAncmView.do?ancmId=024757",
       "deadline": "2026-12-10",
-      "sent_at": "2026-11-20",
+      "sent_at": "2026-11-21",
       "reminders": []
     },
     "d90715f9c35b551a2e17fac9": {
@@ -1940,514 +1940,514 @@
   "source_health": {
     "AJOU": {
       "last_success": null,
-      "consecutive_failures": 133
+      "consecutive_failures": 134
     },
     "ALIO": {
       "last_success": null,
-      "consecutive_failures": 133
+      "consecutive_failures": 134
     },
     "CATHOLIC": {
       "last_success": null,
-      "consecutive_failures": 133
+      "consecutive_failures": 134
     },
     "CAU": {
       "last_success": null,
-      "consecutive_failures": 133
+      "consecutive_failures": 134
     },
     "CBNU": {
       "last_success": null,
-      "consecutive_failures": 133
+      "consecutive_failures": 134
     },
     "CHANGWON": {
       "last_success": null,
-      "consecutive_failures": 133
+      "consecutive_failures": 134
     },
     "CHOSUN": {
       "last_success": null,
-      "consecutive_failures": 133
+      "consecutive_failures": 134
     },
     "CNU": {
       "last_success": null,
-      "consecutive_failures": 133
+      "consecutive_failures": 134
     },
     "DANKOOK": {
       "last_success": null,
-      "consecutive_failures": 133
+      "consecutive_failures": 134
     },
     "DEU": {
       "last_success": "2026-10-22T23:27:40.523614+09:00",
-      "consecutive_failures": 57
+      "consecutive_failures": 58
     },
     "DGIST": {
       "last_success": null,
-      "consecutive_failures": 133
+      "consecutive_failures": 134
     },
     "DGIST-faculty": {
       "last_success": null,
-      "consecutive_failures": 133
+      "consecutive_failures": 134
     },
     "DONGA": {
       "last_success": null,
-      "consecutive_failures": 133
+      "consecutive_failures": 134
     },
     "DONGGUK": {
       "last_success": "2026-11-19T16:05:31.128159+09:00",
-      "consecutive_failures": 2
+      "consecutive_failures": 3
     },
     "ETRI": {
       "last_success": null,
-      "consecutive_failures": 133
+      "consecutive_failures": 134
     },
     "EWHA": {
       "last_success": "2026-09-21T13:38:11.841232+09:00",
-      "consecutive_failures": 120
+      "consecutive_failures": 121
     },
     "GACHON": {
       "last_success": null,
-      "consecutive_failures": 133
+      "consecutive_failures": 134
     },
     "GIST": {
       "last_success": null,
-      "consecutive_failures": 133
+      "consecutive_failures": 134
     },
     "GNU": {
       "last_success": null,
-      "consecutive_failures": 133
+      "consecutive_failures": 134
     },
     "HALLYM": {
       "last_success": null,
-      "consecutive_failures": 133
+      "consecutive_failures": 134
     },
     "HANBAT": {
       "last_success": null,
-      "consecutive_failures": 133
+      "consecutive_failures": 134
     },
     "HANYANG": {
-      "last_success": "2026-11-20T15:59:28.848558+09:00",
+      "last_success": "2026-11-21T02:41:28.107994+09:00",
       "consecutive_failures": 0
     },
     "HIBRAIN": {
       "last_success": null,
-      "consecutive_failures": 133
+      "consecutive_failures": 134
     },
     "HONGIK": {
       "last_success": null,
-      "consecutive_failures": 133
+      "consecutive_failures": 134
     },
     "HOSEO": {
       "last_success": null,
-      "consecutive_failures": 133
+      "consecutive_failures": 134
     },
     "IBS": {
-      "last_success": "2026-11-20T15:59:28.848558+09:00",
+      "last_success": "2026-11-21T02:41:28.107994+09:00",
       "consecutive_failures": 0
     },
     "INHA": {
       "last_success": null,
-      "consecutive_failures": 133
+      "consecutive_failures": 134
     },
     "INU": {
       "last_success": null,
-      "consecutive_failures": 133
+      "consecutive_failures": 134
     },
     "JBNU": {
       "last_success": null,
-      "consecutive_failures": 133
+      "consecutive_failures": 134
     },
     "JEJU": {
       "last_success": null,
-      "consecutive_failures": 133
+      "consecutive_failures": 134
     },
     "JJ": {
       "last_success": null,
-      "consecutive_failures": 133
+      "consecutive_failures": 134
     },
     "JNU": {
       "last_success": null,
-      "consecutive_failures": 133
+      "consecutive_failures": 134
     },
     "JOB-ALIO": {
-      "last_success": "2026-11-20T15:59:28.848558+09:00",
+      "last_success": "2026-11-21T02:41:28.107994+09:00",
       "consecutive_failures": 0
     },
     "KAERI": {
       "last_success": null,
-      "consecutive_failures": 133
+      "consecutive_failures": 134
     },
     "KAIST": {
       "last_success": null,
-      "consecutive_failures": 133
+      "consecutive_failures": 134
     },
     "KANC": {
       "last_success": null,
-      "consecutive_failures": 133
+      "consecutive_failures": 134
     },
     "KANGWON": {
       "last_success": null,
-      "consecutive_failures": 133
+      "consecutive_failures": 134
     },
     "KBSI": {
       "last_success": null,
-      "consecutive_failures": 133
+      "consecutive_failures": 134
     },
     "KCUE-1": {
       "last_success": null,
-      "consecutive_failures": 133
+      "consecutive_failures": 134
     },
     "KCUE-10": {
       "last_success": null,
-      "consecutive_failures": 133
+      "consecutive_failures": 134
     },
     "KCUE-2": {
       "last_success": "2026-10-06T02:58:11.720997+09:00",
-      "consecutive_failures": 91
+      "consecutive_failures": 92
     },
     "KCUE-3": {
       "last_success": "2026-10-26T13:28:05.965121+09:00",
-      "consecutive_failures": 50
+      "consecutive_failures": 51
     },
     "KCUE-4": {
       "last_success": "2026-11-17T04:22:04.482340+09:00",
-      "consecutive_failures": 7
+      "consecutive_failures": 8
     },
     "KCUE-5": {
-      "last_success": "2026-11-20T15:59:28.848558+09:00",
+      "last_success": "2026-11-21T02:41:28.107994+09:00",
       "consecutive_failures": 0
     },
     "KCUE-6": {
       "last_success": "2026-10-21T23:29:02.335625+09:00",
-      "consecutive_failures": 59
+      "consecutive_failures": 60
     },
     "KCUE-7": {
       "last_success": "2026-11-16T01:12:54.433510+09:00",
-      "consecutive_failures": 9
+      "consecutive_failures": 10
     },
     "KCUE-8": {
-      "last_success": "2026-11-20T15:59:28.848558+09:00",
+      "last_success": "2026-11-21T02:41:28.107994+09:00",
       "consecutive_failures": 0
     },
     "KCUE-9": {
-      "last_success": "2026-11-20T15:59:28.848558+09:00",
+      "last_success": "2026-11-21T02:41:28.107994+09:00",
       "consecutive_failures": 0
     },
     "KENTECH": {
       "last_success": null,
-      "consecutive_failures": 133
+      "consecutive_failures": 134
     },
     "KERI": {
       "last_success": null,
-      "consecutive_failures": 133
+      "consecutive_failures": 134
     },
     "KERI-recruit": {
       "last_success": null,
-      "consecutive_failures": 133
+      "consecutive_failures": 134
     },
     "KETI": {
       "last_success": null,
-      "consecutive_failures": 133
+      "consecutive_failures": 134
     },
     "KFRI": {
       "last_success": null,
-      "consecutive_failures": 133
+      "consecutive_failures": 134
     },
     "KHU": {
       "last_success": null,
-      "consecutive_failures": 133
+      "consecutive_failures": 134
     },
     "KICET": {
       "last_success": null,
-      "consecutive_failures": 133
+      "consecutive_failures": 134
     },
     "KICT": {
       "last_success": null,
-      "consecutive_failures": 133
+      "consecutive_failures": 134
     },
     "KIER": {
       "last_success": null,
-      "consecutive_failures": 133
+      "consecutive_failures": 134
     },
     "KIGAM": {
-      "last_success": "2026-11-20T15:59:28.848558+09:00",
+      "last_success": "2026-11-21T02:41:28.107994+09:00",
       "consecutive_failures": 0
     },
     "KIMM": {
       "last_success": null,
-      "consecutive_failures": 133
+      "consecutive_failures": 134
     },
     "KIMM-home": {
       "last_success": null,
-      "consecutive_failures": 133
+      "consecutive_failures": 134
     },
     "KIMS": {
-      "last_success": "2026-11-20T15:59:28.848558+09:00",
+      "last_success": "2026-11-21T02:41:28.107994+09:00",
       "consecutive_failures": 0
     },
     "KIST": {
-      "last_success": "2026-11-20T15:59:28.848558+09:00",
+      "last_success": "2026-11-21T02:41:28.107994+09:00",
       "consecutive_failures": 0
     },
     "KISTI": {
       "last_success": null,
-      "consecutive_failures": 133
+      "consecutive_failures": 134
     },
     "KITECH": {
       "last_success": null,
-      "consecutive_failures": 133
+      "consecutive_failures": 134
     },
     "KMU": {
       "last_success": null,
-      "consecutive_failures": 133
+      "consecutive_failures": 134
     },
     "KNU": {
       "last_success": null,
-      "consecutive_failures": 133
+      "consecutive_failures": 134
     },
     "KONGJU": {
       "last_success": null,
-      "consecutive_failures": 133
+      "consecutive_failures": 134
     },
     "KONKUK": {
       "last_success": null,
-      "consecutive_failures": 133
+      "consecutive_failures": 134
     },
     "KOOKMIN": {
       "last_success": null,
-      "consecutive_failures": 133
+      "consecutive_failures": 134
     },
     "KOREA": {
       "last_success": null,
-      "consecutive_failures": 133
+      "consecutive_failures": 134
     },
     "KOREATECH": {
       "last_success": null,
-      "consecutive_failures": 133
+      "consecutive_failures": 134
     },
     "KRIBB": {
-      "last_success": "2026-11-20T03:05:47.777673+09:00",
-      "consecutive_failures": 1
+      "last_success": "2026-11-21T02:41:28.107994+09:00",
+      "consecutive_failures": 0
     },
     "KRICT": {
       "last_success": null,
-      "consecutive_failures": 133
+      "consecutive_failures": 134
     },
     "KRISS": {
       "last_success": null,
-      "consecutive_failures": 133
+      "consecutive_failures": 134
     },
     "KS": {
       "last_success": null,
-      "consecutive_failures": 133
+      "consecutive_failures": 134
     },
     "KUMOH": {
       "last_success": "2026-11-17T04:22:04.482340+09:00",
-      "consecutive_failures": 7
+      "consecutive_failures": 8
     },
     "KUNSAN": {
       "last_success": null,
-      "consecutive_failures": 133
+      "consecutive_failures": 134
     },
     "KWANGWOON": {
       "last_success": null,
-      "consecutive_failures": 133
+      "consecutive_failures": 134
     },
     "MOKPO": {
       "last_success": null,
-      "consecutive_failures": 133
+      "consecutive_failures": 134
     },
     "MYONGJI": {
       "last_success": null,
-      "consecutive_failures": 133
+      "consecutive_failures": 134
     },
     "NNFC": {
       "last_success": null,
-      "consecutive_failures": 133
+      "consecutive_failures": 134
     },
     "NST-1": {
       "last_success": "2026-11-17T04:22:04.482340+09:00",
-      "consecutive_failures": 7
+      "consecutive_failures": 8
     },
     "NST-2": {
       "last_success": "2026-10-20T23:13:05.748764+09:00",
-      "consecutive_failures": 61
+      "consecutive_failures": 62
     },
     "NST-3": {
       "last_success": "2026-11-03T04:18:35.732991+09:00",
-      "consecutive_failures": 35
+      "consecutive_failures": 36
     },
     "NST-4": {
       "last_success": "2026-11-10T16:03:41.578557+09:00",
-      "consecutive_failures": 20
+      "consecutive_failures": 21
     },
     "NST-5": {
-      "last_success": "2026-11-20T15:59:28.848558+09:00",
+      "last_success": "2026-11-21T02:41:28.107994+09:00",
       "consecutive_failures": 0
     },
     "NST-6": {
-      "last_success": "2026-11-20T15:59:28.848558+09:00",
+      "last_success": "2026-11-21T02:41:28.107994+09:00",
       "consecutive_failures": 0
     },
     "NST-directory-etri": {
       "last_success": null,
-      "consecutive_failures": 133
+      "consecutive_failures": 134
     },
     "NST-directory-gtck": {
       "last_success": null,
-      "consecutive_failures": 133
+      "consecutive_failures": 134
     },
     "NST-directory-kfe": {
       "last_success": null,
-      "consecutive_failures": 133
+      "consecutive_failures": 134
     },
     "NST-directory-kiom": {
       "last_success": null,
-      "consecutive_failures": 133
+      "consecutive_failures": 134
     },
     "NST-directory-kitox": {
       "last_success": null,
-      "consecutive_failures": 133
+      "consecutive_failures": 134
     },
     "NST-directory-krri": {
       "last_success": null,
-      "consecutive_failures": 133
+      "consecutive_failures": 134
     },
     "NST-directory-wikim": {
       "last_success": null,
-      "consecutive_failures": 133
+      "consecutive_failures": 134
     },
     "NST-registry": {
-      "last_success": "2026-11-20T15:59:28.848558+09:00",
+      "last_success": "2026-11-21T02:41:28.107994+09:00",
       "consecutive_failures": 0
     },
     "PKNU": {
       "last_success": "2026-11-18T03:17:36.068529+09:00",
-      "consecutive_failures": 5
+      "consecutive_failures": 6
     },
     "POSTECH": {
-      "last_success": "2026-11-20T15:59:28.848558+09:00",
+      "last_success": "2026-11-21T02:41:28.107994+09:00",
       "consecutive_failures": 0
     },
     "PUSAN": {
       "last_success": null,
-      "consecutive_failures": 133
+      "consecutive_failures": 134
     },
     "SCH": {
       "last_success": null,
-      "consecutive_failures": 133
+      "consecutive_failures": 134
     },
     "SCNU": {
       "last_success": null,
-      "consecutive_failures": 133
+      "consecutive_failures": 134
     },
     "SEJONG": {
       "last_success": null,
-      "consecutive_failures": 133
+      "consecutive_failures": 134
     },
     "SEOULTECH": {
       "last_success": null,
-      "consecutive_failures": 133
+      "consecutive_failures": 134
     },
     "SKKU": {
       "last_success": "2026-10-28T14:19:59.202813+09:00",
-      "consecutive_failures": 46
+      "consecutive_failures": 47
     },
     "SNU": {
       "last_success": null,
-      "consecutive_failures": 133
+      "consecutive_failures": 134
     },
     "SOGANG": {
       "last_success": null,
-      "consecutive_failures": 133
+      "consecutive_failures": 134
     },
     "SOOKMYUNG": {
       "last_success": null,
-      "consecutive_failures": 133
+      "consecutive_failures": 134
     },
     "SSU": {
       "last_success": null,
-      "consecutive_failures": 133
+      "consecutive_failures": 134
     },
     "SUNMOON": {
       "last_success": null,
-      "consecutive_failures": 133
+      "consecutive_failures": 134
     },
     "TUKOREA": {
       "last_success": null,
-      "consecutive_failures": 133
+      "consecutive_failures": 134
     },
     "ULSAN": {
       "last_success": null,
-      "consecutive_failures": 133
+      "consecutive_failures": 134
     },
     "UNIST": {
       "last_success": null,
-      "consecutive_failures": 133
+      "consecutive_failures": 134
     },
     "UOS": {
       "last_success": null,
-      "consecutive_failures": 133
+      "consecutive_failures": 134
     },
     "UT": {
       "last_success": "2026-11-16T15:05:50.066653+09:00",
-      "consecutive_failures": 8
+      "consecutive_failures": 9
     },
     "WKU": {
       "last_success": null,
-      "consecutive_failures": 133
+      "consecutive_failures": 134
     },
     "YONSEI": {
-      "last_success": "2026-11-20T15:59:28.848558+09:00",
+      "last_success": "2026-11-21T02:41:28.107994+09:00",
       "consecutive_failures": 0
     },
     "YONSEI-faculty": {
-      "last_success": "2026-11-20T15:59:28.848558+09:00",
+      "last_success": "2026-11-21T02:41:28.107994+09:00",
       "consecutive_failures": 0
     },
     "YU": {
       "last_success": null,
-      "consecutive_failures": 133
+      "consecutive_failures": 134
     },
     "NRF 신규사업공모": {
-      "last_success": "2026-11-20T15:59:28.848558+09:00",
+      "last_success": "2026-11-21T02:41:28.107994+09:00",
       "consecutive_failures": 0
     },
     "NRF 사업일반공지": {
-      "last_success": "2026-11-20T15:59:28.848558+09:00",
+      "last_success": "2026-11-21T02:41:28.107994+09:00",
       "consecutive_failures": 0
     },
     "IRIS 범부처 사업공고": {
-      "last_success": "2026-11-20T15:59:28.848558+09:00",
+      "last_success": "2026-11-21T02:41:28.107994+09:00",
       "consecutive_failures": 0
     },
     "MSIT 사업공고": {
-      "last_success": "2026-11-20T15:59:28.848558+09:00",
+      "last_success": "2026-11-21T02:41:28.107994+09:00",
       "consecutive_failures": 0
     },
     "MOE 교육부 공고": {
       "last_success": null,
-      "consecutive_failures": 133
+      "consecutive_failures": 134
     },
     "JOB-ALIO-regular-1": {
       "last_success": "2026-11-12T15:57:47.633077+09:00",
-      "consecutive_failures": 16
+      "consecutive_failures": 17
     },
     "JOB-ALIO-regular-2": {
       "last_success": "2026-11-16T15:05:50.066653+09:00",
-      "consecutive_failures": 8
+      "consecutive_failures": 9
     },
     "JOB-ALIO-regular-3": {
       "last_success": "2026-11-17T04:22:04.482340+09:00",
-      "consecutive_failures": 7
+      "consecutive_failures": 8
     },
     "JOB-ALIO-regular-4": {
       "last_success": "2026-11-18T16:04:11.928984+09:00",
-      "consecutive_failures": 4
+      "consecutive_failures": 5
     },
     "JOB-ALIO-regular-5": {
       "last_success": "2026-11-18T03:17:36.068529+09:00",
-      "consecutive_failures": 5
+      "consecutive_failures": 6
     },
     "KCUE-national-registry": {
-      "last_success": "2026-11-20T15:59:28.848558+09:00",
+      "last_success": "2026-11-21T02:41:28.107994+09:00",
       "consecutive_failures": 0
     },
     "KCUE-registry-008832596319": {
@@ -2595,16 +2595,16 @@
       "consecutive_failures": 0
     },
     "NRC-1": {
-      "last_success": "2026-11-20T15:59:28.848558+09:00",
+      "last_success": "2026-11-21T02:41:28.107994+09:00",
       "consecutive_failures": 0
     },
     "NRC-2": {
-      "last_success": "2026-11-20T15:59:28.848558+09:00",
+      "last_success": "2026-11-21T02:41:28.107994+09:00",
       "consecutive_failures": 0
     },
     "NRC-3": {
       "last_success": "2026-11-13T02:30:34.885215+09:00",
-      "consecutive_failures": 15
+      "consecutive_failures": 16
     },
     "KCUE-registry-035fab97237d": {
       "last_success": null,
@@ -3624,147 +3624,147 @@
     },
     "KCUE-registry-06ac307ed219": {
       "last_success": null,
-      "consecutive_failures": 1
+      "consecutive_failures": 2
     },
     "KCUE-registry-0dae217a70ee": {
       "last_success": null,
-      "consecutive_failures": 1
+      "consecutive_failures": 2
     },
     "KCUE-registry-0dc49927b771": {
       "last_success": null,
-      "consecutive_failures": 1
+      "consecutive_failures": 2
     },
     "KCUE-registry-138aadb1c7a0": {
-      "last_success": "2026-11-16T15:05:50.066653+09:00",
+      "last_success": "2026-11-21T02:41:28.107994+09:00",
       "consecutive_failures": 0
     },
     "KCUE-registry-13b8047ad26d": {
       "last_success": null,
-      "consecutive_failures": 1
+      "consecutive_failures": 2
     },
     "KCUE-registry-173d13925453": {
       "last_success": null,
-      "consecutive_failures": 1
+      "consecutive_failures": 2
     },
     "KCUE-registry-2fdbd812c5e6": {
       "last_success": null,
-      "consecutive_failures": 1
+      "consecutive_failures": 2
     },
     "KCUE-registry-3162693ea4dc": {
       "last_success": null,
-      "consecutive_failures": 1
+      "consecutive_failures": 2
     },
     "KCUE-registry-3eb3d9680fdf": {
       "last_success": null,
-      "consecutive_failures": 1
+      "consecutive_failures": 2
     },
     "KCUE-registry-4093a33004ab": {
       "last_success": null,
-      "consecutive_failures": 1
+      "consecutive_failures": 2
     },
     "KCUE-registry-563d8d3505f8": {
       "last_success": "2026-11-16T15:05:50.066653+09:00",
-      "consecutive_failures": 0
+      "consecutive_failures": 1
     },
     "KCUE-registry-5ace6c485a4e": {
       "last_success": null,
-      "consecutive_failures": 1
+      "consecutive_failures": 2
     },
     "KCUE-registry-5fd812904b00": {
-      "last_success": "2026-11-16T15:05:50.066653+09:00",
+      "last_success": "2026-11-21T02:41:28.107994+09:00",
       "consecutive_failures": 0
     },
     "KCUE-registry-628102d7c9ba": {
       "last_success": null,
-      "consecutive_failures": 1
+      "consecutive_failures": 2
     },
     "KCUE-registry-7b5971f453e8": {
       "last_success": null,
-      "consecutive_failures": 1
+      "consecutive_failures": 2
     },
     "KCUE-registry-82a18b91ee10": {
       "last_success": null,
-      "consecutive_failures": 1
+      "consecutive_failures": 2
     },
     "KCUE-registry-83f802845809": {
       "last_success": null,
-      "consecutive_failures": 1
+      "consecutive_failures": 2
     },
     "KCUE-registry-851c9848d310": {
       "last_success": null,
-      "consecutive_failures": 1
+      "consecutive_failures": 2
     },
     "KCUE-registry-886271af359b": {
       "last_success": null,
-      "consecutive_failures": 1
+      "consecutive_failures": 2
     },
     "KCUE-registry-8aa35857f2ad": {
       "last_success": null,
-      "consecutive_failures": 1
+      "consecutive_failures": 2
     },
     "KCUE-registry-8fb536afae88": {
       "last_success": null,
-      "consecutive_failures": 1
+      "consecutive_failures": 2
     },
     "KCUE-registry-928967549c2c": {
       "last_success": null,
-      "consecutive_failures": 1
+      "consecutive_failures": 2
     },
     "KCUE-registry-953140f5591f": {
       "last_success": null,
-      "consecutive_failures": 1
+      "consecutive_failures": 2
     },
     "KCUE-registry-b85a4cb423e6": {
       "last_success": null,
-      "consecutive_failures": 1
+      "consecutive_failures": 2
     },
     "KCUE-registry-bd5d8d489b8d": {
       "last_success": null,
-      "consecutive_failures": 1
+      "consecutive_failures": 2
     },
     "KCUE-registry-c0daa3712c9a": {
       "last_success": null,
-      "consecutive_failures": 1
+      "consecutive_failures": 2
     },
     "KCUE-registry-c595f7cc8171": {
       "last_success": null,
-      "consecutive_failures": 1
+      "consecutive_failures": 2
     },
     "KCUE-registry-c96c61ca4a2c": {
       "last_success": null,
-      "consecutive_failures": 1
+      "consecutive_failures": 2
     },
     "KCUE-registry-cf30923e979c": {
       "last_success": null,
-      "consecutive_failures": 1
+      "consecutive_failures": 2
     },
     "KCUE-registry-d1e7de6c6976": {
       "last_success": null,
-      "consecutive_failures": 1
+      "consecutive_failures": 2
     },
     "KCUE-registry-dda86de54057": {
       "last_success": null,
-      "consecutive_failures": 1
+      "consecutive_failures": 2
     },
     "KCUE-registry-df7ac11b0cc3": {
       "last_success": null,
-      "consecutive_failures": 1
+      "consecutive_failures": 2
     },
     "KCUE-registry-e103e9d44707": {
       "last_success": null,
-      "consecutive_failures": 1
+      "consecutive_failures": 2
     },
     "KCUE-registry-e5356c6db64d": {
-      "last_success": "2026-11-16T15:05:50.066653+09:00",
+      "last_success": "2026-11-21T02:41:28.107994+09:00",
       "consecutive_failures": 0
     },
     "KCUE-registry-eaa3cffd29f5": {
       "last_success": null,
-      "consecutive_failures": 1
+      "consecutive_failures": 2
     },
     "KCUE-registry-f86aa16a0e42": {
       "last_success": null,
-      "consecutive_failures": 1
+      "consecutive_failures": 2
     }
   },
   "pending": {
@@ -3812,7 +3812,7 @@
         "action": "국외 체류·국내 소속·박사학위 경과연수·기수혜 제한을 공고문에서 대조",
         "errors": []
       },
-      "seen_at": "2026-11-20"
+      "seen_at": "2026-11-21"
     },
     "752a83bed4872eff72c636af": {
       "op": {
@@ -3915,7 +3915,7 @@
         "action": "국외 체류·국내 소속·박사학위 경과연수·기수혜 제한을 공고문에서 대조",
         "errors": []
       },
-      "seen_at": "2026-11-20"
+      "seen_at": "2026-11-21"
     },
     "7ca8560e4acbdd2f575247f1": {
       "op": {
@@ -3939,7 +3939,7 @@
         "action": "국외 체류·국내 소속·박사학위 경과연수·기수혜 제한을 공고문에서 대조",
         "errors": []
       },
-      "seen_at": "2026-11-20"
+      "seen_at": "2026-11-21"
     }
   }
 }
